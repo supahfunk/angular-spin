@@ -7,20 +7,21 @@ import { Page } from './page';
 @Injectable()
 export class PageService extends EntityService<Page> {
 
-    getFactory(): Page {
-        return new Page();
-    }
+	getFactory(): Page {
+		return new Page();
+	}
 
-    getPageBySlug(slug: string): Observable<Page[]> {
+	getPageBySlug(slug: string): Observable<Page[]> {
+		console.log('PageService.getPageBySlug', slug);
         /*
         if (!slug.trim()) {
             return of(null); // returning a null observable
         }
         */
-        return this.http.get<Page[]>(`${this.url}/?slug=${slug}`).pipe(
-            tap(x => this.log(`found pages matching "${slug}"`)),
-            catchError(this.handleError<Page[]>('getPageBySlug', []))
-        );
-    }
+		return this.http.get<Page[]>(`${this.url}/?slug=${slug}`).pipe(
+			tap(x => this.log(`found pages matching "${slug}"`)),
+			catchError(this.handleError<Page[]>('getPageBySlug', []))
+		);
+	}
 
 }

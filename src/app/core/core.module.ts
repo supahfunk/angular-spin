@@ -9,36 +9,34 @@ import { PageComponent, PageConfig, PageHosterComponent, PageService } from './p
 // import { MemoryService } from './memory';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        CoreRouting
-    ],
-    declarations: [
-        PageHosterComponent, PageComponent,
-    ],
-    providers: [
-        PageService, // IdentityService, EntityService, Logger, MemoryService,
-    ],
+	imports: [
+		CommonModule,
+		FormsModule,
+		CoreRouting
+	],
+	declarations: [
+		PageHosterComponent, PageComponent,
+	],
+	providers: [
+		PageService, // IdentityService, EntityService, Logger, MemoryService,
+	],
 })
 
 export class CoreModule {
 
-    constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-        if (parentModule) {
-            throw new Error('CoreModule is already loaded. Import it in the AppModule only');
-        }
-    }
+	constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+		if (parentModule) {
+			throw new Error('CoreModule is already loaded. Import it in the AppModule only');
+		}
+	}
 
-    public static forRoot(pages: any): ModuleWithProviders {
-        // PageConfig.pages = pages;
-        const config = new PageConfig(pages);
-        return {
-            ngModule: CoreModule,
-            providers: [
-                { provide: PageConfig, useValue: config }
-            ]
-        };
-    }
+	public static forRoot(config: any): ModuleWithProviders {
+		return {
+			ngModule: CoreModule,
+			providers: [
+				{ provide: PageConfig, useValue: config ? config : {} }
+			]
+		};
+	}
 
 }

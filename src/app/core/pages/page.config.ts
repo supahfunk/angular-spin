@@ -1,4 +1,2 @@
 
-export class PageConfig {
-    constructor(public pages: any) { }
-}
+export class PageConfig { }

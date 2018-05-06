@@ -32,10 +32,10 @@
 							"sourceMap": false,
 							"extractCss": true,
 							"namedChunks": false,
-							"aot": false,
+							"aot": true,
 							"extractLicenses": true,
 							"vendorChunk": false,
-							"buildOptimizer": false,
+							"buildOptimizer": true,
 							"fileReplacements": [{
 								"replace": "src/environments/environment.ts",
 								"with": "src/environments/environment.docs.ts"
