@@ -1,10 +1,13 @@
 
+import {takeUntil} from 'rxjs/operators';
+
 import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs';
+
 import { Page } from './page';
 import { PageResolver } from './page-resolver';
+
 
 @Component({
     selector: 'app-page',
@@ -26,8 +29,8 @@ export class PageComponent implements OnDestroy {
 
     getPage(): void {
         if (this.route) {
-            this.route.data
-                .takeUntil(this.unsubscribe) // before any subscribe
+            this.route.data.pipe(
+                takeUntil(this.unsubscribe)) // before any subscribe
                 .subscribe((data: { pageResolver: PageResolver }) => {
                     this.page = (data.pageResolver ? data.pageResolver.page : null);
                 });

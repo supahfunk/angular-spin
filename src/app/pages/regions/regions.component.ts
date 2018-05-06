@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/takeUntil';
 import { PageComponent } from '../../core/pages';
 import { Region, RegionService } from '../../models';
-
 
 @Component({
     selector: 'view-regions',

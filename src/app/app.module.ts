@@ -47,7 +47,7 @@ import * as Shared from './shared';
     providers: [
         Models.UserService, Models.RegionService,
         Attributes.AuthAttribute,
-        Core.Logger, Core.TitleService,
+        Core.Logger// , Core.TitleService,
     ],
     entryComponents: [Pages.HomeComponent, Pages.ProfileComponent, Pages.RegionDetailComponent, Pages.RegionsComponent], // here are defined all the dynamic components
     bootstrap: [RootComponent]

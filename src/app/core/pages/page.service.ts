@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { EntityService } from '../models';
 import { Page } from './page';

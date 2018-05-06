@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageHosterComponent, PageResolverService } from './pages';
 
-const coreRoutes: Routes = [
+const routes: Routes = [
     { path: '**', component: PageHosterComponent, resolve: { pageResolver: PageResolverService } },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(coreRoutes)
+        RouterModule.forChild(routes)
     ],
     exports: [
         RouterModule
