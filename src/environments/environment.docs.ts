@@ -1,5 +1,5 @@
 export const environment = {
-	enableTracing: false,
+	enableTracing: true,
 	production: true,
-	useHash: true,
+	useHash: false,
 };
