@@ -7,6 +7,10 @@ import { User } from './user';
 @Injectable()
 export class UserService extends EntityService<User> {
 
+	getCollection(): string {
+		return 'user';
+	}
+
 	getFactory(): User {
 		return new User();
 	}

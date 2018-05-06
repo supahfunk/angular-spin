@@ -12,6 +12,10 @@ const httpOptions = {
 @Injectable()
 export class EntityService<T extends Entity> extends IdentityService<T> {
 
+	getCollection(): string {
+		return 'entity';
+	}
+
 	getFactory(): Entity {
 		return new Entity();
 	}

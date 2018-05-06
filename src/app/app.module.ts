@@ -29,6 +29,7 @@ import { RegionSearchComponent } from './shared';
 	],
 	declarations: [
 		// Layouts.AuthLayout, Layouts.PublicLayout,
+		// PageComponent, PageHosterComponent,
 		HomeComponent, NotFoundComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, RootComponent,
 		HeaderComponent, FooterComponent,
 		RegionSearchComponent,
@@ -39,7 +40,9 @@ import { RegionSearchComponent } from './shared';
 		AuthAttribute,
 		Logger, // , Core.TitleService,
 	],
-	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+	entryComponents: [
+		// PageComponent, PageHosterComponent,
+		HomeComponent, NotFoundComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
 	bootstrap: [RootComponent]
 })
 export class AppModule { }

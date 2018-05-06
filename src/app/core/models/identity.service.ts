@@ -18,8 +18,13 @@ export class IdentityService<T extends Identity> {
 	constructor(protected http: HttpClient, protected logger: Logger) {
 		console.log('IdentityService type', this.collection);
 		let type: any = this.getFactory();
-		this.collection = type.constructor.name;
+		// this.collection = type.constructor.name;
+		this.collection = this.getCollection();
 		this.url = `${this.base}${this.collection.toLowerCase()}`;
+	}
+
+	getCollection(): string {
+		return 'identity';
 	}
 
 	getFactory(): Identity {

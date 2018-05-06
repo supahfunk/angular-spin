@@ -7,6 +7,10 @@ import { Page } from './page';
 @Injectable()
 export class PageService extends EntityService<Page> {
 
+	getCollection(): string {
+		return 'page';
+	}
+
 	getFactory(): Page {
 		return new Page();
 	}

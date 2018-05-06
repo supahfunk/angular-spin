@@ -5,6 +5,10 @@ import { Region } from './region';
 @Injectable()
 export class RegionService extends EntityService<Region> {
 
+	getCollection(): string {
+		return 'region';
+	}
+
 	getFactory(): Region {
 		return new Region();
 	}
