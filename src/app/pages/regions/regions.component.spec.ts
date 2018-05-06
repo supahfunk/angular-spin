@@ -1,24 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RegionsComponent } from './regions.component';
 
 describe('RegionsComponent', () => {
-	let component: RegionsComponent;
-	let fixture: ComponentFixture<RegionsComponent>;
+    let component: RegionsComponent;
+    let fixture: ComponentFixture<RegionsComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [RegionsComponent]
-		}).compileComponents();
-	}));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [RegionsComponent]
+        }).compileComponents();
+    }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(RegionsComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+    beforeEach(() => {
+        fixture = TestBed.createComponent(RegionsComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-	it('should be created', () => {
-		expect(component).toBeTruthy();
-	});
+    it('should be created', () => {
+        expect(component).toBeTruthy();
+    });
 });

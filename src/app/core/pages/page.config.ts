@@ -1,4 +1,4 @@
 
 export class PageConfig {
-	constructor(public pages: any) { }
+    constructor(public pages: any) { }
 }
