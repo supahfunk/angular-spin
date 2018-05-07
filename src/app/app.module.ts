@@ -1,19 +1,20 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AppComponent } from './app.component';
 import { AppPages } from './app.pages';
 import { AppRouting } from './app.routing';
-import { AuthAttribute } from './attributes';
+import { AuthAttribute } from './core/attributes';
+import { CustomMissingTranslationHandler, CustomTranslateLoader } from './core/labels/label.service';
 import { Logger, LoggerComponent } from './core/logger';
 import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RegionService, UserService } from './models';
-import { HomeComponent, NotFoundComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
-import { RootComponent } from './root/root.component';
-import { FooterComponent, HeaderComponent } from './sections';
-import { RegionSearchComponent } from './shared';
+import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
+import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchComponent } from './sections';
 
 @NgModule({
 	imports: [
@@ -24,25 +25,30 @@ import { RegionSearchComponent } from './shared';
 		HttpClientInMemoryWebApiModule.forRoot(MemoryService, {
 			delay: 100, dataEncapsulation: false,
 		}),
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: CustomTranslateLoader,
+				deps: [HttpClient, Logger]
+			},
+			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
+		}),
 		AppRouting,
 		AppPages,
 	],
 	declarations: [
-		// Layouts.AuthLayout, Layouts.PublicLayout,
-		// PageComponent, PageHosterComponent,
-		HomeComponent, NotFoundComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, RootComponent,
-		HeaderComponent, FooterComponent,
-		RegionSearchComponent,
+		AppComponent,
+		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
+		HeaderComponent, FooterComponent, RegionSearchComponent, NotFoundComponent,
 		LoggerComponent, PageDirective,
 	],
 	providers: [
 		UserService, RegionService,
 		AuthAttribute,
-		Logger, // , Core.TitleService,
+		Logger, TranslateService,
 	],
 	entryComponents: [
-		// PageComponent, PageHosterComponent,
-		HomeComponent, NotFoundComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
-	bootstrap: [RootComponent]
+		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,10 +11,6 @@ export class UserService extends EntityService<User> {
 		return 'user';
 	}
 
-	getFactory(): User {
-		return new User();
-	}
-
 	isLoggedIn(): Observable<User> {
 		return this.getDetailById(1) as Observable<User>;
 	}

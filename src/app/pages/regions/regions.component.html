@@ -1,20 +1,45 @@
-<h2>Regions</h2>
-
-<div>
-	<label>Region name:
-    <input #regionName />
-  </label>
-	<!-- (click) passes input value to add() and then clears the input -->
-	<button (click)="add(regionName.value); regionName.value=''">
-    add
-  </button>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4">{{ 'regions.headline' | translate }}</h1>
+	</div>
 </div>
 
-<ul class="regions">
-	<li *ngFor="let region of regions">
+<form>
+	<div class="form-group row">
+		<label for="RegionName" class="col-sm-2 col-form-label">Add Region</label>
+		<div class="col-sm-10">
+			<div class="input-group mb-3">
+				<input class="form-control" name="RegionName" #regionName placeholder="Region name" />
+				<div class="input-group-append">
+					<button type="button" class="btn btn-primary float-right" (click)="add(regionName.value); regionName.value=''">add</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-sm-4" *ngFor="let region of regions" routerLink="/region/{{region.id}}">
+		<div class="card">
+			<img class="card-img-top" src="https://picsum.photos/480/360/?random" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">{{region.name}}</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Last updated 3 mins ago</small>
+			</div>
+		</div>
+		<br>
+	</div>
+</div>
+
+<ul class="list-group">
+	<li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let region of regions">
 		<a routerLink="/region/{{region.id}}">
-      <span class="badge">{{region.id}}</span> {{region.name}}
-    </a>
-		<button class="delete" title="delete region" (click)="delete(region)">x</button>
+			<span>{{region.name}}</span>
+			<span class="badge badge-primary badge-pill">{{region.id}}</span>
+		</a>
+		<button type="button" class="btn btn-primary float-right" title="delete region" (click)="delete(region)">x</button>
 	</li>
 </ul>

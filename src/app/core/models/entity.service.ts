@@ -16,10 +16,6 @@ export class EntityService<T extends Entity> extends IdentityService<T> {
 		return 'entity';
 	}
 
-	getFactory(): Entity {
-		return new Entity();
-	}
-
 	getDetailByName(name: string): Observable<T[]> {
 		if (!name.trim()) {
 			// if not search term, return empty identity array.

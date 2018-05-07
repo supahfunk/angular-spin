@@ -1,10 +1,21 @@
-<h3>Top Regions</h3>
-<div class="grid grid-pad">
-	<a *ngFor="let region of regions" class="col-1-4" routerLink="/region/{{region.id}}">
-		<div class="module region">
-			<h4>{{region.name}}</h4>
-		</div>
-	</a>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4">{{ 'home.headline' | translate }}</h1>
+		<p class="lead">{{ 'home.lead' | translate }}</p>
+	</div>
 </div>
 
 <app-region-search></app-region-search>
+
+<div class="card-deck">
+	<div class="card" *ngFor="let region of regions" routerLink="/region/{{region.id}}">
+		<img class="card-img-top" src="https://picsum.photos/480/360/?random" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">{{region.name}}</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		</div>
+		<div class="card-footer">
+			<small class="text-muted">Last updated 3 mins ago</small>
+		</div>
+	</div>
+</div>

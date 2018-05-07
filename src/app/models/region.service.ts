@@ -9,8 +9,4 @@ export class RegionService extends EntityService<Region> {
 		return 'region';
 	}
 
-	getFactory(): Region {
-		return new Region();
-	}
-
 }

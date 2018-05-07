@@ -11,10 +11,6 @@ export class PageService extends EntityService<Page> {
 		return 'page';
 	}
 
-	getFactory(): Page {
-		return new Page();
-	}
-
 	getPageBySlug(slug: string): Observable<Page[]> {
 		console.log('PageService.getPageBySlug', slug);
         /*

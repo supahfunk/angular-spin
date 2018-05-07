@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { environment } from '../environments/environment';
-import { NotFoundComponent, RegionDetailComponent } from './pages';
+import { RegionDetailComponent } from './pages';
+import { NotFoundComponent } from './sections';
 
 const routes: Routes = [
 	{ path: 'region/:id', component: RegionDetailComponent },

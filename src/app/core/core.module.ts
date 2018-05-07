@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoreRouting } from './core.routing';
+import { LabelService } from './labels';
 import { PageComponent, PageConfig, PageHosterComponent, PageService } from './pages';
 
 // import { IdentityService, EntityService } from './models';
@@ -18,7 +19,7 @@ import { PageComponent, PageConfig, PageHosterComponent, PageService } from './p
 		PageHosterComponent, PageComponent,
 	],
 	providers: [
-		PageService, // IdentityService, EntityService, Logger, MemoryService,
+		PageService, LabelService, // IdentityService, EntityService, Logger, MemoryService,
 	],
 })
 

@@ -16,19 +16,19 @@ export class IdentityService<T extends Identity> {
 	protected url: string;
 
 	constructor(protected http: HttpClient, protected logger: Logger) {
-		console.log('IdentityService type', this.collection);
-		let type: any = this.getFactory();
 		// this.collection = type.constructor.name;
-		this.collection = this.getCollection();
-		this.url = `${this.base}${this.collection.toLowerCase()}`;
+		this.url = this.getUrl();
 	}
 
 	getCollection(): string {
 		return 'identity';
 	}
 
-	getFactory(): Identity {
-		return new Identity();
+	getUrl(): string {
+		this.collection = this.getCollection();
+		let url: string = `${this.base}${this.collection.toLowerCase()}`;
+		console.log('IdentityService ', url);
+		return url;
 	}
 
 	getList(): Observable<T[]> {
