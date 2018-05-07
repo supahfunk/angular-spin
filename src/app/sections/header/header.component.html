@@ -1,21 +1,21 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
-		<a class="navbar-brand" routerLink="/">
+		<a class="navbar-brand" [routerLink]="routeService.getLinkSegments('')">
 			<img src="/assets/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="Brand"> <span> Brand</span>
 		</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" routerLink="/">Home</a>
+				<a class="nav-link" [routerLink]="routeService.getLinkSegments('')">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" routerLink="/regions">Regions</a>
+				<a class="nav-link" [routerLink]="routeService.getLinkSegments('regions')">{{ 'header.regions' | translate }}</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" routerLink="/profile">Profile</a>
+				<a class="nav-link" [routerLink]="routeService.getLinkSegments('profile')">{{ 'header.profile' | translate }}</a>
 			</li>
 			<!--
 				<li class="nav-item" *ngFor="let page of pages">
-					<a class="nav-link" [routerLink]="page.slug">{{page.name}}</a>
+					<a class="nav-link" [routerLink]="routeService.getLinkSegments(page.slug)">{{page.name}}</a>
 				</li>
 				-->
 		</ul>

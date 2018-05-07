@@ -7,4 +7,6 @@ export const environment = {
 	enableTracing: false,
 	production: false,
 	useHash: false,
+	useLang: true,
+	useMarket: false,
 };

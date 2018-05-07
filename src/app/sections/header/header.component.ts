@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Label } from '../../core/labels';
+import { RouteService } from '../../core/routes';
 
 @Component({
 	selector: 'section-header',
@@ -15,11 +16,14 @@ export class HeaderComponent implements OnInit {
 	currentLanguage: Label;
 
 	constructor(
-		private translateService: TranslateService
-	) { }
+		private translateService: TranslateService,
+		private routeService: RouteService,
+	) {
+		console.log('HeaderComponent', this.routeService);
+	}
 
 	ngOnInit() {
-		console.log('HeaderComponent', this.translateService, this.translateService.currentLang);
+		// console.log('HeaderComponent', this.translateService, this.translateService.currentLang);
 		this.languages = this.translateService.store.langs.map((x: string, i: number) => {
 			return {
 				id: i + 1,
@@ -35,7 +39,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	setLanguage(language: Label) {
-		console.log('setLanguage', language);
+		// console.log('setLanguage', language);
 		this.currentLanguage = language;
 		this.translateService.use(language.lang);
 	}

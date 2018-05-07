@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+import { Logger } from './core/logger';
 
 @Component({
 	selector: 'app-component',
@@ -10,7 +12,10 @@ import { Observable } from 'rxjs';
 
 export class AppComponent {
 
-	constructor(private translateService: TranslateService) {
+	constructor(
+		private logger: Logger,
+		private translateService: TranslateService
+	) {
 		this.initLang();
 	}
 
@@ -20,6 +25,7 @@ export class AppComponent {
 		this.translateService.setDefaultLang('it');
 		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
 			console.log('onLangChange', e.translations);
+
 		});
 		return this.translateService.use('it');
 		/*
@@ -48,6 +54,23 @@ export class AppComponent {
 			}
 		}
 		*/
+	}
+
+	linkTo(commands: any[] | string): string[] {
+		if (commands != null) {
+			commands = Array.isArray(commands) ? commands : [commands];
+		} else {
+			commands = [];
+		}
+		if (environment.useMarket) {
+			const market: string = 'IT';
+			commands.unshift(market);
+		}
+		if (environment.useLang) {
+			const lang: string = this.translateService.currentLang;
+			commands.unshift(lang);
+		}
+		return commands;
 	}
 
 }

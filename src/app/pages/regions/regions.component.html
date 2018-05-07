@@ -6,12 +6,12 @@
 
 <form>
 	<div class="form-group row">
-		<label for="RegionName" class="col-sm-2 col-form-label">Add Region</label>
+		<label for="RegionName" class="col-sm-2 col-form-label">{{ 'regions.addRegion' | translate }}</label>
 		<div class="col-sm-10">
 			<div class="input-group mb-3">
-				<input class="form-control" name="RegionName" #regionName placeholder="Region name" />
+				<input class="form-control" name="RegionName" #regionName placeholder="{{ 'regions.regionName' | translate }}" />
 				<div class="input-group-append">
-					<button type="button" class="btn btn-primary float-right" (click)="add(regionName.value); regionName.value=''">add</button>
+					<button type="button" class="btn btn-primary float-right" (click)="add(regionName.value); regionName.value=''">{{ 'app.add' | translate }}</button>
 				</div>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 			</div>
 			<div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
+				<small class="text-muted">{{ 'regions.lastUpdated' | translate }}</small>
 			</div>
 		</div>
 		<br>
