@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
 import { Logger } from './core/logger';
 
 @Component({
@@ -56,23 +55,4 @@ export class AppComponent {
 		*/
 	}
 
-	linkTo(commands: any[] | string): string[] {
-		if (commands != null) {
-			commands = Array.isArray(commands) ? commands : [commands];
-		} else {
-			commands = [];
-		}
-		if (environment.useMarket) {
-			const market: string = 'IT';
-			commands.unshift(market);
-		}
-		if (environment.useLang) {
-			const lang: string = this.translateService.currentLang;
-			commands.unshift(lang);
-		}
-		return commands;
-	}
-
 }
-
-

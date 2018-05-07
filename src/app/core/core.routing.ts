@@ -10,14 +10,15 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [
-		RouterModule.forChild(routes)
+		RouterModule.forChild(routes),
 	],
 	exports: [
-		RouterModule
+		RouterModule,
 	],
 	providers: [
 		PageResolverService,
 		{ provide: RouteService, useClass: RouteService, deps: [TranslateService] },
 	]
 })
+
 export class CoreRouting { }

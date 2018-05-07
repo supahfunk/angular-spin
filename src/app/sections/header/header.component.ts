@@ -10,16 +10,15 @@ import { RouteService } from '../../core/routes';
 })
 
 export class HeaderComponent implements OnInit {
-
-	dropdown: boolean;
-	languages: Label[];
-	currentLanguage: Label;
+	public dropdown: boolean;
+	public languages: Label[];
+	public currentLanguage: Label;
 
 	constructor(
 		private translateService: TranslateService,
-		private routeService: RouteService,
+		public routeService: RouteService,
 	) {
-		console.log('HeaderComponent', this.routeService);
+		console.log('HeaderComponent', this.translateService, this.routeService);
 	}
 
 	ngOnInit() {

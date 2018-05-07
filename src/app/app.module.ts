@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppPages } from './app.pages';
 import { AppRouting } from './app.routing';
 import { AuthAttribute } from './core/attributes';
-import { CustomMissingTranslationHandler, CustomTranslateLoader } from './core/labels/label.service';
+import { CustomMissingTranslationHandler, LabelService } from './core/labels';
 import { Logger, LoggerComponent } from './core/logger';
 import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
@@ -27,11 +27,7 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 			delay: 100, dataEncapsulation: false,
 		}),
 		TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: CustomTranslateLoader,
-				deps: [HttpClient, Logger]
-			},
+			loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
 			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
 		}),
 		AppRouting,
@@ -49,8 +45,8 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 		Logger, TranslateService,
 		{ provide: RouteService, useClass: RouteService, deps: [TranslateService] },
 	],
-	entryComponents: [
-		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
 	bootstrap: [AppComponent]
 })
+
 export class AppModule { }

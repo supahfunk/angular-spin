@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, take, tap } from 'rxjs/operators';
 import { Logger } from '../logger';
@@ -44,14 +44,6 @@ export class LabelService extends EntityService<Label> implements TranslateLoade
 	}
 	*/
 
-}
-
-
-export class CustomMissingTranslationHandler implements MissingTranslationHandler {
-	handle(params: MissingTranslationHandlerParams) {
-		console.log('CustomMissingTranslationHandler', params);
-		return `{${params.key}}`;
-	}
 }
 
 export function CustomTranslateLoader(http: HttpClient, logger: Logger) {

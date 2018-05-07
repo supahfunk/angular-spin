@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CoreRouting } from './core.routing';
-import { LabelService } from './labels';
+import { CustomMissingTranslationHandler, LabelService } from './labels';
+import { Logger } from './logger';
 import { PageComponent, PageConfig, PageHosterComponent, PageService } from './pages';
 
 // import { IdentityService, EntityService } from './models';
@@ -13,7 +16,16 @@ import { PageComponent, PageConfig, PageHosterComponent, PageService } from './p
 	imports: [
 		CommonModule,
 		FormsModule,
-		CoreRouting
+		TranslateModule.forChild({
+			loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
+			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
+		}),
+		CoreRouting,
+	],
+	exports: [
+		CommonModule,
+		TranslateModule,
+		CoreRouting,
 	],
 	declarations: [
 		PageHosterComponent, PageComponent,
