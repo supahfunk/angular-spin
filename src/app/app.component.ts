@@ -19,12 +19,11 @@ export class AppComponent {
 	}
 
 	initLang(): Observable<any> {
-		console.log(this.translateService);
+		// console.log(this.translateService);
 		this.translateService.addLangs(['it', 'en']);
 		this.translateService.setDefaultLang('it');
 		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
 			console.log('onLangChange', e.translations);
-
 		});
 		return this.translateService.use('it');
 		/*

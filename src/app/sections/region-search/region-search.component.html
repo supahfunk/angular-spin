@@ -4,7 +4,7 @@
 		<div class="col-sm-10">
 			<input class="form-control" type="search" placeholder="{{ 'app.search' | translate }}" aria-label="Search" #searchBox (keyup)="search(searchBox.value)">
 			<ul class="list-group">
-				<li class="list-group-item list-group-item-action" *ngFor="let region of regions$ | async" routerLink="/region/{{region.id}}">
+				<li class="list-group-item list-group-item-action" *ngFor="let region of regions$ | async" [routerLink]="routeService.getLinkSegments(['region', region.id])">
 					<span>{{region.name}}</span>
 				</li>
 			</ul>

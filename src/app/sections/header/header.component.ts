@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
 
 	constructor(
 		private translateService: TranslateService,
-		public routeService: RouteService,
+		public routeService: RouteService
 	) {
-		console.log('HeaderComponent', this.translateService, this.routeService);
+		// console.log('HeaderComponent', this.translateService, this.routeService);
 	}
 
 	ngOnInit() {

@@ -7,7 +7,7 @@ export class PageResolver {
 	public component: Type<PageComponent> = PageComponent;
 
 	constructor(public page: Page, config: PageConfig) {
-		console.log('page', page, 'config', config);
+		// console.log('page', page, 'config', config);
 		if (page.component && config) {
 			this.component = config[page.component];
 		}

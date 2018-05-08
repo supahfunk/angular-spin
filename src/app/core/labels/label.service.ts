@@ -18,7 +18,7 @@ export class LabelService extends EntityService<Label> implements TranslateLoade
 		if (!lang.trim()) {
 			return of([]);
 		}
-		console.log('LabelService.getTranslation', `${this.url}/?lang=${lang}`);
+		// console.log('LabelService.getTranslation', `${this.url}/?lang=${lang}`);
 		return this.http.get<Label[]>(`${this.url}/?lang=${lang}`).pipe(
 			take(1),
 			map((x: Label[]) => x[0] ? x[0].labels : of(null)),
@@ -36,7 +36,7 @@ export class LabelService extends EntityService<Label> implements TranslateLoade
 
 	/*
 	getPageBySlug(slug: string): Observable<Label[]> {
-		console.log('PageService.getPageBySlug', slug);
+		// console.log('PageService.getPageBySlug', slug);
         return this.http.get<Page[]>(`${this.url}/?slug=${slug}`).pipe(
 			tap(x => this.log(`found pages matching "${slug}"`)),
 			catchError(this.handleError<Page[]>('getPageBySlug', []))

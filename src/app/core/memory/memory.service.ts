@@ -39,7 +39,7 @@ export class MemoryService implements InMemoryDbService {
 					}
 				});
 				// console.log(query);
-				console.log(url, parsed);
+				// console.log(url, parsed);
 			}
 		}
 		return parsed;

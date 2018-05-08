@@ -24,7 +24,7 @@ export class PageHosterComponent {
 	resolvePage() {
 		this.route.data.subscribe((data: { pageResolver: PageResolver }) => {
 			let pageResolver = data.pageResolver;
-			console.log('resolvePage', pageResolver);
+			// console.log('resolvePage', pageResolver);
 			// resolve component
 			let componentFactory = this.componentFactoryResolver.resolveComponentFactory(pageResolver.component);
 			// clear host directive

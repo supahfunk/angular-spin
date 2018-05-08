@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { RouteService } from '../../core/routes';
 import { Region, RegionService } from '../../models';
 
 @Component({
@@ -15,7 +16,8 @@ export class RegionSearchComponent implements OnInit {
 	private searchByName = new Subject<string>();
 
 	constructor(
-		private regionService: RegionService
+		private regionService: RegionService,
+		public routeService: RouteService,
 	) { }
 
 	// Push a search term into the observable stream.

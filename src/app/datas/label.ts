@@ -21,11 +21,14 @@ export const label: Label[] = [{
 		profile: {
 			userName: 'Nome utente',
 		},
+		region: {
+			description: 'Questa è una card più ampia con il testo di supporto come lead-in naturale per contenuti aggiuntivi. Questo contenuto è un pò più lungo.',
+			lastUpdated: 'Ultimo aggiornamento 3 minuti fa',
+		},
 		regions: {
 			headline: 'Regioni',
 			addRegion: 'Aggiungi regione',
 			regionName: 'Nome regione',
-			lastUpdated: 'Ultimo aggiornamento 3 minuti fa',
 		},
 		regionSearch: {
 			regionName: 'Ricerca regione',
@@ -52,12 +55,14 @@ export const label: Label[] = [{
 		profile: {
 			userName: 'User Name',
 		},
+		region: {
+			description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+			lastUpdated: 'Last updated 3 mins ago',
+		},
 		regions: {
 			headline: 'Regions',
 			addRegion: 'Add Region',
 			regionName: 'Region Name',
-			add: 'Add',
-			lastUpdated: 'Last updated 3 mins ago',
 		},
 		regionSearch: {
 			regionName: 'Search Region',

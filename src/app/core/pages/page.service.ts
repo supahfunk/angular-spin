@@ -12,7 +12,7 @@ export class PageService extends EntityService<Page> {
 	}
 
 	getPageBySlug(slug: string): Observable<Page[]> {
-		console.log('PageService.getPageBySlug', slug);
+		// console.log('PageService.getPageBySlug', slug);
         /*
         if (!slug.trim()) {
             return of(null); // returning a null observable

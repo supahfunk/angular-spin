@@ -8,14 +8,14 @@
 <app-region-search></app-region-search>
 
 <div class="card-deck">
-	<div class="card" *ngFor="let region of regions" routerLink="/region/{{region.id}}">
+	<a class="card" *ngFor="let region of regions" [routerLink]="routeService.getLinkSegments(['region', region.id])">
 		<img class="card-img-top" src="https://picsum.photos/480/360/?random" alt="Card image cap">
 		<div class="card-body">
 			<h5 class="card-title">{{region.name}}</h5>
-			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			<p class="card-text">{{ 'region.description' | translate }}</p>
 		</div>
 		<div class="card-footer">
-			<small class="text-muted">Last updated 3 mins ago</small>
+			<small class="text-muted">{{ 'region.lastUpdated' | translate }}</small>
 		</div>
-	</div>
+	</a>
 </div>
