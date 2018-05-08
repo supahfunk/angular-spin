@@ -15,7 +15,7 @@ export class LabelService extends EntityService<Label> implements TranslateLoade
 	}
 
 	getTranslation(lang: string): Observable<any> {
-		if (!lang.trim()) {
+		if (!lang || !lang.trim()) {
 			return of([]);
 		}
 		// console.log('LabelService.getTranslation', `${this.url}/?lang=${lang}`);

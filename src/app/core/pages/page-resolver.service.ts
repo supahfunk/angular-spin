@@ -6,8 +6,8 @@ import { map, take } from 'rxjs/operators';
 import { Logger } from '../logger';
 import { RouteService } from '../routes';
 import { PageResolver } from './page-resolver';
-import { PageConfig } from './page.config';
 import { PageService } from './page.service';
+import { Pages } from './pages';
 
 @Injectable()
 export class PageResolverService implements Resolve<PageResolver> {
@@ -16,7 +16,7 @@ export class PageResolverService implements Resolve<PageResolver> {
 		private logger: Logger,
 		private pageService: PageService,
 		private router: Router,
-		private config: PageConfig,
+		private config: Pages,
 		private routeService: RouteService,
 	) { }
 

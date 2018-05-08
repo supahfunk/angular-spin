@@ -1,6 +1,7 @@
-import { Entity } from '../core/models';
+import { Document } from '../core/models';
 
-export class Region implements Entity {
-    id: number;
-    name: string;
+export class Region implements Document {
+	id: number;
+	name: string;
+	slug?: string;
 }

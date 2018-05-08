@@ -1,11 +1,11 @@
 <div *ngIf="logger.logs.length">
-	<ul class="list-group">
+	<ul class="list-group ">
+		<li class="list-group-item">
+			<button type="button" class="btn btn-outline-primary btn-sm float-right" (click)="logger.clear()">{{ 'app.clear' | translate }}</button>
+		</li>
 		<li class="list-group-item" *ngFor='let log of logger.logs'>
 			<span>{{log}}</span>
 		</li>
 	</ul>
 	<br>
-	<div class="form-group">
-		<button type="button" class="btn btn-primary float-right" (click)="logger.clear()">{{ 'app.clear' | translate }}</button>
-	</div>
 </div>

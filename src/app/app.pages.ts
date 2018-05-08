@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
-import { PageConfig } from './core/pages';
+import { Pages } from './core/pages';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
 
-const pages: PageConfig = {
+const pages: Pages = {
 	HomeComponent: HomeComponent,
 	ProfileComponent: ProfileComponent,
 	RegionDetailComponent: RegionDetailComponent,

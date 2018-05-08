@@ -8,7 +8,7 @@
 <app-region-search></app-region-search>
 
 <div class="card-deck">
-	<a class="card" *ngFor="let region of regions" [routerLink]="routeService.getLinkSegments(['region', region.id])">
+	<a class="card" *ngFor="let region of regions" [routerLink]="['region', region.id] | route">
 		<img class="card-img-top" src="https://picsum.photos/480/360/?random" alt="Card image cap">
 		<div class="card-body">
 			<h5 class="card-title">{{region.name}}</h5>

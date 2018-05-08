@@ -3,14 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AssetPipe, PublicPipe, SegmentPipe } from './assets';
 import { CoreRouting } from './core.routing';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
-import { PageComponent, PageConfig, PageHosterComponent, PageService } from './pages';
-
-// import { IdentityService, EntityService } from './models';
-// import { Logger, LoggerComponent } from './logger';
-// import { MemoryService } from './memory';
+import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
+import { RoutePipe } from './routes';
 
 @NgModule({
 	imports: [
@@ -23,20 +21,18 @@ import { PageComponent, PageConfig, PageHosterComponent, PageService } from './p
 		CoreRouting,
 	],
 	exports: [
-		CommonModule,
-		TranslateModule,
-		CoreRouting,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
 	],
 	declarations: [
 		PageHosterComponent, PageComponent,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
 	],
 	providers: [
-		PageService, LabelService, // IdentityService, EntityService, Logger, MemoryService,
+		PageService, SegmentPipe,
 	],
 })
 
 export class CoreModule {
-
 	constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
 		if (parentModule) {
 			throw new Error('CoreModule is already loaded. Import it in the AppModule only');
@@ -47,9 +43,8 @@ export class CoreModule {
 		return {
 			ngModule: CoreModule,
 			providers: [
-				{ provide: PageConfig, useValue: config ? config : {} }
+				{ provide: Pages, useValue: config ? config : {} }
 			]
 		};
 	}
-
 }

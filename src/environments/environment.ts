@@ -4,8 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
+	assets: '/assets',
 	enableTracing: false,
 	production: false,
+	public: '/',
 	useHash: false,
 	useLang: true,
 	useMarket: false,

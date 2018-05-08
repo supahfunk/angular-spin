@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Label } from '../../core/labels';
 import { RouteService } from '../../core/routes';
 
@@ -15,7 +17,10 @@ export class HeaderComponent implements OnInit {
 	public currentLanguage: Label;
 
 	constructor(
+		private route: ActivatedRoute,
 		private translateService: TranslateService,
+		private router: Router,
+		private location: Location,
 		public routeService: RouteService
 	) {
 		// console.log('HeaderComponent', this.translateService, this.routeService);
@@ -35,12 +40,20 @@ export class HeaderComponent implements OnInit {
 			name: this.translateService.currentLang,
 			lang: this.translateService.currentLang,
 		}
+		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
+			this.currentLanguage = this.languages.find(x => x.lang === this.translateService.currentLang);
+			console.log('HeaderComponent.onLangChange', this.currentLanguage);
+		});
 	}
 
 	setLanguage(language: Label) {
 		// console.log('setLanguage', language);
+		this.routeService.setLanguage(language.lang, true);
+		/*
 		this.currentLanguage = language;
 		this.translateService.use(language.lang);
+		this.router.navigate(this.routeService.getLinkSegments(''));
+		*/
 	}
 
 }

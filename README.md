@@ -1,4 +1,38 @@
-# AngularTest
+# AngularSpin
+
+## Installing
+
+* Update node to version 8+
+* `npm install -g @angular/cli`
+* `npm install @angular/cli`
+* `npm install`
+
+-----------------
+
+## Executing
+
+* `ng serve --open` apre il browser in modalità development
+* `ng serve --prod --open` apre il browser in modalità production con aot e minification
+* `ng build --prod` compila la dist in modalità production con aot e minification
+
+-----------------
+
+## Demo
+[https://actarian.github.io/angular-spin/](https://actarian.github.io/angular-spin/)
+
+-----------------
+
+## Editor
+
+L'editor consigliato è [vscode](https://code.visualstudio.com/).
+
+### Estensioni consigliate
+
+* [tslint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) typescript linting
+* [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) html, css, sass, less and javascript beautifier
+* [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) text editor style configuration
+
+-----------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 

@@ -1,11 +1,10 @@
-import { Document } from '../models';
+import { Entity } from './entity';
 
-export class Page implements Document {
+export class Document implements Entity {
 	id: number;
 	name: string;
 	title?: string;
 	description?: string;
 	author?: string;
 	slug?: string;
-	component?: string;
 }
