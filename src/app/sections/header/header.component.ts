@@ -33,15 +33,19 @@ export class HeaderComponent implements OnInit {
 				id: i + 1,
 				name: x,
 				lang: x,
-			}
-		})
+			};
+		});
 		this.currentLanguage = {
 			id: 1,
 			name: this.translateService.currentLang,
 			lang: this.translateService.currentLang,
-		}
+		};
 		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
-			this.currentLanguage = this.languages.find(x => x.lang === this.translateService.currentLang);
+			let language = this.languages.find(x => x.lang === this.translateService.currentLang);
+			if (!language) {
+				language = this.languages.find(x => x.lang === this.translateService.defaultLang);
+			}
+			this.currentLanguage = language;
 			console.log('HeaderComponent.onLangChange', this.currentLanguage);
 		});
 	}
