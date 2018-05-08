@@ -4,37 +4,37 @@ import { PageComponent } from '../../core/pages';
 import { User, UserService } from '../../models';
 
 @Component({
-    selector: 'view-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+	selector: 'view-profile',
+	templateUrl: './profile.component.html',
+	styleUrls: ['./profile.component.scss']
 })
 
 export class ProfileComponent extends PageComponent implements OnInit {
-    @Input() user: User;
+	@Input() user: User;
 
-    constructor(
-        route: ActivatedRoute,
-        private userService: UserService
-    ) {
-        super(route);
-        this.attrClass = 'profile';
-    }
+	constructor(
+		route: ActivatedRoute,
+		private userService: UserService
+	) {
+		super(route);
+		this.attrClass = 'profile';
+	}
 
-    ngOnInit() {
-        this.getUser();
-    }
+	ngOnInit() {
+		this.getUser();
+	}
 
-    getUser(): void {
-        this.userService.getDetailById(this.getId())
-            .takeUntil(this.unsubscribe)
-            .subscribe(user => this.user = user);
-    }
+	getUser(): void {
+		this.userService.getDetailById(this.getId())
+			.takeUntil(this.unsubscribe)
+			.subscribe(user => this.user = user);
+	}
 
-    save(): void {
-        this.userService.update(this.user)
-            .takeUntil(this.unsubscribe)
-            .subscribe(() => {
-                console.log('saved');
-            });
-    }
+	save(): void {
+		this.userService.update(this.user)
+			.takeUntil(this.unsubscribe)
+			.subscribe(() => {
+				console.log('saved');
+			});
+	}
 }
