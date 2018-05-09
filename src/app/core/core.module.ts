@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AssetPipe, PublicPipe, SegmentPipe } from './assets';
 import { CoreRouting } from './core.routing';
+import { DisposableComponent } from './disposable';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
@@ -24,7 +25,7 @@ import { RoutePipe } from './routes';
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
 	],
 	declarations: [
-		PageHosterComponent, PageComponent,
+		PageHosterComponent, PageComponent, DisposableComponent,
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
 	],
 	providers: [

@@ -1,9 +1,7 @@
-import { Location } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
@@ -42,10 +40,10 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 		LoggerComponent, PageDirective,
 	],
 	providers: [
-		UserService, RegionService,
 		AuthAttribute,
-		Logger, TranslateService,
-		{ provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
+		UserService, RegionService,
+		Logger, TranslateService, RouteService,
+		// { provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
 	],
 	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
 	bootstrap: [AppComponent]

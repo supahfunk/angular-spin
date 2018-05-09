@@ -1,4 +1,5 @@
 export * from './assets';
+export * from './disposable';
 export * from './guards';
 export * from './labels';
 export * from './logger';
