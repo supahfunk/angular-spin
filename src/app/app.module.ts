@@ -20,35 +20,35 @@ import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponen
 import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchComponent } from './sections';
 
 @NgModule({
-	imports: [
-		BrowserModule, FormsModule, HttpClientModule,
-		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-		// and returns simulated server responses.
-		// Remove it when a real server is ready to receive requests.
-		HttpClientInMemoryWebApiModule.forRoot(MemoryService, {
-			delay: 0, dataEncapsulation: false,
-		}),
-		TranslateModule.forRoot({
-			loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
-			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
-		}),
-		AppRouting,
-		AppPages,
-	],
-	declarations: [
-		AppComponent,
-		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
-		HeaderComponent, FooterComponent, RegionSearchComponent, NotFoundComponent,
-		LoggerComponent, PageDirective,
-	],
-	providers: [
-		UserService, RegionService,
-		AuthAttribute,
-		Logger, TranslateService,
-		{ provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
-	],
-	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
-	bootstrap: [AppComponent]
+    imports: [
+        BrowserModule, FormsModule, HttpClientModule,
+        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+        // and returns simulated server responses.
+        // Remove it when a real server is ready to receive requests.
+        HttpClientInMemoryWebApiModule.forRoot(MemoryService, {
+            delay: 0, dataEncapsulation: false,
+        }),
+        TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
+            missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
+        }),
+        AppRouting,
+        AppPages,
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
+        HeaderComponent, FooterComponent, RegionSearchComponent, NotFoundComponent,
+        LoggerComponent, PageDirective,
+    ],
+    providers: [
+        UserService, RegionService,
+        AuthAttribute,
+        Logger, TranslateService,
+        { provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
+    ],
+    entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }
