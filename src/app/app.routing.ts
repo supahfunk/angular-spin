@@ -20,7 +20,6 @@ export function getRoutes(routes: Routes): Routes {
 
 const routes: Routes = [
 	{ path: 'region/:id', component: RegionDetailComponent },
-	{ path: 'it/region/:id', component: RegionDetailComponent },
 	{ path: ':lang/region/:id', component: RegionDetailComponent },
 	{ path: 'not-found', component: NotFoundComponent },
 	{ path: ':lang/not-found', component: NotFoundComponent },

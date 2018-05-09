@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
 import { Logger } from './core/logger';
 
 @Component({
@@ -12,46 +10,7 @@ import { Logger } from './core/logger';
 export class AppComponent {
 
 	constructor(
-		private logger: Logger,
-		private translateService: TranslateService
-	) {
-		this.initLang();
-	}
-
-	initLang(): Observable<any> {
-		// console.log(this.translateService);
-		this.translateService.addLangs(['it', 'en']);
-		this.translateService.setDefaultLang('it');
-		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
-			console.log('onLangChange', e.translations);
-		});
-		return this.translateService.use('it');
-		/*
-		if (isPlatformServer(this.platformId)) {
-			let acceptLanguage: string = this.req.headers['accept-language'];
-
-			if (Comparator.isStringEmpty(acceptLanguage)) {
-				return this.translateService.use('en');
-			} else {
-				let languages: string[] = acceptLanguage.match(/[a-zA-Z\-]{2,10}/g) || [];
-
-				if (languages.length > 0) {
-				let userLang: string = languages[0].split('-')[0];
-				userLang = /(de|en|fr|it)/gi.test(userLang) ? userLang : 'en';
-
-				return this.translateService.use(userLang);
-				} else {
-				return this.translateService.use('en');
-				}
-		}
-			} else {
-			const lang: string = this.translateService.getBrowserLang();
-			const match = (lang || '').match(/(en|de|fr|it)/);
-
-			return this.translateService.use(match ? match[0] : 'en');
-			}
-		}
-		*/
-	}
+		private logger: Logger
+	) { }
 
 }

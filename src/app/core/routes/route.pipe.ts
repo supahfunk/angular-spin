@@ -25,7 +25,7 @@ export class RoutePipe implements PipeTransform {
 			segments.unshift(market);
 		}
 		if (environment.useLang) {
-			const lang: string = this.translateService.currentLang;
+			const lang: string = this.routeService.currentLang;
 			segments.unshift(lang);
 		}
 		segments.unshift('/');
