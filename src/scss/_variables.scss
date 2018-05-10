@@ -47,31 +47,31 @@ $xxs-width: 575px;
 }
 
 @mixin lg-up {
-	@media (min-width: #{$lg-width}) {
+	@media (min-width: #{$lg-width + 1}) {
 		@content;
 	}
 }
 
 @mixin md-up {
-	@media (min-width: #{$md-width}) {
+	@media (min-width: #{$md-width + 1}) {
 		@content;
 	}
 }
 
 @mixin sm-up {
-	@media (min-width: #{$sm-width}) {
+	@media (min-width: #{$sm-width + 1}) {
 		@content;
 	}
 }
 
 @mixin xs-up {
-	@media (min-width: #{$xs-width}) {
+	@media (min-width: #{$xs-width + 1}) {
 		@content;
 	}
 }
 
 @mixin xxs-up {
-	@media (min-width: #{$xxs-width}) {
+	@media (min-width: #{$xxs-width + 1}) {
 		@content;
 	}
 }

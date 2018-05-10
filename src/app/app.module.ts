@@ -15,9 +15,9 @@ import { Logger, LoggerComponent } from './core/logger';
 import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
-import { RegionService, UserService } from './models';
+import { CategoryService, PromotionService, RegionService, UserService } from './models';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
-import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchComponent, SvgComponent } from './sections';
+import { CategoriesComponent, FooterComponent, HeaderComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
 @NgModule({
 	imports: [
@@ -38,11 +38,11 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 	declarations: [
 		AppComponent,
 		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
-		HeaderComponent, FooterComponent, SvgComponent, RegionSearchComponent, NotFoundComponent,
+		HeaderComponent, FooterComponent, CategoriesComponent, SvgComponent, ValuePropositionComponent, PromotionsComponent, RegionSearchComponent, NotFoundComponent,
 		LoggerComponent, PageDirective,
 	],
 	providers: [
-		UserService, RegionService,
+		UserService, RegionService, PromotionService, CategoryService,
 		AuthAttribute,
 		Logger, TranslateService,
 		{ provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },

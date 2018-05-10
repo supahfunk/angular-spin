@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid">
+<!-- <div class="jumbotron jumbotron-fluid">
 	<div class="container">
 		<h1 class="display-4">{{ 'home.headline' | translate }}</h1>
 		<p class="lead">{{ 'home.lead' | translate }}</p>
@@ -7,15 +7,10 @@
 
 <app-region-search></app-region-search>
 
-<div class="card-deck">
-	<a class="card" *ngFor="let region of regions" [routerLink]="['region', region.id] | route">
-		<img class="card-img-top" src="https://picsum.photos/480/360/?random" alt="Card image cap">
-		<div class="card-body">
-			<h5 class="card-title">{{region.name}}</h5>
-			<p class="card-text">{{ 'region.description' | translate }}</p>
-		</div>
-		<div class="card-footer">
-			<small class="text-muted">{{ 'region.lastUpdated' | translate }}</small>
-		</div>
-	</a>
-</div>
+ -->
+<section-categories></section-categories>
+
+
+<section-promotions></section-promotions>
+<section-promotions></section-promotions>
+<section-promotions></section-promotions>

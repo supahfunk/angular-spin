@@ -59,4 +59,20 @@ Buttons
 	&:active {
 		background: darken($primary-color, 8%);
 	}
+
+	&__ghost {
+		background: transparent;
+		border: 1px solid $tit-color;
+		color: $tit-color;
+
+		&:hover {
+			background: transparent;
+			color: $tit-color;
+		}
+
+		&:focus,
+		&:active {
+			background: transparent;
+		}
+	}
 }

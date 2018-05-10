@@ -1,3 +1,6 @@
+export * from './categories/categories.component';
+export * from './promotions/promotions.component';
+export * from './value-proposition/value-proposition.component';
 export * from './svg/svg.component';
 export * from './footer/footer.component';
 export * from './header/header.component';
