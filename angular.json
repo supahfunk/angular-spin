@@ -61,7 +61,8 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"options": {
-						"browserTarget": "angular-spin:build"
+						"browserTarget": "angular-spin:build",
+						"port": 40000
 					},
 					"configurations": {
 						"production": {

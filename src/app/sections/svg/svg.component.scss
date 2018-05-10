@@ -1,0 +1,45 @@
+@import "~scss/variables";
+
+/*--------------------------------------------------
+Sprite Icons
+--------------------------------------------------*/
+
+.sprite-icons {
+	display: flex;
+	flex-wrap: wrap;
+	background: #fff;
+
+	div {
+		text-align: center;
+		width: 16.666%;
+		padding: 20px;
+		border: 1px solid #ddd;
+		margin-right: -1px;
+		margin-bottom: -1px;
+
+		@include sm-down {
+			width: 33.33%;
+		}
+
+		@include xs-down {
+			width: 50%;
+		}
+
+		@include xxs-down {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.ico {
+			width: 16px;
+			height: 16px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		span {
+			font-size: 14px;
+			white-space: nowrap;
+		}
+	}
+}
