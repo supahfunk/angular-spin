@@ -8,4 +8,5 @@ export * from './memory';
 export * from './models';
 export * from './once';
 export * from './pages';
+export * from './plugins';
 export * from './routes';

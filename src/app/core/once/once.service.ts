@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, fromEvent, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -10,19 +10,21 @@ export class OnceService {
 	private paths: string[] = [];
 
 	constructor(
-		@Inject(PLATFORM_ID) private platformId: string,
-		private injector: Injector
-	) {
-
-	}
+		@Inject(PLATFORM_ID) private platformId: string
+	) { }
 
 	script(url: string, callback?: string | boolean): Observable<OnceEvent> {
 		if (isPlatformBrowser(this.platformId)) {
 			if (this.paths.indexOf(url) === -1) {
 				this.paths.push(url);
-				const script: string = `<script type="text/javascript" src="${url}"></script>`;
-				const fragment = document.createRange().createContextualFragment(script);
-				document.appendChild(fragment);
+				const html: string = `<script type="text/javascript" src="${url}"></script>`;
+				const fragment = document.createRange().createContextualFragment(html);
+				const scripts = document.getElementsByTagName('script');
+				if (scripts.length) {
+					const script = scripts[scripts.length - 1];
+					script.parentNode.insertBefore(fragment, script.nextSibling);
+				}
+				// document.appendChild(fragment);
 				/*
 				if (callback) {
 					if (callback === true) {

@@ -1,9 +1,14 @@
 
 
 
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import 'rxjs/add/operator/concatMap';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 import { environment } from '../../../../environments/environment';
 import { OnceService } from '../../once';
+import { RouteService } from '../../routes';
 
 export class FacebookConfig {
 	public appId: number;
@@ -15,21 +20,78 @@ export class FacebookConfig {
 @Injectable()
 export class FacebookService {
 
-	constructor(
-		private onceService: OnceService,
-	) {
-		const a = environment.assets;
+	private options: FacebookConfig;
+	private FB: any;
 
+	constructor(
+		@Inject(PLATFORM_ID) private platformId: string,
+		private onceService: OnceService,
+		private routeService: RouteService,
+	) {
 		if (!environment['plugins'] && !environment['plugins']['facebook']) {
 			throw new Error('FacebookService.error missing config object in environment.plugins.facebook');
 		}
+		this.options = environment['plugins']['facebook'] as FacebookConfig;
 
-		const facebook: any = environment['plugins']['facebook'] as FacebookConfig;
+		const authResponse = {}; // storage.get('facebook');
+		/*
+		authResponse = {
+		    accessToken: "accessTokenXXXXX",
+		    expiresIn: 4962,
+		    signedRequest: "signedRequestXXXXX",
+		    userID: "10214671620773661",
+		}
+		*/
+		console.log('FacebookService.authResponse', authResponse);
+	}
 
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	*  call FacebookService.init on component OnInit to avoid popup blockers via asyncronous loading  *
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+	init(): Observable<any> {
+		if (isPlatformBrowser(this.platformId)) {
+			if (this.FB) {
+				return of(this.FB);
+			} else {
+				return this.onceService.script('//connect.facebook.net/' + this.routeService.currentLang + '/sdk.js', 'fbAsyncInit').concatMap(x => {
+					console.log(x);
+					const FB = window['FB'];
+					FB.init({
+						appId: this.options.appId,
+						status: true,
+						cookie: true,
+						xfbml: true,
+						version: this.options.version,
+					});
+					this.FB = FB;
+					return of(this.FB);
+				});
+			}
+		} else {
+			return of(null);
+		}
+	}
+
+	getMe(fields: string): Observable<any> {
+		return this.init().pipe(x => {
+			fields = fields || this.options.fields;
+			return fromPromise(this.FB.api('/me', {
+				fields: fields
+			}, (response) => {
+				if (!response || response.error) {
+					const error = response ? response.error : 'error';
+					console.log('FacebookService.getMe.error', error);
+					return of(null);
+				} else {
+					console.log('FacebookService.getMe.success', response);
+					return of(response);
+				}
+			}));
+		});
 	}
 
 }
-
 /*
 
 (function () {

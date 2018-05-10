@@ -9,7 +9,9 @@ import { DisposableComponent } from './disposable';
 import { MatchValidator } from './forms';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
+import { OnceService } from './once';
 import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
+import { FacebookService } from './plugins';
 import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
 
 @NgModule({
@@ -30,7 +32,7 @@ import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './route
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
 	],
 	providers: [
-		PageService, AssetPipe, PublicPipe, RoutePipe, SegmentPipe, Logger, AuthService,
+		PageService, AssetPipe, PublicPipe, RoutePipe, SegmentPipe, Logger, AuthService, FacebookService, OnceService,
 	],
 })
 
