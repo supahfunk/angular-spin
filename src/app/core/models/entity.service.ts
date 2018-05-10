@@ -16,7 +16,7 @@ export class EntityService<T extends Entity> extends IdentityService<T> {
 			// if not search term, return empty identity array.
 			return of([]);
 		}
-		return this.http.get<T[]>(`${this.url}/?name=${name}`).pipe(
+		return this.http.get<T[]>(`${this.url}?name=${name}`).pipe(
 			tap(x => this.log(`found identities matching "${name}"`)),
 			catchError(this.handleError<T[]>('searchTs', []))
 		);

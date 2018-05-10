@@ -39,7 +39,7 @@ export class IdentityService<T extends Identity> {
 	}
 
 	getDetailByIdNo404<Data>(id: number): Observable<T> {
-		return this.http.get<T[]>(`${this.url}/?id=${id}`).pipe(
+		return this.http.get<T[]>(`${this.url}?id=${id}`).pipe(
 			map((identities: T[]) => identities[0]), // returns a {0|1} element array
 			tap(x => {
 				this.log(`getDetailByIdNo404 ${x ? `found` : `not found`} #${id}`);

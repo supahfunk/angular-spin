@@ -2,8 +2,12 @@ import { Page } from '../core/pages';
 
 export const page: Page[] = [
 	{ id: 1001, name: 'Homepage', title: 'Homepage', slug: '/', component: 'HomeComponent' },
-	{ id: 2001, name: 'Regions', title: 'Regions', slug: '/regions', component: 'RegionsComponent' },
-	{ id: 3001, name: 'Profile', title: 'Profile', slug: '/profile', component: 'ProfileComponent' },
+	{ id: 2001, name: 'Profile', title: 'Profile', slug: '/profile', component: 'ProfileComponent' },
+	{ id: 2002, name: 'Sign', title: 'Sign', slug: '/accedi', component: 'SignComponent' },
+	{ id: 2003, name: 'Sign Up', title: 'Sign Up', slug: '/registrati', component: 'SignUpComponent' },
+	{ id: 2004, name: 'Sign In', title: 'Sign In', slug: '/login', component: 'SignInComponent' },
+	{ id: 2005, name: 'Retrieve Password', title: 'Retrieve Password', slug: '/recupera-password', component: 'SignForgottenComponent' },
+	{ id: 3001, name: 'Regions', title: 'Regions', slug: '/regions', component: 'RegionsComponent' },
 	{ id: 4001, name: 'Abruzzo', title: 'Region Abruzzo', slug: '/abruzzo', component: 'RegionDetailComponent' },
 	{ id: 4002, name: 'Basilicata', title: 'Region Basilicata', slug: '/basilicata', component: 'RegionDetailComponent' },
 	{ id: 4003, name: 'Calabria', title: 'Region Calabria', slug: '/calabria', component: 'RegionDetailComponent' },

@@ -3,25 +3,52 @@
 import { Location, isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Inject, Injector, PLATFORM_ID } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Observable, interval } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+// import { BehaviorSubject, Observable, interval } from 'rxjs';
+// import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { SegmentPipe } from './segment.pipe';
 
 export class RouteService {
 
+	private urlStrategy: string = environment.urlStrategy;
 	private _language: any = new BehaviorSubject({});
 	public readonly language: Observable<any> = this._language.asObservable();
 
-	private _languages: BehaviorSubject<Array<any>> = new BehaviorSubject(Array([]));
+	private _languages: BehaviorSubject<Array<any>> = new BehaviorSubject(environment.languages);
 	public readonly languages: Observable<any[]> = this._languages.asObservable();
 
-	public currentLang: string;
-	public currentMarket: string;
-	public currentLanguage: any;
-	public translations: Observable<any>;
+	private _lang: string = environment.defaultLanguage;
+	private get lang(): string {
+		return this._lang;
+	}
+	private set lang(lang: string) {
+		if (lang !== this._lang) {
+			let path = this.location.path();
+			if (path.indexOf(`/${this._lang}`) === 0) {
+				path = path.replace(`/${this._lang}`, `/${lang}`);
+			} else if (path.indexOf(`/${lang}`) !== 0) {
+				path = `/${lang}` + path;
+			}
+			this.path = path;
+			this._lang = lang;
+			const language = this._languages.getValue().find(x => x.lang === lang);
+			this._language.next(language);
+			this.translateService.use(lang);
+		}
+	}
 
-	public clock: Observable<any>;
+	private path: string;
+
+	public get currentLang(): string {
+		return this._lang;
+	}
+
+	public currentMarket: string = environment.defaultMarket;
+
+	// public translations: Observable<any>;
+	// public clock: Observable<any>;
 
 	constructor(
 		@Inject(PLATFORM_ID) private platformId: string,
@@ -29,28 +56,76 @@ export class RouteService {
 		private translateService: TranslateService,
 		private location: Location,
 		private router: Router,
+		private segment: SegmentPipe
 	) {
 		this.setup();
+		/*
 		this.clock = interval(1000).pipe(
 			map(() => {
 				return { value: Math.random() };
 			})
 		);
+		*/
+	}
+
+	setLanguage(lang: string, silent?: boolean) {
+		this.lang = lang;
+		if (silent) {
+			this.location.replaceState(this.path);
+		} else {
+			this.router.navigate([this.path]);
+		}
+		// console.log('RouteService.setLanguage', this.path, this._lang, lang, silent);
+	}
+
+	toRoute(data: any[] | string): string[] {
+		const segments = this.segment.transform(data);
+		if (environment.useMarket) {
+			const market: string = this.currentMarket;
+			const marketIndex = this.urlStrategy.split('/').indexOf(':market');
+			segments.splice(marketIndex, 0, market);
+		}
+		if (environment.useLang) {
+			const lang: string = this._lang;
+			const langIndex = this.urlStrategy.split('/').indexOf(':lang');
+			segments.splice(langIndex, 0, lang);
+		}
+		// console.log('RouteService.toRoute', segments.join('/'));
+		return segments;
+	}
+
+	toSlug(data: any[] | string): string[] {
+		let segments = this.segment.transform(data);
+		if (environment.useMarket) {
+			const marketIndex = this.urlStrategy.split('/').indexOf(':market');
+			if (segments.length > marketIndex) {
+				segments[marketIndex] = '*';
+			}
+		}
+		if (environment.useLang) {
+			const langIndex = this.urlStrategy.split('/').indexOf(':lang');
+			if (segments.length > langIndex) {
+				segments[langIndex] = '*';
+			}
+		}
+		segments = segments.join('/').replace(/\/\*/gi, '').split('/');
+		// console.log('RouteService.toSlug', segments.join('/'));
+		return segments;
 	}
 
 	private setup() {
-		this.currentMarket = 'it'; // todo
 		this.setLanguages();
 		this.subscribeToRouter();
 	}
 
 	private setLanguages() {
-		this._languages.next(environment.languages);
 		this.translateService.addLangs(environment.languages.map(x => x.lang));
 		this.translateService.setDefaultLang(environment.defaultLanguage);
+		/*
 		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
 			console.log('RouteService.onLangChange', e);
 		});
+		*/
 		this.setLanguage(this.detectLanguage(), true);
 	}
 
@@ -96,75 +171,26 @@ export class RouteService {
 			if (e instanceof NavigationStart) {
 				const location = this.location.normalize(e.url).split('/');
 				if (environment.useMarket) {
-					const market = location[environment.useLang ? 2 : 1];
+					const marketIndex = this.urlStrategy.split('/').indexOf(':market');
+					const market = location[marketIndex];
 					if (market !== this.currentMarket) {
 						this.currentMarket = market;
 						console.log('RouteService.setMarket', market, e.url);
 					}
 				}
 				if (environment.useLang) {
-					const lang = location[1];
-					if (lang !== this.currentLang) {
-						this.currentLanguage = this._languages.getValue().find(x => x.lang === lang);
-						this._language.next(this.currentLanguage);
+					const langIndex = this.urlStrategy.split('/').indexOf(':lang');
+					const lang = location[langIndex];
+					if (lang !== this._lang) {
+						const language = this._languages.getValue().find(x => x.lang === lang);
+						this._language.next(language);
 						this.translateService.use(lang);
-						console.log('RouteService.setLang', lang, e.url);
+						console.log('RouteService.setLang', lang, this._lang, langIndex, location, e.url);
 					}
 				}
 				// console.log(e instanceof NavigationEnd);
 			}
 		});
-	}
-
-	setLanguage(lang: string, silent?: boolean) {
-		if (lang !== this.currentLang) {
-			let path = this.location.path();
-			if (path.indexOf(`/${this.currentLang}`) === 0) {
-				path = path.replace(`/${this.currentLang}`, `/${lang}`);
-			} else {
-				path = `/${lang}` + path;
-			}
-			if (silent) {
-				this.currentLang = lang;
-				this.currentLanguage = this._languages.getValue().find(x => x.lang === lang);
-				this._language.next(this.currentLanguage);
-				this.translations = this.translateService.use(lang);
-				this.location.replaceState(path);
-			} else {
-				this.router.navigate([path]);
-			}
-			console.log('RouteService.setLanguage', path, this.currentLang, lang, silent);
-		}
-	}
-
-	getLinkSegments(segments: any[] | string): string[] {
-		segments = segments != null ? (Array.isArray(segments) ? segments : [segments]) : [];
-		const out = segments.slice();
-		if (environment.useMarket) {
-			const market = 'IT';
-			out.unshift(market);
-		}
-		if (environment.useLang) {
-			const lang: string = this.translateService.currentLang;
-			out.unshift(lang);
-		}
-		out.unshift('/');
-		// console.log('RouteService.getLinkSegments', segments.join('/'), out.join('/'));
-		return out;
-	}
-
-	getSlug(segments: any[]): string {
-		segments = segments != null ? (Array.isArray(segments) ? segments : [segments]) : [];
-		const out = segments.slice();
-		if (environment.useLang && out.length && out[0].path === this.translateService.currentLang) {
-			out.shift();
-		}
-		if (environment.useMarket && out.length && out[0].path === this.translateService.currentLang) {
-			out.shift();
-		}
-		const slug = '/' + out.join('/');
-		// console.log('RouteService.getSlug', segments.join('/'), slug);
-		return slug;
 	}
 
 }

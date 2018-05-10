@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { AssetPipe, PublicPipe, SegmentPipe } from './assets';
+import { AuthService } from './auth';
 import { CoreRouting } from './core.routing';
 import { DisposableComponent } from './disposable';
+import { MatchValidator } from './forms';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
-import { RoutePipe } from './routes';
+import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
 
 @NgModule({
 	imports: [
@@ -22,14 +23,14 @@ import { RoutePipe } from './routes';
 		CoreRouting,
 	],
 	exports: [
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
 	],
 	declarations: [
 		PageHosterComponent, PageComponent, DisposableComponent,
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
 	],
 	providers: [
-		PageService, SegmentPipe,
+		PageService, AssetPipe, PublicPipe, RoutePipe, SegmentPipe, Logger, AuthService,
 	],
 })
 

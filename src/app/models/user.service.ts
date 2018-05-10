@@ -15,12 +15,12 @@ export class UserService extends EntityService<User> {
 		return this.getDetailById(1) as Observable<User>;
 	}
 
-	tryLogin(password: string): Observable<User[]> {
-		if (!password.trim()) {
+	tryLogin(user: User): Observable<User[]> {
+		if (!user.password.trim()) {
 			return of([]);
 		}
-		return this.http.get<User[]>(`api/users/?password=${password}`).pipe(
-			tap(x => this.log(`found users matching "${password}"`)),
+		return this.http.get<User[]>(`${this.url}?email=${user.email}&password=${user.password}`).pipe(
+			tap(x => this.log(`found users matching "${user.password}"`)),
 			catchError(this.handleError<User[]>('searchUsers', []))
 		);
 	}

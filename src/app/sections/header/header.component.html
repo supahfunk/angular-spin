@@ -19,7 +19,7 @@
 				</li>
 				-->
 		</ul>
-		<b>{{clock$ | json}}</b>
+		<!-- <b>{{clock$ | json}}</b> -->
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="dropdown = !dropdown">
 				<span>{{currentLanguage?.name}}</span>
@@ -28,6 +28,7 @@
 				<button type="button" class="dropdown-item btn" *ngFor="let language of languages" (click)="dropdown = false; setLanguage(language)">{{language.lang}}</button>
 			</div>
 		</div>
+		<button type="button" class="btn btn-primary" [routerLink]="'accedi' | route" routerLinkActive="active"><span>{{ 'header.signIn' | translate }}</span></button>
 	</nav>
 </header>
 <br>

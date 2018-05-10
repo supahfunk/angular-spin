@@ -14,7 +14,7 @@ import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
 import { RegionService, UserService } from './models';
-import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
+import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
 import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchComponent } from './sections';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 	],
 	declarations: [
 		AppComponent,
-		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
+		HomeComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
 		HeaderComponent, FooterComponent, RegionSearchComponent, NotFoundComponent,
 		LoggerComponent, PageDirective,
 	],
@@ -45,7 +45,7 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 		Logger, TranslateService, RouteService,
 		// { provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
 	],
-	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+	entryComponents: [HomeComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
 	bootstrap: [AppComponent]
 })
 

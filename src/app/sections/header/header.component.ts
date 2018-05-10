@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/takeUntil';
 import { DisposableComponent } from '../../core/disposable';
 import { Label } from '../../core/labels';
@@ -12,7 +11,7 @@ import { RouteService } from '../../core/routes';
 })
 
 export class HeaderComponent extends DisposableComponent implements OnInit {
-	public clock$: Observable<any>;
+	// public clock$: Observable<any>;
 	public dropdown: boolean;
 	public languages: any[];
 	public currentLanguage: any;
@@ -36,9 +35,11 @@ export class HeaderComponent extends DisposableComponent implements OnInit {
 				console.log('HeaderComponent.getLanguage', x);
 				this.currentLanguage = x;
 			});
-		this.routeService.clock
-			.takeUntil(this.unsubscribe)
-			.subscribe(x => this.clock$ = x);
+		/*
+	this.routeService.clock
+		.takeUntil(this.unsubscribe)
+		.subscribe(x => this.clock$ = x);
+		*/
 	}
 
 	setLanguage(language: Label) {

@@ -1,0 +1,11 @@
+<h3>{{ 'signForgotten.title' | translate }}</h3>
+<form name="signForgotten" role="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()" #signForgotten="ngForm" [hidden]="submitted">
+	<div class="form-group">
+		<label for="email">{{ 'signForgotten.email' | translate }}</label>
+		<input type="email" class="form-control" required [(ngModel)]="model.email" name="email" placeholder="{{ 'signForgotten.email' | translate }}" #email="ngModel">
+		<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+			<div *ngIf="email.errors.required">{{ 'errors.required' | translate }}</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-primary" [disabled]="!signForgotten.form.valid">{{ 'signForgotten.send' | translate }}</button>
+</form>

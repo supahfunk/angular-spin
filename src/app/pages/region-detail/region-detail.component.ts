@@ -5,7 +5,7 @@ import { PageComponent } from '../../core/pages';
 import { Region, RegionService } from '../../models';
 
 @Component({
-	selector: 'view-region-detail',
+	selector: 'page-region-detail',
 	templateUrl: './region-detail.component.html',
 	styleUrls: ['./region-detail.component.scss']
 })

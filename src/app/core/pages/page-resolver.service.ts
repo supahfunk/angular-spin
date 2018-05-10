@@ -17,12 +17,12 @@ export class PageResolverService implements Resolve<PageResolver> {
 		private pageService: PageService,
 		private router: Router,
 		private config: Pages,
-		private routeService: RouteService,
+		private routeService: RouteService
 	) { }
 
 	resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PageResolver> {
 		// console.log('PageResolverService.resolve', route.url);
-		const slug = this.routeService.getSlug(route.url);
+		const slug = this.routeService.toSlug(route.url).join('/');
 		return this.pageService.getPageBySlug(slug).pipe(
 			take(1),
 			map(pages => {
@@ -31,7 +31,7 @@ export class PageResolverService implements Resolve<PageResolver> {
 					return new PageResolver(pages[0], this.config);
 				} else {
 					// console.log('routeService', this.routeService);
-					this.router.navigate(this.routeService.getLinkSegments(['not-found']));
+					this.router.navigate(this.routeService.toRoute(['not-found']));
 					return null;
 				}
 			}), );

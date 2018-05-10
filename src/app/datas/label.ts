@@ -10,13 +10,54 @@ export const label: Label[] = [{
 			save: 'salva',
 			search: 'cerca',
 		},
+		errors: {
+			required: 'campo obbligatorio',
+			email: 'l\indirizzo email non è valido',
+			minlength: 'dev\'essere almento 6 caratteri',
+			match: 'I campi devono corrispondere',
+		},
 		header: {
 			regions: 'Regioni',
 			profile: 'Profilo',
+			signIn: 'Accedi',
 		},
 		home: {
 			headline: 'Sono un titolo tradotto',
 			lead: 'Sono la lead dell\'homepage.',
+		},
+		sign: {
+			title: 'Accedi al tuo account',
+			facebook: 'Accedi con Facebook',
+			google: 'Accedi con Google',
+			account: 'Accedi al tuo account',
+			create: 'Crea account',
+		},
+		signIn: {
+			title: 'Accedi al tuo account',
+			email: 'Email',
+			password: 'Password',
+			passwordReveal: 'Vedi password',
+			rememberMe: 'Ricordami',
+			register: 'Accedi',
+			passwordForgotten: 'Password dimenticata?',
+		},
+		signForgotten: {
+			title: 'Recupera la password',
+			email: 'Email',
+			send: 'Invia',
+		},
+		signUp: {
+			title: 'Crea il tuo account',
+			name: 'Nome',
+			surname: 'Cognome',
+			email: 'Email',
+			emailConfirm: 'Conferma email',
+			password: 'Password',
+			privacyLink: 'Privacy link',
+			privacy: 'Privacy',
+			passwordHint: 'minimo 6 caratteri',
+			passwordReveal: 'vedi password',
+			register: 'Registrati',
 		},
 		profile: {
 			userName: 'Nome utente',
@@ -44,13 +85,54 @@ export const label: Label[] = [{
 			save: 'save',
 			search: 'search',
 		},
+		errors: {
+			required: 'field required',
+			email: 'invalid email',
+			minlength: 'Must be at least 6 characters long',
+			match: 'Fields should match',
+		},
 		header: {
 			regions: 'Regions',
 			profile: 'Profile',
+			signIn: 'Sign In',
 		},
 		home: {
 			headline: 'I\'m the localized title',
 			lead: 'I\'m the lead of the homepage!.',
+		},
+		sign: {
+			title: 'Sign in your account',
+			facebook: 'Sign with Facebook',
+			google: 'Sign with Google',
+			account: 'Sign with your account',
+			create: 'Create account',
+		},
+		signIn: {
+			title: 'Sign in your account',
+			email: 'Email',
+			password: 'Password',
+			passwordReveal: 'Reveal password',
+			rememberMe: 'Remember me',
+			register: 'Sign In',
+			passwordForgotten: 'Forgot your password?',
+		},
+		signForgotten: {
+			title: 'Retrieve your password',
+			email: 'Email',
+			send: 'Send',
+		},
+		signUp: {
+			title: 'Create your account',
+			name: 'Name',
+			surname: 'Surname',
+			email: 'Email',
+			emailConfirm: 'Repeat email',
+			password: 'Password',
+			privacyLink: 'Privacy link',
+			privacy: 'Privacy',
+			passwordHint: 'minimum 6 characters',
+			passwordReveal: 'Reveal password',
+			register: 'Register',
 		},
 		profile: {
 			userName: 'User Name',
@@ -69,4 +151,4 @@ export const label: Label[] = [{
 			search: 'search',
 		}
 	}
-},];
+}];

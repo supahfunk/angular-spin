@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageResolver } from './page-resolver';
 import { PageDirective } from './page.directive';
@@ -8,7 +8,7 @@ import { PageDirective } from './page.directive';
 	template: `<ng-template #hostPage>Your View should load here..</ng-template>`,
 })
 
-export class PageHosterComponent {
+export class PageHosterComponent implements OnInit {
 	@ViewChild(PageDirective) hostPage: PageDirective;
 	@ViewChild('hostPage', { read: ViewContainerRef }) hostPageRef;
 
@@ -23,16 +23,16 @@ export class PageHosterComponent {
 
 	resolvePage() {
 		this.route.data.subscribe((data: { pageResolver: PageResolver }) => {
-			let pageResolver = data.pageResolver;
+			const pageResolver = data.pageResolver;
 			// console.log('resolvePage', pageResolver);
 			// resolve component
-			let componentFactory = this.componentFactoryResolver.resolveComponentFactory(pageResolver.component);
+			const componentFactory = this.componentFactoryResolver.resolveComponentFactory(pageResolver.component);
 			// clear host directive
 			this.hostPageRef.clear();
 			// create component
-			let componentRef = this.hostPageRef.createComponent(componentFactory);
+			const componentRef = this.hostPageRef.createComponent(componentFactory);
 			componentRef.changeDetectorRef.detectChanges();
-			let instance = componentRef.instance;
+			const instance = componentRef.instance;
 			instance.page = pageResolver.page;
 			// console.log('pageResolver.page', pageResolver.page);
 			// passing page data
