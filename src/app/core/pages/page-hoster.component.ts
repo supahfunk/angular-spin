@@ -1,5 +1,7 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { RouteService } from '../routes';
 import { PageResolver } from './page-resolver';
 import { PageDirective } from './page.directive';
 
@@ -14,6 +16,7 @@ export class PageHosterComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
+		private routeService: RouteService,
 		private componentFactoryResolver: ComponentFactoryResolver,
 	) { }
 
@@ -31,9 +34,12 @@ export class PageHosterComponent implements OnInit {
 			this.hostPageRef.clear();
 			// create component
 			const componentRef = this.hostPageRef.createComponent(componentFactory);
-			componentRef.changeDetectorRef.detectChanges();
+			// componentRef.changeDetectorRef.detectChanges();
 			const instance = componentRef.instance;
 			instance.page = pageResolver.page;
+			instance.params = this.route.params.concatMap(x => {
+				return of(this.routeService.toData(x));
+			});
 			// console.log('pageResolver.page', pageResolver.page);
 			// passing page data
 			// (<PageComponent>componentRef.instance).page = pageResolver.page;

@@ -21,8 +21,13 @@ export class PageResolverService implements Resolve<PageResolver> {
 	) { }
 
 	resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PageResolver> {
-		// console.log('PageResolverService.resolve', route.url);
-		const slug = this.routeService.toSlug(route.url).join('/');
+		const paths = route.url.filter(x => {
+			return x.path;
+		}).map(x => {
+			return x.path;
+		});
+		const slug = this.routeService.toSlug(paths).join('/');
+		// console.log('PageResolverService.resolve', slug);
 		return this.pageService.getPageBySlug(slug).pipe(
 			take(1),
 			map(pages => {

@@ -12,18 +12,12 @@ export class PageService extends EntityService<Page> {
 	}
 
 	getPageBySlug(slug: string): Observable<Page[]> {
-		console.log('PageService.getPageBySlug', slug);
+		slug = slug.split(';')[0];
+		// console.log('PageService.getPageBySlug', slug);
 		return this.http.get<Page[]>(`${this.url}/?slug=${slug}`).pipe(
 			tap(x => this.log(`found pages matching "${slug}"`)),
 			catchError(this.handleError<Page[]>('getPageBySlug', []))
 		);
 	}
-
-	/*
-	if (!slug.trim()) {
-		return of(null); // returning a null observable
-	}
-	*/
-
 
 }

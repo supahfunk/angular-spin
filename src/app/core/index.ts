@@ -10,3 +10,4 @@ export * from './once';
 export * from './pages';
 export * from './plugins';
 export * from './routes';
+export * from './storage';

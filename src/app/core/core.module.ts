@@ -11,8 +11,9 @@ import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { OnceService } from './once';
 import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
-import { FacebookService } from './plugins';
+import { FacebookService, GoogleService } from './plugins';
 import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
+import { CookieStorageService, LocalStorageService, SessionStorageService, StorageService } from './storage';
 
 @NgModule({
 	imports: [
@@ -32,7 +33,20 @@ import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './route
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
 	],
 	providers: [
-		PageService, AssetPipe, PublicPipe, RoutePipe, SegmentPipe, Logger, AuthService, FacebookService, OnceService,
+		AssetPipe,
+		AuthService,
+		CookieStorageService,
+		LocalStorageService,
+		SessionStorageService,
+		StorageService,
+		FacebookService,
+		GoogleService,
+		Logger,
+		OnceService,
+		PageService,
+		PublicPipe,
+		RoutePipe,
+		SegmentPipe,
 	],
 })
 

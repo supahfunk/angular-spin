@@ -26,13 +26,13 @@ export class HeaderComponent extends DisposableComponent implements OnInit {
 		this.routeService.languages
 			.takeUntil(this.unsubscribe)
 			.subscribe(x => {
-				console.log('HeaderComponent.getLanguages', x);
+				// console.log('HeaderComponent.getLanguages', x);
 				this.languages = x;
 			});
 		this.routeService.language
 			.takeUntil(this.unsubscribe)
 			.subscribe(x => {
-				console.log('HeaderComponent.getLanguage', x);
+				// console.log('HeaderComponent.getLanguage', x);
 				this.currentLanguage = x;
 			});
 		/*

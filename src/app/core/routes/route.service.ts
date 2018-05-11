@@ -78,7 +78,7 @@ export class RouteService {
 		// console.log('RouteService.setLanguage', this.path, this._lang, lang, silent);
 	}
 
-	toRoute(data: any[] | string): string[] {
+	toRoute(data: any[] | string): any[] {
 		const segments = this.segment.transform(data);
 		if (environment.useMarket) {
 			const market: string = this.currentMarket;
@@ -90,27 +90,45 @@ export class RouteService {
 			const langIndex = this.urlStrategy.split('/').indexOf(':lang');
 			segments.splice(langIndex, 0, lang);
 		}
-		// console.log('RouteService.toRoute', segments.join('/'));
+		// console.log('RouteService.toRoute', segments);
 		return segments;
 	}
 
-	toSlug(data: any[] | string): string[] {
-		let segments = this.segment.transform(data);
+	toSlug(data: any[] | string): any[] {
+		const segments = this.segment.transform(data);
+		let paths = segments.filter(x => {
+			return typeof x === 'string';
+		});
+		const datas = segments.filter(x => {
+			return typeof x !== 'string';
+		});
 		if (environment.useMarket) {
 			const marketIndex = this.urlStrategy.split('/').indexOf(':market');
-			if (segments.length > marketIndex) {
-				segments[marketIndex] = '*';
+			if (paths.length > marketIndex) {
+				paths[marketIndex] = '*';
 			}
 		}
 		if (environment.useLang) {
 			const langIndex = this.urlStrategy.split('/').indexOf(':lang');
-			if (segments.length > langIndex) {
-				segments[langIndex] = '*';
+			if (paths.length > langIndex) {
+				paths[langIndex] = '*';
 			}
 		}
-		segments = segments.join('/').replace(/\/\*/gi, '').split('/');
-		// console.log('RouteService.toSlug', segments.join('/'));
-		return segments;
+		paths = paths.join('/').replace(/\/\*/gi, '').split('/');
+		// console.log('RouteService.toSlug', paths);
+		return paths.concat(datas);
+	}
+
+	toParams(data: any): any {
+		return {
+			data: window.btoa(JSON.stringify(data))
+		};
+	}
+
+	toData(params: any): any {
+		if (params && params.data) {
+			return JSON.parse(window.atob(params.data));
+		}
 	}
 
 	private setup() {
@@ -162,7 +180,7 @@ export class RouteService {
 		const regexp: RegExp = new RegExp(`(${environment.languages.map(x => x.lang).join('|')})`, 'gi');
 		const match = (acceptLanguage || '').match(regexp);
 		detectedLanguage = match ? match[0] : detectedLanguage;
-		console.log('RouteService.detectLanguage', detectedLanguage);
+		// console.log('RouteService.detectLanguage', detectedLanguage);
 		return detectedLanguage;
 	}
 

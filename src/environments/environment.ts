@@ -20,10 +20,15 @@ export const environment = {
 	],
 	plugins: {
 		facebook: {
-			appId: 340008479796111,
+			appId: 2044894462438447,
 			fields: 'id,name,first_name,last_name,email,gender,picture,cover,link',
 			scope: 'public_profile, email', // publish_stream
-			version: 'v2.10',
+			tokenClient: '643f8b0780f14625b35a450c83b715dc',
+			version: 'v3.0',
+		},
+		google: {
+			apiKey: 'AIzaSyDKHO9RHmiMMziRiO6xVFCELQcEDQ5Ub3o',
+			clientId: '635556948154-k7fm0pvn6va39tap1ge4iq23ntd4hu37.apps.googleusercontent.com',
 		},
 	}
 };

@@ -26,8 +26,8 @@ export class IdentityService<T extends Identity> {
 
 	getUrl(): string {
 		this.collection = this.getCollection();
-		let url: string = `${this.base}${this.collection.toLowerCase()}`;
-		console.log('IdentityService ', url);
+		const url: string = `${this.base}${this.collection.toLowerCase()}`;
+		// console.log('IdentityService ', url);
 		return url;
 	}
 
