@@ -1,4 +1,4 @@
-<!-- <div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid">
 	<div class="container">
 		<h1 class="display-4">{{ 'home.headline' | translate }}</h1>
 		<p class="lead">{{ 'home.lead' | translate }}</p>
@@ -7,9 +7,12 @@
 
 <app-region-search></app-region-search>
 
- -->
-<section-categories></section-categories>
+<input #input>
+<button (click)="input.value = ''">clear</button>
 
+<home-search></home-search>
+
+<section-categories></section-categories>
 
 <section-promotions></section-promotions>
 <section-promotions></section-promotions>

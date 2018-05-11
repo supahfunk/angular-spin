@@ -1,11 +1,11 @@
 <!-- Categories -->
 <section class="categories">
 	<div class="container">
-		<div class="categories--head">
+		<div class="head categories--head">
 			<h2>Organizza il tuo tipo di vacanza ideale</h2>
 		</div>
-		<div class="categories--row">
-			<div class="categories--card" *ngFor="let category of categories" [routerLink]="['category', category.id] | route">
+		<div class="card-row categories--row">
+			<div class="card-col categories--card" *ngFor="let category of categories" [routerLink]="['category', category.id] | route">
 				<a class="card" href="#">
 					<figure class="card--figure">
 						<img class="card--img" [src]="category.image | asset" alt="{{category.name}}">

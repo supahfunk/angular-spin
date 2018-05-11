@@ -1,0 +1,71 @@
+@import "~scss/variables";
+
+/*--------------------------------------------------
+Home Search
+--------------------------------------------------*/
+
+.home-search {
+	height: 650px;
+	background-size: cover;
+	background-position: center;
+	margin-bottom: 60px;
+
+	@include md-down {
+		height: 520px;
+	}
+
+	@include xs-down {
+		background-image: linear-gradient(to bottom, #0965ab, #2793e4) !important;
+		padding-bottom: 25px;
+		height: auto;
+		margin-bottom: 25px;
+	}
+
+	&--head {
+		color: #fff;
+		text-align: center;
+		padding-top: 120px;
+
+		@include md-down {
+			padding-top: 60px;
+		}
+
+		@include xs-down {
+			padding-top: 22px;
+		}
+
+		.tit {
+			font-size: 50px;
+			line-height: 1.2;
+			font-weight: 600;
+			margin: 0 0 40px;
+
+			@include md-down {
+				font-size: 40px;
+				margin-bottom: 30px;
+			}
+
+			@include xs-down {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+		}
+
+		.subtit {
+			font-size: 18px;
+			text-transform: uppercase;
+			font-weight: 600;
+			margin-bottom: 50px;
+
+			@include md-down {
+				margin-bottom: 30px;
+			}
+
+			@include xs-down {
+				font-size: 13px;
+				margin-bottom: 12px;
+				font-weight: 400;
+			}
+		}
+	}
+}

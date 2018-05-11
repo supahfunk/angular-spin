@@ -33,6 +33,40 @@ img {
 }
 
 
+
+/*--------------------------------------------------
+Card Row
+--------------------------------------------------*/
+
+.card-row {
+	display: flex;
+	flex-wrap: wrap;
+
+	@include xs-down {
+		padding: 0 5px;
+	}
+
+	.card-col {
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+		padding: 0 15px;
+		display: flex;
+
+		@include xs-down {
+			padding: 0 10px;
+		}
+
+		@include xxs-down {
+			padding: 0 10px;
+			flex: 0 0 100%;
+			max-width: none;
+		}
+	}
+
+}
+
+
+
 /*--------------------------------------------------
 Buttons
 --------------------------------------------------*/

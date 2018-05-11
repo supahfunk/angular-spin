@@ -1,3 +1,5 @@
+export * from './home-search/home-search.component';
+export * from './main-search/main-search.component';
 export * from './categories/categories.component';
 export * from './promotions/promotions.component';
 export * from './value-proposition/value-proposition.component';

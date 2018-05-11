@@ -17,7 +17,7 @@ import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
 import { CategoryService, PromotionService, RegionService, UserService } from './models';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
-import { CategoriesComponent, FooterComponent, HeaderComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
+import { CategoriesComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
 @NgModule({
 	imports: [
@@ -39,7 +39,7 @@ import { CategoriesComponent, FooterComponent, HeaderComponent, NotFoundComponen
 		AppComponent,
 		HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
 		HeaderComponent, FooterComponent, CategoriesComponent, SvgComponent, ValuePropositionComponent, PromotionsComponent, RegionSearchComponent, NotFoundComponent,
-		LoggerComponent, PageDirective,
+		LoggerComponent, PageDirective, MainSearchComponent, HomeSearchComponent
 	],
 	providers: [
 		UserService, RegionService, PromotionService, CategoryService,
