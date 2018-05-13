@@ -145,6 +145,7 @@ export class RouteService {
 		});
 		*/
 		this.setLanguage(this.detectLanguage(), true);
+		// this.setLanguage(environment.defaultLanguage, true);
 	}
 
 	private detectLanguage(): string {

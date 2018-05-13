@@ -13,6 +13,8 @@ export class SignForgottenComponent extends PageComponent implements OnInit {
 
 	model: User = new User();
 	submitted: boolean = false;
+	sent: boolean = false;
+	error: any;
 
 	constructor(
 		route: ActivatedRoute,
@@ -27,12 +29,14 @@ export class SignForgottenComponent extends PageComponent implements OnInit {
 
 	onSubmit(): void {
 		this.submitted = true;
-		/*
-		this.userService.tryLogin(this.model)
+		this.userService.signForgotten(this.model)
 			.takeUntil(this.unsubscribe)
-			.subscribe(x => {
-				console.log('logged', x);
-			});
-			*/
+			.subscribe(
+				ok => {
+					this.sent = true;
+				}, error => {
+					this.error = error;
+				}
+			);
 	}
 }

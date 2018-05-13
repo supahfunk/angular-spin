@@ -44,7 +44,8 @@ export class FacebookUser {
 	last_name: string;
 	name: string;
 	picture: FacebookPicture;
-	authResponse: FacebookAuthResponse;
+	authResponse?: FacebookAuthResponse;
+	facebookToken?: string;
 }
 
 @Injectable()
@@ -169,6 +170,7 @@ export class FacebookService {
 					} else {
 						const user = r as FacebookUser;
 						user.authResponse = this.authResponse;
+						user.facebookToken = this.authResponse.accessToken;
 						console.log('FacebookService.getMe.success', user);
 						resolve(user);
 					}

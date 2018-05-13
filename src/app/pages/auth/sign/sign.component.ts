@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageComponent } from '../../../core/pages';
 import { FacebookService, GoogleService } from '../../../core/plugins';
 import { RouteService } from '../../../core/routes';
-import { User, UserService } from '../../../models';
+import { UserAuth, UserService } from '../../../models';
+
 
 @Component({
 	selector: 'page-sign',
@@ -12,9 +13,6 @@ import { User, UserService } from '../../../models';
 })
 
 export class SignComponent extends PageComponent implements OnInit {
-
-	model: User = new User();
-	submitted: boolean = false;
 
 	constructor(
 		route: ActivatedRoute,
@@ -28,42 +26,57 @@ export class SignComponent extends PageComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.facebookService.status().subscribe(x => {
-			console.log('SignComponent.facebookService.status', x);
-		});
-		this.googleService.auth2Instance().subscribe(x => {
-			console.log('SignComponent.googleService.auth2Instance', x);
-		});
-	}
-
-	onSubmit(): void {
-		this.submitted = true;
-		this.userService.add(this.model)
+		this.facebookService.status()
 			.takeUntil(this.unsubscribe)
 			.subscribe(x => {
-				console.log('created', x);
+				console.log('SignComponent.facebookService.status', x);
+			});
+		this.googleService.auth2Instance()
+			.takeUntil(this.unsubscribe)
+			.subscribe(x => {
+				console.log('SignComponent.googleService.auth2Instance', x);
 			});
 	}
 
 	onFacebook(): void {
-		this.facebookService.getMe().subscribe(me => {
-			const segments = this.routeService.toRoute(['/registrati']);
-			segments.push(this.routeService.toParams({
-				facebook: me
-			}));
-			// console.log('SignComponent.facebookService.getMe', me, segments);
-			this.router.navigate(segments);
-		});
+		this.facebookService.getMe()
+			.takeUntil(this.unsubscribe)
+			.subscribe(me => {
+				this.userService.tryFacebook(me)
+					.takeUntil(this.unsubscribe)
+					.subscribe(
+						user => {
+							this.onAuth(user[0]);
+						}, error => {
+							this.onSignUp({ facebook: me });
+						});
+			});
 	}
 
 	onGoogle(): void {
-		this.googleService.getMe().subscribe(me => {
-			const segments = this.routeService.toRoute(['/registrati']);
-			segments.push(this.routeService.toParams({
-				google: me
-			}));
-			// console.log('SignComponent.googleService.getMe', me, segments);
-			this.router.navigate(segments);
-		});
+		this.googleService.getMe()
+			.takeUntil(this.unsubscribe)
+			.subscribe(me => {
+				this.userService.tryGoogle(me)
+					.takeUntil(this.unsubscribe)
+					.subscribe(
+						user => {
+							this.onAuth(user[0]);
+						}, error => {
+							this.onSignUp({ google: me });
+						});
+			});
 	}
+
+	onAuth(user: UserAuth) {
+		const segments = this.routeService.toRoute(['/profile']);
+		this.router.navigate(segments);
+	}
+
+	onSignUp(data: any) {
+		const segments = this.routeService.toRoute(['/registrati']);
+		segments.push(this.routeService.toParams(data));
+		this.router.navigate(segments);
+	}
+
 }

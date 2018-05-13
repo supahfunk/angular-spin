@@ -41,7 +41,8 @@ export class GoogleUser {
 	lastName: string;
 	name: string;
 	picture: string;
-	authResponse: GoogleAuthResponse;
+	authResponse?: GoogleAuthResponse;
+	googleToken?: string;
 }
 
 @Injectable()
@@ -167,12 +168,12 @@ export class GoogleService {
 				const readAccessToken = () => {
 					console.log('GoogleLogin.readAccessToken');
 					try {
-						const response = this.instance.currentUser.get().getAuthResponse(true);
-						console.log('GoogleLogin.readAccessToken.success', response);
-						this.authResponse = response;
-						this.storage.set('google', response);
+						const user = this.instance.currentUser.get().getAuthResponse(true);
+						console.log('GoogleLogin.readAccessToken.success', user);
+						this.authResponse = user;
+						this.storage.set('google', user);
 						resolve({
-							code: response.access_token,
+							code: user.access_token,
 						});
 					} catch (error) {
 						console.log('GoogleLogin.readAccessToken.error', error);

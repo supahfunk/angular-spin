@@ -11,6 +11,7 @@ const httpOptions = {
 
 @Injectable()
 export class IdentityService<T extends Identity> {
+	public httpOptions: any = httpOptions;
 	protected collection: string;
 	protected base = '/api/';
 	protected url: string;

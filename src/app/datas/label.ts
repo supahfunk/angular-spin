@@ -48,8 +48,8 @@ export const label: Label[] = [{
 		},
 		signUp: {
 			title: 'Crea il tuo account',
-			name: 'Nome',
-			surname: 'Cognome',
+			firstName: 'Nome',
+			lastName: 'Cognome',
 			email: 'Email',
 			emailConfirm: 'Conferma email',
 			password: 'Password',
@@ -58,6 +58,8 @@ export const label: Label[] = [{
 			passwordHint: 'minimo 6 caratteri',
 			passwordReveal: 'vedi password',
 			register: 'Registrati',
+			registered: 'Registrazione completata',
+			registrationSent: 'Un\'email di conferma è stata inviata all\'indirizzo email fornito.',
 		},
 		profile: {
 			userName: 'Nome utente',
@@ -123,8 +125,8 @@ export const label: Label[] = [{
 		},
 		signUp: {
 			title: 'Create your account',
-			name: 'Name',
-			surname: 'Surname',
+			firstName: 'Name',
+			lastName: 'Surname',
 			email: 'Email',
 			emailConfirm: 'Repeat email',
 			password: 'Password',
@@ -133,6 +135,8 @@ export const label: Label[] = [{
 			passwordHint: 'minimum 6 characters',
 			passwordReveal: 'Reveal password',
 			register: 'Register',
+			registered: 'Registration completed',
+			registrationSent: 'A confirmation email has been sent to your email address.',
 		},
 		profile: {
 			userName: 'User Name',

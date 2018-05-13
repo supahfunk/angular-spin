@@ -14,6 +14,8 @@ import { PageComponent, PageHosterComponent, PageService, Pages } from './pages'
 import { FacebookService, GoogleService } from './plugins';
 import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
 import { CookieStorageService, LocalStorageService, SessionStorageService, StorageService } from './storage';
+// import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+// import { AuthService, AuthTokenInterceptor } from './auth';
 
 @NgModule({
 	imports: [
@@ -33,6 +35,13 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
 	],
 	providers: [
+		/*
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthTokenInterceptor,
+			multi: true
+		},
+		*/
 		AssetPipe,
 		AuthService,
 		CookieStorageService,
