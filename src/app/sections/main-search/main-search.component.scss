@@ -85,6 +85,10 @@ Main Search
 	&--adults {
 		flex-shrink: 1;
 
+		input[disabled] {
+			width: 50px !important;
+		}
+
 		@include md-down {
 			width: calc(25% - 10px);
 			margin: 0 5px 0 0;
