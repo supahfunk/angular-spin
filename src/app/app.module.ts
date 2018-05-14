@@ -1,11 +1,15 @@
-import { Location } from '@angular/common';
+import { Location, registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import localeIt from '@angular/common/locales/it';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CalendarModule } from 'primeng/calendar';
+import { GalleriaModule } from 'primeng/galleria';
 import { AppComponent } from './app.component';
 import { AppPages } from './app.pages';
 import { AppRouting } from './app.routing';
@@ -19,9 +23,13 @@ import { CategoryService, PromotionService, RegionService, UserService } from '.
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent } from './pages';
 import { CategoriesComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
+
+
+registerLocaleData(localeIt, 'it');
+
 @NgModule({
 	imports: [
-		BrowserModule, FormsModule, HttpClientModule,
+		BrowserModule, FormsModule, HttpClientModule, CalendarModule, GalleriaModule, NoopAnimationsModule,
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 		// and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.
@@ -45,6 +53,7 @@ import { CategoriesComponent, FooterComponent, HeaderComponent, HomeSearchCompon
 		UserService, RegionService, PromotionService, CategoryService,
 		AuthAttribute,
 		Logger, TranslateService,
+		{ provide: LOCALE_ID, useValue: 'it' },
 		{ provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
 	],
 	entryComponents: [HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],

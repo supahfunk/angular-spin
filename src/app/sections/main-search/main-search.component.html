@@ -1,16 +1,18 @@
 <div class="main-search">
-	<div class="main-search--col main-search--location">
-		<label for="main-search--location">Destinazione</label>
-		<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel">
-		<span class="ico">
-			<svg>
-				<use xlink:href="#ico-pin"></use>
-			</svg>
-		</span>
-		<div class="popup-hint popup-hint__last-search" style="display: none;">
+	<div class="main-search--col main-search--location" [ngClass]="{'active':active==searchLocation}">
+		<div (click)="active = searchLocation" #searchLocation>
+			<label for="main-search--location">Destinazione</label>
+			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel">
+			<span class="ico">
+				<svg>
+					<use xlink:href="#ico-pin"></use>
+				</svg>
+			</span>
+		</div>
+		<div class="popup-hint popup-hint__last-search">
 			<div class="popup-hint--head">
 				<h3>Le tue ultime ricerche</h3>
-				<div class="popup-hint--close">
+				<div class="popup-hint--close" (click)="active=null">
 					<svg>
 						<use xlink:href="#ico-circle-close"></use>
 					</svg>
@@ -365,19 +367,21 @@
 			</div>
 		</div>
 	</div>
-	<div class="main-search--col main-search--date active">
-		<label for="main-search--date">Data di partenza</label>
-		<input type="text" id="main-search--date" placeholder="Seleziona una data">
-		<span class="ico">
-			<svg>
-				<use xlink:href="#ico-calendar"></use>
-			</svg>
-		</span>
+	<div class="main-search--col main-search--date" [ngClass]="{'active':active==searchDate}">
+		<div class="main-search--trigger" (click)="active = searchDate" #searchDate>
+			<label for="main-search--date">Data di partenza</label>
+			<input disabled type="text" id="main-search--date" placeholder="Seleziona una data" value="{{startDate | date:'dd MMMM yyyy'}}">
+			<span class="ico">
+				<svg>
+					<use xlink:href="#ico-calendar"></use>
+				</svg>
+			</span>
+		</div>
 
-		<div class="popup-hint popup-hint__date" style="display: none;">
+		<div class="popup-hint popup-hint__date">
 			<div class="popup-hint--head">
 				<h3>Seleziona la data di partenza</h3>
-				<div class="popup-hint--close">
+				<div class="popup-hint--close" (click)="active=null">
 					<svg>
 						<use xlink:href="#ico-circle-close"></use>
 					</svg>
@@ -392,39 +396,120 @@
 						</label>
 					</div>
 				</div>
+
+				<div class="calendar popup-calendar">
+					<p-calendar [(ngModel)]="startDate" [inline]="true" [monthNavigator]="true" [yearNavigator]="true" [yearRange]="minYear + ':' + maxYear" [minDate]="minDate" [maxDate]="maxDate" [locale]="it" dateFormat="dd/mm/yy"></p-calendar>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="main-search--col main-search--duration">
-		<label for="main-search--duration">Durata viaggio</label>
-		<select id="main-search--duration">
-				<option>Qualsiasi durata</option>
-				<option>1-3 notti</option>
-				<option>4-6 notti</option>
-				<option>7 notti</option>
-				<option>8-13 notti</option>
-				<option>14 notti o più</option>
-			</select>
-		<span class="ico">
-			<svg>
-				<use xlink:href="#ico-clock"></use>
-			</svg>
-		</span>
+	<div class="main-search--col main-search--duration" [ngClass]="{'active':active==searchDuration}">
+		<div (click)="active = searchDuration" #searchDuration>
+			<label for="main-search--duration">Durata viaggio</label>
+			<input disabled id="main-search--duration" type="text" class="main-search--duration" value="Qualsiasi durata">
+			<span class="ico">
+				<svg>
+					<use xlink:href="#ico-clock"></use>
+				</svg>
+			</span>
+		</div>
+		<div class="popup-hint">
+			<div class="popup-hint--head">
+				<h3>Seleziona la durata del tuo viaggio</h3>
+				<div class="popup-hint--close" (click)="active=null">
+					<svg>
+						<use xlink:href="#ico-circle-close"></use>
+					</svg>
+				</div>
+			</div>
+			<div class="popup-hint--body">
+				<ul class="popup-hint--list">
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration" checked type="radio" value="" />
+								<span>Qualsiasi durata</span>
+							</label>
+						</div>
+					</li>
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration"  type="radio" value="" />
+								<span>1-3 notti</span>
+							</label>
+						</div>
+					</li>
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration"  type="radio" value="" />
+								<span>4-6 notti</span>
+							</label>
+						</div>
+					</li>
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration"  type="radio" value="" />
+								<span>7 notti</span>
+							</label>
+						</div>
+					</li>
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration"  type="radio" value="" />
+								<span>8-13 notti</span>
+							</label>
+						</div>
+					</li>
+					<li class="popup-hint--check">
+						<div class="radio">
+							<label>
+								<input name="main-search--duration"  type="radio" value="" />
+								<span>14 notti o più</span>
+							</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	<div class="main-search--col main-search--adults">
-		<label for="main-search--adults">Adulti</label>
-		<select id="main-search--adults">
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-		<span class="ico">
-			<svg>
-				<use xlink:href="#ico-adult"></use>
-			</svg>
-		</span>
+	<div class="main-search--col main-search--adults" [ngClass]="{'active':active==searchAdults}">
+		<div class="main-search--trigger" (click)="active=searchAdults" #searchAdults>
+			<label for="main-search--adults">Adulti</label>
+			<input disabled id="main-search--adults" type="text" class="main-search--adults" value="3" #adults>
+			<span class="ico">
+					<svg>
+						<use xlink:href="#ico-adult"></use>
+					</svg>
+				</span>
+		</div>
+		<div class="popup-hint">
+			<div class="popup-hint--head">
+				<h3>Numero di adulti</h3>
+				<div class="popup-hint--close" (click)="active=null">
+					<svg>
+						<use xlink:href="#ico-circle-close"></use>
+					</svg>
+				</div>
+			</div>
+			<div class="popup-hint--body">
+				<ul class="popup-hint--list">
+					<li class="popup-hint--check" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+						<div class="radio">
+							<label>
+								<input name="main-search--adults" type="radio" value="{{item}}" [checked]="item==adults.value" (click)="adults.value=item" />
+								<span>{{item}}</span>
+							</label>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="main-search--col main-search--childs">
 		<label for="main-search--childs">Bambini</label>

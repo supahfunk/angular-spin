@@ -4,15 +4,19 @@
 Form
 --------------------------------------------------*/
 
-.checkbox {
+.checkbox,
+.radio {
+
 	label {
 		display: block;
 		position: relative;
 		z-index: 1;
 		overflow: hidden;
 		min-height: 14px;
+		cursor: pointer;
+		user-select: none;
 
-		[type="checkbox"] {
+		input {
 			position: absolute;
 			z-index: 1;
 			left: -10px;
@@ -50,6 +54,27 @@ Form
 					height: 6px;
 					transform: rotate(-45deg);
 					opacity: 0;
+				}
+			}
+
+			&[type="radio"] {
+				&+span {
+
+					&:before {
+						border-radius: 50%;
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						width: 8px;
+						height: 8px;
+						border-radius: 50%;
+						left: 3px;
+						top: 3px;
+						background: $primary-color;
+						transform: none;
+					}
 				}
 			}
 

@@ -56,6 +56,14 @@ Main Search
 		}
 	}
 
+	&--trigger {
+		cursor: pointer;
+
+		* {
+			cursor: pointer;
+		}
+	}
+
 	&--date {
 		flex-shrink: 1;
 
@@ -206,6 +214,11 @@ Popup Hint
 	background: #fff;
 	width: 100%;
 	box-shadow: 0 3px 7px rgba(0, 0, 0, .15);
+	display: none;
+
+	.active & {
+		display: block;
+	}
 
 	@include xs-down {
 		top: 50px;
@@ -283,6 +296,37 @@ Popup Hint
 		}
 	}
 
+	&--check {
+		border-bottom: 1px solid #e0e0e0;
+		cursor: pointer;
+
+		label {
+			padding: 12px 12px;
+			margin-bottom: 0;
+
+			input {
+				&+span {
+					color: $text-color;
+
+					&:before {
+						top: 11px;
+						left: 11px;
+					}
+
+					&:after {
+						top: 14px;
+						left: 14px;
+					}
+				}
+			}
+		}
+
+		&:hover {
+			background-color: #d8eeff;
+		}
+	}
+
+
 	&--tit {
 		font-size: 14px;
 		font-weight: 400;
@@ -321,6 +365,15 @@ Popup Hint Date
 
 .popup-hint__date {
 	min-width: 345px;
+
+	@include xxs-down {
+		width: calc(200% + 10px);
+		min-width: 0;
+	}
+
+	.popup-hint--body {
+		max-height: none;
+	}
 }
 
 .popup-hint--flexible-date {
