@@ -1,0 +1,69 @@
+@import "~scss/variables";
+
+/*--------------------------------------------------
+Form
+--------------------------------------------------*/
+
+.checkbox {
+	label {
+		display: block;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		min-height: 14px;
+
+		[type="checkbox"] {
+			position: absolute;
+			z-index: 1;
+			left: -10px;
+			top: -10px;
+			opacity: .01;
+
+			&+span {
+				display: inline-block;
+				padding-left: 20px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					z-index: 1;
+					width: 14px;
+					height: 14px;
+					border: 1px solid #b7b7b7;
+					background: #fff;
+					border-radius: 2px;
+				}
+
+				&:after {
+					content: '';
+					position: absolute;
+					z-index: 1;
+					left: 2px;
+					top: 3px;
+					border: 3px solid $primary-color;
+					border-radius: 1px;
+					border-top: none;
+					border-right: none;
+					width: 10px;
+					height: 6px;
+					transform: rotate(-45deg);
+					opacity: 0;
+				}
+			}
+
+			&:checked {
+				&+span {
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+
+	}
+
+
+}

@@ -24,6 +24,10 @@ Promotions
 			box-shadow: 0 3px 7px rgba(0, 0, 0, .15);
 			text-decoration: none;
 
+			@include xxs-down {
+				margin-bottom: 25px;
+			}
+
 			&:hover {
 				text-decoration: none;
 			}

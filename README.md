@@ -14,7 +14,7 @@
 * `ng serve --open` apre il browser in modalità development
 * `ng serve --prod --open` apre il browser in modalità production con aot e minification
 * `ng build --prod` compila la dist in modalità production con aot e minification
-
+* `npm run docs` compila la cartella docs
 -----------------
 
 ## Demo
