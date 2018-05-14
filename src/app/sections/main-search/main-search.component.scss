@@ -218,14 +218,24 @@ Popup Hint
 	background: #fff;
 	width: 100%;
 	box-shadow: 0 3px 7px rgba(0, 0, 0, .15);
+	min-width: 220px;
 	display: none;
 
 	.active & {
 		display: block;
 	}
 
+	@include md-down {
+		min-width: 100%;
+	}
+
 	@include xs-down {
 		top: 50px;
+	}
+
+	@include xs-down {
+		width: calc(200% + 10px);
+		min-width: 0;
 	}
 
 	&--head {
@@ -245,6 +255,10 @@ Popup Hint
 			border-bottom: 6px solid $primary-color;
 			border-left: 8px solid transparent;
 			border-right: 8px solid transparent;
+
+			@include xxs-down {
+				left: 5px;
+			}
 		}
 
 		h3 {
@@ -364,11 +378,53 @@ Popup Hint
 
 
 /*--------------------------------------------------
+Popup Hint Destination
+--------------------------------------------------*/
+
+.popup-hint__destination {
+	width: 100%;
+
+	@include xxs-down {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+
+/*--------------------------------------------------
+Popup Hint Destination
+--------------------------------------------------*/
+
+.popup-hint__duration {
+
+	@include xs-down {
+		width: 100%;
+	}
+
+	@include xxs-down {
+		width: calc(200% + 10px);
+		left: calc(-100% - 10px);
+
+		.popup-hint--head {
+			&:before {
+				left: calc(50% + 10px);
+			}
+		}
+	}
+}
+
+
+/*--------------------------------------------------
 Popup Hint Date
 --------------------------------------------------*/
 
 .popup-hint__date {
 	min-width: 345px;
+
+	@include xs-down {
+		width: 100%;
+		min-width: 0;
+	}
 
 	@include xxs-down {
 		width: calc(200% + 10px);

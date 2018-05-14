@@ -9,7 +9,7 @@
 				</svg>
 			</span>
 		</div>
-		<div class="popup-hint popup-hint__last-search">
+		<div class="popup-hint popup-hint__last-search popup-hint__destination">
 			<div class="popup-hint--head">
 				<h3>Le tue ultime ricerche</h3>
 				<div class="popup-hint--close" (click)="active=null">
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 
-		<div class="popup-hint popup-hint__autocomplete" style="display: none;">
+		<div class="popup-hint popup-hint__autocomplete popup-hint__destination" style="display: none;">
 			<div class="popup-hint--body">
 				<ul class="popup-hint--list">
 					<li class="popup-hint--item">
@@ -414,7 +414,7 @@
 				</svg>
 			</span>
 		</div>
-		<div class="popup-hint">
+		<div class="popup-hint popup-hint__duration">
 			<div class="popup-hint--head">
 				<h3>Seleziona la durata del tuo viaggio</h3>
 				<div class="popup-hint--close" (click)="active=null">
@@ -482,10 +482,10 @@
 			<label for="main-search--adults">Adulti</label>
 			<input disabled id="main-search--adults" type="text" value="3" #adults>
 			<span class="ico">
-					<svg>
-						<use xlink:href="#ico-adult"></use>
-					</svg>
-				</span>
+				<svg>
+					<use xlink:href="#ico-adult"></use>
+				</svg>
+			</span>
 		</div>
 		<div class="popup-hint">
 			<div class="popup-hint--head">
