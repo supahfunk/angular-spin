@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AuthService } from './auth';
 import { CoreRouting } from './core.routing';
 import { DisposableComponent } from './disposable';
-import { MatchValidator } from './forms';
+import { ControlComponent, ControlService, MatchValidator } from './forms';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { OnceService } from './once';
@@ -21,6 +21,7 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 	imports: [
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		TranslateModule.forChild({
 			loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
 			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
@@ -29,10 +30,12 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 	],
 	exports: [
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		ControlComponent,
 	],
 	declarations: [
 		PageHosterComponent, PageComponent, DisposableComponent,
 		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		ControlComponent,
 	],
 	providers: [
 		/*
@@ -56,6 +59,7 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		PublicPipe,
 		RoutePipe,
 		SegmentPipe,
+		ControlService,
 	],
 })
 

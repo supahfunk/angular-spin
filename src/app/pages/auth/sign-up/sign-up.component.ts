@@ -51,7 +51,7 @@ export class SignUpComponent extends PageComponent implements OnInit {
 						this.model.firstName = this.google.firstName;
 						this.model.lastName = this.google.lastName;
 						this.model.email = this.google.email;
-						this.model.emailConfirm = this.facebook.email;
+						this.model.emailConfirm = this.google.email;
 					}
 				}
 			});

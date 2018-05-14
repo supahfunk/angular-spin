@@ -102,7 +102,9 @@ export class GoogleService {
 				lastName: profile.getFamilyName(),
 				picture: profile.getImageUrl(),
 				email: profile.getEmail(),
-			};
+				authResponse: this.authResponse,
+				googleToken: this.authResponse.access_token,
+			} as GoogleUser;
 			return of(user);
 		});
 	}

@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -19,7 +19,7 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 
 @NgModule({
 	imports: [
-		BrowserModule, FormsModule, HttpClientModule,
+		BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 		// and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.

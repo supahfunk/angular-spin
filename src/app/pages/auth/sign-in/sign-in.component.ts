@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacebookService, FacebookUser, GoogleService, GoogleUser } from '../../../core';
 import { AuthService, AuthToken } from '../../../core/auth';
+import { ControlBase, ControlService } from '../../../core/forms';
 import { PageComponent } from '../../../core/pages';
 import { RouteService } from '../../../core/routes';
 import { UserAuth, UserService, UserSignIn } from '../../../models';
+import { SignInService } from './sign-in.service';
 
 @Component({
 	selector: 'page-sign-in',
 	templateUrl: './sign-in.component.html',
-	styleUrls: ['./sign-in.component.scss']
+	styleUrls: ['./sign-in.component.scss'],
+	providers: [SignInService]
 })
 
 export class SignInComponent extends PageComponent implements OnInit {
+
+
+	@Input() controls: ControlBase<any>[] = [];
+	form: FormGroup;
 
 	model: UserSignIn = new UserSignIn();
 	facebook: FacebookUser;
@@ -27,12 +35,16 @@ export class SignInComponent extends PageComponent implements OnInit {
 		private authService: AuthService,
 		private facebookService: FacebookService,
 		private googleService: GoogleService,
-		private userService: UserService
+		private userService: UserService,
+		private controlService: ControlService, // !!!
+		private signInService: SignInService // !!!
 	) {
 		super(route);
+		this.controls = this.signInService.getControls();
 	}
 
 	ngOnInit() {
+		this.form = this.controlService.toFormGroup(this.controls); // !!!
 		this.params
 			.takeUntil(this.unsubscribe)
 			.subscribe(params => {
@@ -55,6 +67,7 @@ export class SignInComponent extends PageComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		console.log('SignInComponent.form.value', this.form.value);
 		this.submitted = true;
 		this.userService.tryLogin(this.model)
 			.takeUntil(this.unsubscribe)

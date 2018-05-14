@@ -1,0 +1,27 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ControlBase, ControlService } from './controls';
+
+@Component({
+	selector: 'app-form',
+	templateUrl: './form.component.html',
+	providers: [ControlService]
+})
+export class FormComponent implements OnInit {
+
+	@Input() controls: ControlBase<any>[] = [];
+	form: FormGroup;
+	payLoad = '';
+
+	constructor(
+		private formControlService: ControlService
+	) { }
+
+	ngOnInit() {
+		this.form = this.formControlService.toFormGroup(this.controls);
+	}
+
+	onSubmit() {
+		this.payLoad = JSON.stringify(this.form.value);
+	}
+}
