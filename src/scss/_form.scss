@@ -4,6 +4,35 @@
 Form
 --------------------------------------------------*/
 
+/*--------------------------------------------------
+Select
+--------------------------------------------------*/
+
+.custom-select {
+	position: relative;
+	z-index: 1;
+
+	select {
+		padding-right: 20px !important;
+		background-color: transparent;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 9px;
+		right: 0;
+		border-top: 5px solid #333;
+		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		pointer-events: none;
+	}
+}
+
+/*--------------------------------------------------
+Checkbox
+--------------------------------------------------*/
+
 .checkbox,
 .radio {
 
@@ -91,4 +120,81 @@ Form
 	}
 
 
+}
+
+
+
+/*--------------------------------------------------
+Ui Spinner
+--------------------------------------------------*/
+
+.ui-spinner {
+	flex: 0 1 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.ui-spinner-input {
+		flex: 0 0 30px;
+		width: 30px;
+		text-align: center;
+		font-size: 16px;
+		font-weight: bold;
+		color: $text-color;
+		padding: 0;
+		margin: 0;
+		background: transparent;
+		border: none;
+		outline: 0;
+		order: 2;
+	}
+
+	.ui-spinner-button {
+		flex: 0 0 24px;
+		width: 24px;
+		background-color: transparent;
+		margin: 0;
+		padding: 0;
+		border: none;
+		color: $primary-color;
+		font-size: 20px;
+		display: flex;
+		align-items: center;
+
+		span {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			border: 2px solid $primary-color;
+			cursor: pointer;
+			line-height: 1;
+			font-weight: 600;
+
+			&:before {
+				display: block;
+			}
+		}
+	}
+
+	.ui-spinner-down {
+		order: 1;
+
+		span {
+			&:before {
+				content: '-';
+				transform: translateY(-2px);
+			}
+		}
+	}
+
+	.ui-spinner-up {
+		order: 3;
+
+		span {
+			&:before {
+				content: '+';
+			}
+		}
+	}
 }

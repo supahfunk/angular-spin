@@ -110,3 +110,30 @@ Buttons
 		}
 	}
 }
+
+.btn__secondary {
+	background-color: $secondary-color;
+
+	&:hover {
+		background: darken($secondary-color, 5%);
+	}
+
+	&:focus,
+	&:active {
+		background: darken($secondary-color, 8%);
+	}
+}
+
+
+.btn__tertiary {
+	background-color: $tertiary-color;
+
+	&:hover {
+		background: darken($tertiary-color, 5%);
+	}
+
+	&:focus,
+	&:active {
+		background: darken($tertiary-color, 8%);
+	}
+}

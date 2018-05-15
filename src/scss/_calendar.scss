@@ -81,7 +81,7 @@ Calendar
 				width: 32px;
 				height: 32px;
 				border-radius: 50%;
-				background: $calendar-color;
+				background: $tertiary-color;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
@@ -96,7 +96,7 @@ Calendar
 
 		.ui-datepicker-prev {
 			order: 1;
-			background-color: $calendar-color;
+			background-color: $tertiary-color;
 			mask-image: url(assets/img/prev-arr.svg);
 			width: 16px;
 			height: 16px;
@@ -104,7 +104,7 @@ Calendar
 
 		.ui-datepicker-next {
 			order: 3;
-			background-color: $calendar-color;
+			background-color: $tertiary-color;
 			mask-image: url(assets/img/next-arr.svg);
 			width: 16px;
 			height: 16px;
@@ -119,7 +119,7 @@ Calendar
 				padding: 0;
 				margin: 0;
 				outline: 0;
-				color: $calendar-color;
+				color: $tertiary-color;
 				font-size: 16px;
 				font-weight: 600;
 				display: inline;

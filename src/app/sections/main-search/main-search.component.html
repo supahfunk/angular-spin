@@ -480,14 +480,14 @@
 	<div class="main-search--col main-search--adults" [ngClass]="{'active':active==searchAdults}">
 		<div class="main-search--trigger" (click)="active=searchAdults" #searchAdults>
 			<label for="main-search--adults">Adulti</label>
-			<input disabled id="main-search--adults" type="text" value="3" #adults>
+			<input disabled id="main-search--adults" type="text" value="" [(ngModel)]="model.adults" #adults>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-adult"></use>
 				</svg>
 			</span>
 		</div>
-		<div class="popup-hint">
+		<div class="popup-hint popup-hint__adults">
 			<div class="popup-hint--head">
 				<h3>Numero di adulti</h3>
 				<div class="popup-hint--close" (click)="active=null">
@@ -497,7 +497,12 @@
 				</div>
 			</div>
 			<div class="popup-hint--body">
-				<ul class="popup-hint--list">
+				<div class="spinner-input">
+					<strong for="">Adulti</strong>
+					<p-spinner size="10" readonly [(ngModel)]="model.adults" [min]="1" [max]="10"></p-spinner>
+				</div>
+
+				<!-- <ul class="popup-hint--list">
 					<li class="popup-hint--check" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
 						<div class="radio">
 							<label>
@@ -506,26 +511,46 @@
 							</label>
 						</div>
 					</li>
-
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 	</div>
-	<div class="main-search--col main-search--childs">
-		<label for="main-search--childs">Bambini</label>
-		<select id="main-search--childs">
-				<option>0</option>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-		<span class="ico">
-			<svg>
-				<use xlink:href="#ico-child"></use>
-			</svg>
-		</span>
+	<div class="main-search--col main-search--childs" [ngClass]="{'active':active==searchChilds}">
+		<div class="main-search--trigger" (click)="active=searchChilds" #searchChilds>
+			<label for="main-search--childs">Bambini</label>
+			<input disabled id="main-search--childs" type="text" value="" [(ngModel)]="model.childs" #childs>
+			<span class="ico">
+				<svg>
+					<use xlink:href="#ico-child"></use>
+				</svg>
+			</span>
+		</div>
+		<div class="popup-hint popup-hint__childs">
+			<div class="popup-hint--head">
+				<h3>Numero di bambini</h3>
+				<div class="popup-hint--close" (click)="active=null">
+					<svg>
+						<use xlink:href="#ico-circle-close"></use>
+					</svg>
+				</div>
+			</div>
+			<div class="popup-hint--body">
+				<div class="spinner-input">
+					<strong>Bambini</strong>
+					<p-spinner size="10" readonly [(ngModel)]="model.childs" [min]="0" [max]="4" (onChange)="onChildsChanged()"></p-spinner>
+				</div>
+				<div class="child-ages">
+					<div class="child-age" *ngFor="let child of model.childrens; let index = $index">
+						<strong>Età bambino {{index}}</strong>
+						<div class="custom-select">
+							<select dir="rtl" [(ngModel)]="child.age">
+								<option *ngFor="let age of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]" value="{{age}}">{{age}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="main-search--col main-search--submit">

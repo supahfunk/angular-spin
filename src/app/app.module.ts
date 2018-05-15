@@ -10,6 +10,7 @@ import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateS
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CalendarModule } from 'primeng/calendar';
 import { GalleriaModule } from 'primeng/galleria';
+import { SpinnerModule } from 'primeng/spinner';
 import { AppComponent } from './app.component';
 import { AppPages } from './app.pages';
 import { AppRouting } from './app.routing';
@@ -29,7 +30,7 @@ registerLocaleData(localeIt, 'it');
 
 @NgModule({
 	imports: [
-		BrowserModule, FormsModule, HttpClientModule, CalendarModule, GalleriaModule, NoopAnimationsModule,
+		BrowserModule, FormsModule, HttpClientModule, CalendarModule, SpinnerModule, GalleriaModule, NoopAnimationsModule,
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 		// and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.

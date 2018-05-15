@@ -103,6 +103,10 @@ Main Search
 	&--childs {
 		flex-shrink: 1;
 
+		input[disabled] {
+			width: 50px !important;
+		}
+
 		@include md-down {
 			width: calc(25% - 5px);
 			margin: 0 5px 0 5px;
@@ -218,7 +222,7 @@ Popup Hint
 	background: #fff;
 	width: 100%;
 	box-shadow: 0 3px 7px rgba(0, 0, 0, .15);
-	min-width: 220px;
+	min-width: 202px;
 	display: none;
 
 	.active & {
@@ -392,7 +396,7 @@ Popup Hint Destination
 
 
 /*--------------------------------------------------
-Popup Hint Destination
+Popup Hint Duration
 --------------------------------------------------*/
 
 .popup-hint__duration {
@@ -445,5 +449,99 @@ Popup Hint Date
 		line-height: 1.2;
 		margin: 0;
 		padding: 0;
+	}
+}
+
+
+/*--------------------------------------------------
+Popup Hint Adults
+--------------------------------------------------*/
+
+.popup-hint__adults {
+
+	@include md-down {
+		min-width: 220px;
+	}
+}
+
+
+/*--------------------------------------------------
+Popup Hint Childs
+--------------------------------------------------*/
+
+.popup-hint__childs {
+
+	@include md-down {
+		min-width: 220px;
+	}
+
+
+	@include xxs-down {
+		width: calc(200% + 10px);
+		left: calc(-100% - 10px);
+
+		.popup-hint--head {
+			&:before {
+				left: calc(50% + 10px);
+			}
+		}
+	}
+}
+
+
+/*--------------------------------------------------
+Spinner Input
+--------------------------------------------------*/
+
+.spinner-input {
+	display: flex;
+	padding: 12px;
+	justify-content: space-between;
+	align-items: center;
+
+	strong {
+		flex: 1 0 auto;
+		display: block;
+		font-size: 14px;
+		font-weight: 600;
+		color: $tit-color;
+	}
+
+	p-spinner {
+		flex: 0 1 auto;
+		display: flex;
+	}
+}
+
+
+/*--------------------------------------------------
+Child Ages
+--------------------------------------------------*/
+
+.child-ages {
+	border-top: 1px solid #e0e0e0;
+
+	.child-age {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px;
+
+
+		strong {
+			flex: 1 0 auto;
+			display: block;
+			font-weight: normal;
+			font-size: 13px;
+		}
+
+		.select {
+			flex: 1 0 auto;
+			width: auto;
+			padding: 0 20px 0 0;
+			font-weight: 600;
+			font-size: 14px;
+
+		}
 	}
 }

@@ -1,6 +1,7 @@
-<header>
+<div class="top-header"><img src="assets/img/top.png" alt=""></div>
+<header class="header">
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+		<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
 			<a class="navbar-brand" [routerLink]="'' | route">
 			<img [src]="'bootstrap-solid.svg' | asset" width="30" height="30" class="d-inline-block align-top" alt="Brand"> <span> Brand</span>
 		</a>
@@ -14,11 +15,6 @@
 				<li class="nav-item">
 					<a class="nav-link" [routerLink]="'profile' | route" routerLinkActive="active">{{ 'header.profile' | translate }}</a>
 				</li>
-				<!--
-				<li class="nav-item" *ngFor="let page of pages">
-					<a class="nav-link" [routerLink]="page.slug | route">{{page.name}}</a>
-				</li>
-				-->
 			</ul>
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="dropdown = !dropdown">
@@ -28,7 +24,61 @@
 					<button type="button" class="dropdown-item btn" *ngFor="let language of languages" (click)="dropdown = false; setLanguage(language)">{{language.name}}</button>
 				</div>
 			</div>
-		</nav>
+		</nav> -->
+		<a href="" [routerLink]="'' | route" class="logo">
+			<img src="assets/img/logo-eurospin-viaggi.png" alt="Logo Eurospin Viaggi">
+		</a>
+		<div class="desktop-navbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Homepage</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Destinazioni</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Categorie</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Informazioni</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Carta regalo</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="'' | route" routerLinkActive="active">Contatti</a>
+				</li>
+			</ul>
+			<div class="navbar-actions">
+				<a href="#" class="btn btn__tertiary">Registrati</a>
+			</div>
+		</div>
+
+		<div class="mobile-navbar">
+			<div class="nav-item">
+				<a href="">
+					<svg class="ico">
+						<use xlink:href="#ico-tel"></use>
+					</svg><span>Chiama</span>
+				</a>
+			</div>
+			<div class="nav-item">
+				<a href="">
+					<svg class="ico">
+						<use xlink:href="#ico-user"></use>
+					</svg><span>Accedi</span>
+				</a>
+			</div>
+			<div class="nav-item">
+				<button class="nav-toggle">
+					<div class="nav-toggle--bars">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<span>Menu</span>
+				</button>
+			</div>
+		</div>
 	</div>
 </header>
-<br>
