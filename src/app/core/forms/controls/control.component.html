@@ -1,12 +1,22 @@
 <div class="form-group" [formGroup]="form">
-	<div [ngSwitch]="control.controlType">
-		<div *ngSwitchCase="'textbox'">
-			<!-- TEXTBOX -->
+	<div [ngSwitch]="control.schema">
+		<div *ngSwitchCase="'text'">
+			<!-- TEXT -->
 			<label [attr.for]="control.key">{{ control.label | translate }}</label>
 			<input class="form-control" [id]="control.key" [formControlName]="control.key" [type]="control.type" placeholder="{{ control.placeholder | translate }}">
 		</div>
-		<div *ngSwitchCase="'dropdown'">
-			<!-- DROPDOWN -->
+		<div *ngSwitchCase="'email'">
+			<!-- TEXT -->
+			<label [attr.for]="control.key">{{ control.label | translate }}</label>
+			<input class="form-control" [id]="control.key" [formControlName]="control.key" [type]="control.type" placeholder="{{ control.placeholder | translate }}">
+		</div>
+		<div *ngSwitchCase="'password'">
+			<!-- TEXT -->
+			<label [attr.for]="control.key">{{ control.label | translate }}</label>
+			<input class="form-control" [id]="control.key" [formControlName]="control.key" [type]="control.type" placeholder="{{ control.placeholder | translate }}">
+		</div>
+		<div *ngSwitchCase="'select'">
+			<!-- SELECT -->
 			<label [attr.for]="control.key">{{ control.label | translate }}</label>
 			<select class="form-control" [id]="control.key" [formControlName]="control.key">
       			<option *ngFor="let opt of control.options" [value]="opt.key">{{opt.value}}</option>

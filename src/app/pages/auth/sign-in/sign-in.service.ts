@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ControlBase, ControlCheckbox, ControlTextbox } from '../../../core/forms';
+import { ControlBase, ControlCheckbox, ControlEmail, ControlPassword } from '../../../core/forms';
 
 @Injectable()
 export class SignInService {
@@ -8,7 +8,7 @@ export class SignInService {
 	// TODO: make asynchronous
 	getControls() {
 		const controls: ControlBase<any>[] = [
-			new ControlTextbox({
+			new ControlEmail({
 				key: 'email',
 				label: 'signIn.email',
 				placeholder: 'signIn.email',
@@ -16,27 +16,36 @@ export class SignInService {
 				required: true,
 				order: 1
 			}),
-			new ControlTextbox({
+			new ControlEmail({
+				key: 'emailConfirm',
+				label: 'signIn.emailConfirm',
+				placeholder: 'signIn.emailConfirm',
+				type: 'email',
+				required: true,
+				match: 'email',
+				order: 2,
+			}),
+			new ControlPassword({
 				key: 'password',
 				label: 'signIn.password',
 				placeholder: 'signIn.password',
 				type: 'password',
 				required: true,
-				order: 2
+				order: 3
 			}),
 			new ControlCheckbox({
 				key: 'passwordReveal',
 				label: 'signIn.passwordReveal',
 				placeholder: 'signIn.passwordReveal',
 				type: 'checkbox',
-				order: 3
+				order: 4
 			}),
 			new ControlCheckbox({
 				key: 'rememberMe',
 				label: 'signIn.rememberMe',
 				placeholder: 'signIn.rememberMe',
 				type: 'checkbox',
-				order: 3
+				order: 5
 			}),
 		];
 		return controls.sort((a, b) => a.order - b.order);

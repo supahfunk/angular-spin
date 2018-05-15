@@ -1,13 +1,11 @@
-import { ControlBase } from './control-base';
+import { ControlBase, ControlBaseOptions } from './control-base';
 
-export class ControlCheckbox extends ControlBase<string> {
-	controlType = 'checkbox';
-	type: string;
+export class ControlCheckbox extends ControlBase<boolean> {
 
-	constructor(
-		options: {} = {}
-	) {
+	schema = 'checkbox';
+
+	constructor(options: ControlBaseOptions<boolean> = {}) {
 		super(options);
-		this.type = options['type'] || '';
+		this.type = options.type || this.type;
 	}
 }
