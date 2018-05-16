@@ -1,0 +1,135 @@
+@import "~scss/variables";
+
+/*--------------------------------------------------
+Calendar
+--------------------------------------------------*/
+
+.calendar {
+	padding: 10px 12px;
+
+	.ui-calendar {
+		display: block;
+	}
+
+	.ui-datepicker {
+		display: block !important;
+	}
+
+	.ui-datepicker-calendar {
+		width: 100%;
+
+		th,
+		td {
+			text-align: center;
+			user-select: none;
+		}
+
+		a {
+			position: relative;
+			z-index: 1;
+			color: $text-color;
+			display: block;
+			font-size: 14px;
+			line-height: 1;
+			padding: 11px 0;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		thead {
+			font-size: 9px;
+			text-transform: uppercase;
+			color: #8c93a3;
+			border-bottom: 1px solid #e0e0e0;
+
+			th {
+				padding: 12px 0 12px;
+				font-weight: 400;
+			}
+		}
+
+		tbody {
+			margin: 5px 0;
+
+			tr:first-child {
+				td {
+					padding-top: 5px;
+				}
+			}
+		}
+
+		.ui-state-default {
+			color: $text-color;
+		}
+
+		.ui-state-disabled,
+		.ui-datepicker-other-month {
+			opacity: .4;
+		}
+
+
+		.ui-state-active {
+			color: #fff;
+			font-weight: bold;
+
+			&:before {
+				content: '';
+				position: absolute;
+				z-index: -1;
+				width: 32px;
+				height: 32px;
+				border-radius: 50%;
+				background: $tertiary-color;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+	.ui-datepicker-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.ui-datepicker-prev {
+			order: 1;
+			background-color: $tertiary-color;
+			mask-image: url(assets/img/prev-arr.svg);
+			width: 16px;
+			height: 16px;
+		}
+
+		.ui-datepicker-next {
+			order: 3;
+			background-color: $tertiary-color;
+			mask-image: url(assets/img/next-arr.svg);
+			width: 16px;
+			height: 16px;
+		}
+
+		.ui-datepicker-title {
+			order: 2;
+
+			select {
+				appearance: none;
+				border: none;
+				padding: 0;
+				margin: 0;
+				outline: 0;
+				color: $tertiary-color;
+				font-size: 16px;
+				font-weight: 600;
+				display: inline;
+				margin: 0 3px;
+
+				option {
+					font-size: 14px;
+					padding: 2px;
+				}
+			}
+		}
+	}
+}

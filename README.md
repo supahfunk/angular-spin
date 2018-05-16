@@ -9,20 +9,12 @@
 
 -----------------
 
-## Apply angular.json Https Certificate
-
-* `openssl genrsa -des3 -out dev.key 2048` `"sslKey": "dev.key",` 
-* `openssl req -x509 -new -nodes -key websolute.key -sha256 -days 1825 -out dev.pem` `"sslCert": "dev.pem"`
-* `openssl rsa -in dev.key -out dev.key` uncrypting 
-
------------------
-
 ## Executing
 
 * `ng serve --open` apre il browser in modalità development
 * `ng serve --prod --open` apre il browser in modalità production con aot e minification
 * `ng build --prod` compila la dist in modalità production con aot e minification
-
+* `npm run docs` compila la cartella docs
 -----------------
 
 ## Demo

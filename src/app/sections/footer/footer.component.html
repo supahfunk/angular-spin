@@ -1,5 +1,90 @@
-<footer>
+<footer class="footer">
 	<div class="container">
-		<app-logger></app-logger>
+		<div class="footer-newsletter">
+			<h3>Non perderti più nessuna offerta!</h3>
+			<form action="" class="form">
+				<input type="email" placeholder="Iscriviti alla newsletter">
+				<button type="submit" class="btn">Invia</button>
+			</form>
+		</div>
+		<div class="footer-seguici">
+			<h3>Seguici su Facebook</h3>
+			<div>
+				<a href="" class="btn-seguici">
+					<svg class="ico">
+						<use xlink:href="#ico-facebook-square"></use>
+					</svg>
+					<span>Mi piace</span>
+				</a>
+			</div>
+		</div>
+		<div class="footer-volantini">
+			<h3>Volantini online</h3>
+			<div>
+				Non perderderti le nostre offerte
+				<a href="#" class="btn">Sfoglia i volantini</a>
+			</div>
+		</div>
+		<div class="footer-disclaimer">
+			<h3>Disclaimer</h3>
+			<div>
+				{{ 'footer.disclaimer' | translate }}
+			</div>
+		</div>
+		<div class="footer-condizioni">
+			<h3>Condizioni</h3>
+			<ul class="footer-links">
+				<li>
+					<a href="#">Privacy Policy</a>
+				</li>
+				<li>
+					<a href="#">Gestione Cookies</a>
+				</li>
+				<li>
+					<a href="#">Come funziona</a>
+				</li>
+				<li>
+					<a href="#">Termini e condizioni vendita</a>
+				</li>
+				<li>
+					<a href="#">Informazioni utili</a>
+				</li>
+				<li>
+					<a href="#">Carta regalo</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-servizi">
+			<h3>Servizi</h3>
+			<ul class="footer-links">
+				<li>
+					<a href="#">Contatti</a>
+				</li>
+				<li>
+					<a href="#">Sfoglia volantini</a>
+				</li>
+				<li>
+					<a href="#">Iscriviti alla newsletter</a>
+				</li>
+				<li>
+					<a href="#">Area strutture</a>
+				</li>
+				<li>
+					<a href="#">Scarica App</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-copy">
+			{{ 'footer.copy' | translate }}
+		</div>
+		<div class="footer-pagamenti">
+			<h3>Accettiamo questi pagamenti</h3>
+			<div>
+				<img src="assets/img/carte-pagamenti.png" alt="pagamenti">
+			</div>
+		</div>
+		<div class="footer-credits">
+			<a title="Digital Marketing" target="_blank" href="https://www.websolute.com"><img src="assets/img/webagency.png" alt="Digital Marketing"> Websolute</a>
+		</div>
 	</div>
 </footer>

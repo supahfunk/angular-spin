@@ -1,0 +1,78 @@
+//--------------------------------------------------
+// Colors
+//--------------------------------------------------
+$primary-color: #f47c22;
+$secondary-color: #004d9a;
+$text-color: #5f5d63;
+$tit-color: #062638;
+$tertiary-color: #1677c0;
+
+
+//--------------------------------------------------
+// Media Query
+//--------------------------------------------------
+$lg-width: 1560px;
+$md-width: 1199px;
+$sm-width: 991px;
+$xs-width: 767px;
+$xxs-width: 575px;
+
+@mixin lg-down {
+	@media (max-width: #{$lg-width}) {
+		@content;
+	}
+}
+
+@mixin md-down {
+	@media (max-width: #{$md-width}) {
+		@content;
+	}
+}
+
+@mixin sm-down {
+	@media (max-width: #{$sm-width}) {
+		@content;
+	}
+}
+
+@mixin xs-down {
+	@media (max-width: #{$xs-width}) {
+		@content;
+	}
+}
+
+@mixin xxs-down {
+	@media (max-width: #{$xxs-width}) {
+		@content;
+	}
+}
+
+@mixin lg-up {
+	@media (min-width: #{$lg-width + 1}) {
+		@content;
+	}
+}
+
+@mixin md-up {
+	@media (min-width: #{$md-width + 1}) {
+		@content;
+	}
+}
+
+@mixin sm-up {
+	@media (min-width: #{$sm-width + 1}) {
+		@content;
+	}
+}
+
+@mixin xs-up {
+	@media (min-width: #{$xs-width + 1}) {
+		@content;
+	}
+}
+
+@mixin xxs-up {
+	@media (min-width: #{$xxs-width + 1}) {
+		@content;
+	}
+}
