@@ -6,7 +6,7 @@ import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ng
 import { AuthService } from './auth';
 import { CoreRouting } from './core.routing';
 import { DisposableComponent } from './disposable';
-import { ControlComponent, ControlService, MatchValidator } from './forms';
+import { ControlComponent, ControlService, FormService, MatchValidator } from './forms';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { OnceService } from './once';
@@ -60,6 +60,7 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		RoutePipe,
 		SegmentPipe,
 		ControlService,
+		FormService,
 	],
 })
 

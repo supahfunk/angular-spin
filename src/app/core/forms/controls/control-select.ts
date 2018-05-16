@@ -7,6 +7,6 @@ export class ControlSelect extends ControlBase<string> {
 
 	constructor(options: ControlBaseOptions<string> = {}) {
 		super(options);
-		this.options = options['options'] || [];
+		this.options = options.options || [];
 	}
 }

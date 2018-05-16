@@ -13,6 +13,7 @@ import { Logger, LoggerComponent } from './core/logger';
 import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
+import { ControlEditableComponent } from './forms';
 import { RegionService, UserService } from './models';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
 import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchComponent } from './sections';
@@ -37,6 +38,7 @@ import { FooterComponent, HeaderComponent, NotFoundComponent, RegionSearchCompon
 		AppComponent,
 		HomeComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
 		HeaderComponent, FooterComponent, RegionSearchComponent, NotFoundComponent,
+		ControlEditableComponent,
 		LoggerComponent, PageDirective,
 	],
 	providers: [

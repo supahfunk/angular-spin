@@ -13,7 +13,7 @@ export const label: Label[] = [{
 		errors: {
 			required: 'campo obbligatorio',
 			email: 'l\indirizzo email non è valido',
-			minlength: 'dev\'essere almento 6 caratteri',
+			minlength: 'dev\'essere almento {{value}} caratteri',
 			match: 'I campi devono corrispondere',
 		},
 		header: {
@@ -90,7 +90,7 @@ export const label: Label[] = [{
 		errors: {
 			required: 'field required',
 			email: 'invalid email',
-			minlength: 'Must be at least 6 characters long',
+			minlength: 'Must be at least {{value}} characters long',
 			match: 'Fields should match',
 		},
 		header: {

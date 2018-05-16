@@ -33,9 +33,9 @@ export class ControlService {
 			validators.push(Validators.pattern(control.pattern));
 		}
 		if (control.match) {
-			validators.push(matchValidator(control.key, control.match, group));
+			validators.push(matchValidator(control.match, control.reverse, group));
 		}
-		console.log(control.key, validators);
+		// console.log(control.key, validators);
 		return validators;
 	}
 
@@ -43,7 +43,12 @@ export class ControlService {
 		const options: any = {};
 		controls.forEach(x => {
 			// group[x.key] = new FormControl(x.value, this.getValidators(x, group));
-			options[x.key] = new FormControl(x.value);
+			const formControl: FormControl = new FormControl(x.value);
+			if (x.disabled) {
+				formControl.disable();
+			}
+			options[x.key] = formControl;
+			// x.setControl(formControl); // !!!
 		});
 		const group: FormGroup = new FormGroup(options);
 		// console.log(group);

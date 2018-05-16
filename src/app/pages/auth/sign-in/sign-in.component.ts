@@ -1,26 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacebookService, FacebookUser, GoogleService, GoogleUser } from '../../../core';
 import { AuthService, AuthToken } from '../../../core/auth';
-import { ControlBase, ControlService } from '../../../core/forms';
+import { ControlBase, FormService } from '../../../core/forms';
 import { PageComponent } from '../../../core/pages';
 import { RouteService } from '../../../core/routes';
 import { UserAuth, UserService, UserSignIn } from '../../../models';
-import { SignInService } from './sign-in.service';
 
 @Component({
 	selector: 'page-sign-in',
 	templateUrl: './sign-in.component.html',
-	styleUrls: ['./sign-in.component.scss'],
-	providers: [SignInService]
+	styleUrls: ['./sign-in.component.scss']
 })
 
 export class SignInComponent extends PageComponent implements OnInit {
 
-
-	@Input() controls: ControlBase<any>[] = [];
-	form: FormGroup;
+	controls: ControlBase<any>[];
+	group: FormGroup;
 
 	model: UserSignIn = new UserSignIn();
 	facebook: FacebookUser;
@@ -36,15 +33,58 @@ export class SignInComponent extends PageComponent implements OnInit {
 		private facebookService: FacebookService,
 		private googleService: GoogleService,
 		private userService: UserService,
-		private controlService: ControlService, // !!!
-		private signInService: SignInService // !!!
+		private formService: FormService, // !!!
 	) {
 		super(route);
-		this.controls = this.signInService.getControls();
 	}
 
 	ngOnInit() {
-		this.form = this.controlService.toFormGroup(this.controls); // !!!
+		// REACTIVE FORM
+		this.controls = this.formService.getControlsFromOptions([{
+			key: 'email',
+			schema: 'email',
+			label: 'signIn.email',
+			placeholder: 'signIn.email',
+			required: true,
+			match: 'emailConfirm',
+			reverse: true,
+			order: 1
+		}, {
+			key: 'emailConfirm',
+			schema: 'email',
+			label: 'signIn.emailConfirm',
+			placeholder: 'signIn.emailConfirm',
+			required: true,
+			match: 'email',
+			order: 2,
+		}, {
+			key: 'password',
+			schema: 'password',
+			label: 'signIn.password',
+			placeholder: 'signIn.password',
+			required: true,
+			minLength: 6,
+			order: 3
+		}, {
+			key: 'hours',
+			schema: 'number',
+			label: 'signIn.hours',
+			placeholder: 'signIn.hours',
+			required: true,
+			min: 0,
+			max: 24,
+			step: 1,
+			format: 'H',
+			order: 3
+		}, {
+			key: 'rememberMe',
+			schema: 'checkbox',
+			label: 'signIn.rememberMe',
+			placeholder: 'signIn.rememberMe',
+			order: 5
+		}]); // !!!
+		this.group = this.formService.getGroupFromControls(this.controls); // !!!
+		// FACEBOOK & GOOGLE
 		this.params
 			.takeUntil(this.unsubscribe)
 			.subscribe(params => {
@@ -67,7 +107,6 @@ export class SignInComponent extends PageComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		console.log('SignInComponent.form.value', this.form.value);
 		this.submitted = true;
 		this.userService.tryLogin(this.model)
 			.takeUntil(this.unsubscribe)
@@ -81,6 +120,11 @@ export class SignInComponent extends PageComponent implements OnInit {
 					this.submitted = false;
 					console.log('onSubmit.error', this.error);
 				});
+	}
+
+	onSubmit2(): void {
+		console.log('SignInComponent.form.value', this.group.value);
+		this.submitted = true;
 	}
 
 	onAuth(user: UserAuth) {

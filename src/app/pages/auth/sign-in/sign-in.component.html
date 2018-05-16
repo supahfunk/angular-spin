@@ -51,11 +51,13 @@
 
 	<h3>Form dinamica</h3>
 	<!-- REACTIVE FORM -->
-	<form role="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="form">
+	<form role="form" novalidate autocomplete="off" (ngSubmit)="onSubmit2()" [formGroup]="group">
 		<div *ngFor="let control of controls" class="form-row">
-			<app-control [control]="control" [form]="form"></app-control>
+			<app-control [control]="control" [form]="group"></app-control>
 		</div>
-		<button type="submit" class="btn btn-primary" [disabled]="submitted || !form.valid">{{ 'signIn.register' | translate }}</button>
+		<!-- <control-editable formControlName="email"></control-editable> -->
+		{{ controls[0].control?.value }}
+		<button type="submit" class="btn btn-primary" [disabled]="submitted || !group.valid">{{ 'signIn.register' | translate }}</button>
 	</form>
 
 </div>
