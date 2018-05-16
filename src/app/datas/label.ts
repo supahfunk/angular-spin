@@ -75,6 +75,10 @@ export const label: Label[] = [{
 		},
 		regionSearch: {
 			regionName: 'Ricerca regione',
+		},
+		footer: {
+			disclaimer: 'Le foto mostrate hanno un valore puramente illustrativo. Prezzi, disponibilità ed informazioni possono essere soggette a modifiche.',
+			copy: `Copyright © Eurospin New Business S.r.l. a Socio Unico - Via Campalto 3/d - 37036 - San Martino Buon Albergo (VR), Tel. 045 8782222 -- CF e P.IVA 042 924 10232 - REA VR-408544 - Aut. Prov. Verona n. 0024822 del 16/03/2015 - Polizza Ass. Europ Assistance n. 8801920 -- cap. soc. € 500.000,00 i.v. Soggetta a direzione e coordinamento dalla Società Eurospin Italia S.p.A.`
 		}
 	}
 }, {

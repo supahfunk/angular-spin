@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./footer.component.scss']
 })
 
+/*----------------------------------------
+TODOLIST FOOTER
+----------------------------------------*/
+/*
+- Collegare newsletter
+- Verificare se il modulo newsletter deve essere visibile anche se l'utente è loggato
+*/
+
 export class FooterComponent implements OnInit {
 	constructor() {
 	}

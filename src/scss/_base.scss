@@ -1,0 +1,139 @@
+@import "~scss/variables";
+
+/*--------------------------------------------------
+Base
+--------------------------------------------------*/
+
+.wrapper {
+	max-width: 1600px;
+	min-height: 100vh;
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
+}
+
+.container {
+	max-width: 1170px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+
+	@include md-down {
+		max-width: 960px;
+	}
+
+	@include sm-down {
+		max-width: none;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+
+
+/*--------------------------------------------------
+Card Row
+--------------------------------------------------*/
+
+.card-row {
+	display: flex;
+	flex-wrap: wrap;
+
+	@include xs-down {
+		padding: 0 5px;
+	}
+
+	.card-col {
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+		padding: 0 15px;
+		display: flex;
+
+		@include xs-down {
+			padding: 0 10px;
+		}
+
+		@include xxs-down {
+			padding: 0 10px;
+			flex: 0 0 100%;
+			max-width: none;
+		}
+	}
+
+}
+
+
+
+/*--------------------------------------------------
+Buttons
+--------------------------------------------------*/
+
+.btn {
+	background-color: $primary-color;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 9px 15px;
+	cursor: pointer;
+	transition: background .2s ease-in-out;
+
+	&:hover {
+		background: darken($primary-color, 5%);
+		color: #fff;
+		text-decoration: none;
+	}
+
+	&:focus,
+	&:active {
+		background: darken($primary-color, 8%);
+	}
+
+	&__ghost {
+		background: transparent;
+		border: 1px solid $tit-color;
+		color: $tit-color;
+
+		&:hover {
+			background: transparent;
+			color: $tit-color;
+		}
+
+		&:focus,
+		&:active {
+			background: transparent;
+		}
+	}
+}
+
+.btn__secondary {
+	background-color: $secondary-color;
+
+	&:hover {
+		background: darken($secondary-color, 5%);
+	}
+
+	&:focus,
+	&:active {
+		background: darken($secondary-color, 8%);
+	}
+}
+
+
+.btn__tertiary {
+	background-color: $tertiary-color;
+
+	&:hover {
+		background: darken($tertiary-color, 5%);
+	}
+
+	&:focus,
+	&:active {
+		background: darken($tertiary-color, 8%);
+	}
+}

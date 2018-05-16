@@ -29,8 +29,8 @@
 		"interface-over-type-literal": true,
 		"label-position": true,
 		"max-line-length": [
-			true,
-			360
+			false,
+			100
 		],
 		"member-access": false,
 		"member-ordering": [

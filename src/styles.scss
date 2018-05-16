@@ -1,5 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
-@import '~bootstrap/scss/functions'; // first load bootstrap functions
-@import "scss/bootstrap/variables"; // overriding bootstrap variables
-@import '~bootstrap/scss/bootstrap'; // importing bootstrap
+@import "scss/variables";
+@import "scss/reset";
+@import "scss/base";
+@import "scss/typography";
+@import "scss/form";
+@import "scss/calendar";
