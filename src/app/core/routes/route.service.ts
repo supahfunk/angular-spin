@@ -19,7 +19,7 @@ export class RouteService {
 	private _languages: BehaviorSubject<Array<any>> = new BehaviorSubject(environment.languages);
 	public readonly languages: Observable<any[]> = this._languages.asObservable();
 
-	private _lang: string = environment.defaultLanguage;
+	private _lang: string;
 	private get lang(): string {
 		return this._lang;
 	}
@@ -139,13 +139,13 @@ export class RouteService {
 	private setLanguages() {
 		this.translateService.addLangs(environment.languages.map(x => x.lang));
 		this.translateService.setDefaultLang(environment.defaultLanguage);
+		// this.setLanguage(this.detectLanguage(), true);
+		this.setLanguage(environment.defaultLanguage, true);
 		/*
 		this.translateService.onLangChange.subscribe((e: LangChangeEvent) => {
 			console.log('RouteService.onLangChange', e);
 		});
 		*/
-		this.setLanguage(this.detectLanguage(), true);
-		// this.setLanguage(environment.defaultLanguage, true);
 	}
 
 	private detectLanguage(): string {

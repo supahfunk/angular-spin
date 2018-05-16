@@ -19,6 +19,12 @@ export const label: Label[] = [{
 		header: {
 			regions: 'Regioni',
 			profile: 'Profilo',
+			homepage: 'Homepage',
+			destinations: 'Destinazioni',
+			categories: 'Categorie',
+			informations: 'Informazioni',
+			giftCard: 'Carta regalo',
+			contacts: 'Contatti',
 			signIn: 'Accedi',
 		},
 		home: {
@@ -100,6 +106,12 @@ export const label: Label[] = [{
 		header: {
 			regions: 'Regions',
 			profile: 'Profile',
+			homepage: 'Homepage',
+			destinations: 'Destinations',
+			categories: 'Categories',
+			informations: 'Infos',
+			giftCard: 'Gift card',
+			contacts: 'Contacts',
 			signIn: 'Sign In',
 		},
 		home: {

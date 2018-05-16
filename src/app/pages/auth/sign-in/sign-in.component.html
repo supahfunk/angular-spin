@@ -56,7 +56,6 @@
 			<app-control [control]="control" [form]="group"></app-control>
 		</div>
 		<!-- <control-editable formControlName="email"></control-editable> -->
-		{{ controls[0].control?.value }}
 		<button type="submit" class="btn btn-primary" [disabled]="submitted || !group.valid">{{ 'signIn.register' | translate }}</button>
 	</form>
 
