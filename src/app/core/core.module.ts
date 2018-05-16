@@ -1,19 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { AssetPipe, PublicPipe, SegmentPipe } from './assets';
+import { AuthService } from './auth';
 import { CoreRouting } from './core.routing';
+import { DisposableComponent } from './disposable';
+import { ControlComponent, ControlService, MatchValidator } from './forms';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
+import { OnceService } from './once';
 import { PageComponent, PageHosterComponent, PageService, Pages } from './pages';
-import { RoutePipe } from './routes';
+import { FacebookService, GoogleService } from './plugins';
+import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
+import { CookieStorageService, LocalStorageService, SessionStorageService, StorageService } from './storage';
+// import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+// import { AuthService, AuthTokenInterceptor } from './auth';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		TranslateModule.forChild({
 			loader: { provide: TranslateLoader, useClass: LabelService, deps: [HttpClient, Logger] },
 			missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
@@ -21,14 +29,37 @@ import { RoutePipe } from './routes';
 		CoreRouting,
 	],
 	exports: [
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		ControlComponent,
 	],
 	declarations: [
-		PageHosterComponent, PageComponent,
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe,
+		PageHosterComponent, PageComponent, DisposableComponent,
+		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		ControlComponent,
 	],
 	providers: [
-		PageService, SegmentPipe,
+		/*
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthTokenInterceptor,
+			multi: true
+		},
+		*/
+		AssetPipe,
+		AuthService,
+		CookieStorageService,
+		LocalStorageService,
+		SessionStorageService,
+		StorageService,
+		FacebookService,
+		GoogleService,
+		Logger,
+		OnceService,
+		PageService,
+		PublicPipe,
+		RoutePipe,
+		SegmentPipe,
+		ControlService,
 	],
 })
 

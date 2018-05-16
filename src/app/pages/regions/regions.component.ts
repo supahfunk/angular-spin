@@ -6,7 +6,7 @@ import { RouteService } from '../../core/routes';
 import { Region, RegionService } from '../../models';
 
 @Component({
-	selector: 'view-regions',
+	selector: 'page-regions',
 	templateUrl: './regions.component.html',
 	styleUrls: ['./regions.component.scss']
 })

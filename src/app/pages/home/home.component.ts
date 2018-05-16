@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageComponent } from '../../core/pages';
 import { RouteService } from '../../core/routes';
 import { Region, RegionService } from '../../models';
 
 @Component({
-	selector: 'view-home',
+	selector: 'page-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent extends PageComponent {
+export class HomeComponent extends PageComponent implements OnInit {
 
 	regions: Region[] = [];
 

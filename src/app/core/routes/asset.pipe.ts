@@ -3,20 +3,20 @@ import { environment } from '../../../environments/environment';
 import { SegmentPipe } from './segment.pipe';
 
 @Pipe({
-	name: 'public',
+	name: 'asset',
 	// pure: false
 })
 
 @Injectable()
-export class PublicPipe implements PipeTransform {
+export class AssetPipe implements PipeTransform {
 
 	constructor(
 		private segment: SegmentPipe
 	) { }
 
 	transform(data: any[] | string): string {
-		let segments = this.segment.transform(data);
-		segments.unshift(environment.public);
+		const segments = this.segment.transform(data);
+		segments.unshift(environment.assets);
 		return segments.join('/');
 	}
 

@@ -4,7 +4,7 @@ import { PageComponent } from '../../core/pages';
 import { User, UserService } from '../../models';
 
 @Component({
-	selector: 'view-profile',
+	selector: 'page-profile',
 	templateUrl: './profile.component.html',
 	styleUrls: ['./profile.component.scss']
 })
