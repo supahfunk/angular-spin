@@ -17,7 +17,7 @@
 				<h3>Le tue ultime ricerche</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -82,6 +82,7 @@
 					<li class="popup-hint--item" *ngFor="let destination of destinations" (click)="onSetDestination(destination)">
 						<span class="popup-hint--ico">
 							<svg [ngSwitch]="destination.type">
+								<use *ngSwitchCase="0" xlink:href="#ico-star"></use>
 								<use *ngSwitchCase="1" xlink:href="#ico-star"></use>
 								<use *ngSwitchCase="2" xlink:href="#ico-pin"></use>
 								<use *ngSwitchCase="3" xlink:href="#ico-pin"></use>
@@ -115,7 +116,7 @@
 				<h3>Seleziona la data di partenza</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -136,7 +137,7 @@
 	</div>
 	<!-- DURATION -->
 	<div class="main-search--col main-search--duration" [ngClass]="{'active':active==searchDuration}">
-		<div (click)="active = searchDuration" #searchDuration>
+		<div (click)="active = searchDuration" #searchDuration class="main-search--trigger">
 			<label for="main-search--duration">Durata viaggio</label>
 			<input disabled id="main-search--duration" type="text" class="main-search--duration" [value]="model.duration.name">
 			<span class="ico">
@@ -150,7 +151,7 @@
 				<h3>Seleziona la durata del tuo viaggio</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -184,7 +185,7 @@
 				<h3>Numero di adulti</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -212,7 +213,7 @@
 				<h3>Numero di bambini</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
