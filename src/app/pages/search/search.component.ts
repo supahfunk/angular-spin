@@ -11,6 +11,8 @@ import { RouteService } from '../../core/routes';
 
 export class SearchComponent extends PageComponent implements OnInit {
 
+	model: any;
+
 	constructor(
 		route: ActivatedRoute,
 		public routeService: RouteService
@@ -21,9 +23,10 @@ export class SearchComponent extends PageComponent implements OnInit {
 	ngOnInit() {
 		this.params
 			.takeUntil(this.unsubscribe)
-			.subscribe(params => {
-				if (params) {
-					console.log('SearchComponent.params', params);
+			.subscribe(model => {
+				if (model) {
+					console.log('SearchComponent.model', model);
+					this.model = model;
 				}
 			});
 	}

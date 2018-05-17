@@ -20,7 +20,7 @@ import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
 import { ControlEditableComponent } from './forms';
-import { CategoryService, DestinationService, PromotionService, RegionService, UserService } from './models';
+import { CategoryService, DestinationService, PromotionService, RegionService, SearchService, UserService } from './models';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
 import { DestinationTypePipe } from './pipes';
 import { CategoriesComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
@@ -29,7 +29,8 @@ registerLocaleData(localeIt, 'it');
 
 @NgModule({
 	imports: [
-		BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, CalendarModule, SpinnerModule, GalleriaModule, NoopAnimationsModule,
+		BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
+		CalendarModule, SpinnerModule, GalleriaModule, NoopAnimationsModule,
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 		// and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.
@@ -53,7 +54,7 @@ registerLocaleData(localeIt, 'it');
 	],
 	providers: [
 		AuthAttribute,
-		CategoryService, DestinationService, PromotionService, RegionService, UserService,
+		CategoryService, DestinationService, PromotionService, RegionService, SearchService, UserService,
 		Logger, TranslateService, RouteService,
 		DestinationTypePipe,
 		{ provide: LOCALE_ID, useValue: 'it' },
