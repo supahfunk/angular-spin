@@ -20,8 +20,9 @@ import { MemoryService } from './core/memory';
 import { PageDirective } from './core/pages';
 import { RouteService } from './core/routes';
 import { ControlEditableComponent } from './forms';
-import { CategoryService, PromotionService, RegionService, UserService } from './models';
-import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
+import { CategoryService, DestinationService, PromotionService, RegionService, UserService } from './models';
+import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
+import { DestinationTypePipe } from './pipes';
 import { CategoriesComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
 registerLocaleData(localeIt, 'it');
@@ -44,19 +45,21 @@ registerLocaleData(localeIt, 'it');
 	],
 	declarations: [
 		AppComponent,
-		HomeComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
+		HomeComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
 		HeaderComponent, FooterComponent, CategoriesComponent, SvgComponent, ValuePropositionComponent, PromotionsComponent, RegionSearchComponent, NotFoundComponent,
 		ControlEditableComponent,
-		LoggerComponent, PageDirective, MainSearchComponent, HomeSearchComponent
+		LoggerComponent, PageDirective, MainSearchComponent, HomeSearchComponent,
+		DestinationTypePipe,
 	],
 	providers: [
 		AuthAttribute,
-		UserService, RegionService, PromotionService, CategoryService,
+		CategoryService, DestinationService, PromotionService, RegionService, UserService,
 		Logger, TranslateService, RouteService,
+		DestinationTypePipe,
 		{ provide: LOCALE_ID, useValue: 'it' },
 		// { provide: RouteService, useClass: RouteService, deps: [TranslateService, Location, Router] },
 	],
-	entryComponents: [HomeComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
+	entryComponents: [HomeComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent],
 	bootstrap: [AppComponent]
 })
 

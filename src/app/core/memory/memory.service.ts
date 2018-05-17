@@ -8,26 +8,26 @@ export class MemoryService implements InMemoryDbService {
 		return Datas;
 	}
 
-    /*
-    return new ParsedRequestUrl {
-            apiBase: string;
-            collectionName: string;
-            id: string;
-            query: Map<string, string[]>;
-            resourceUrl: string;
-        }
-    */
+	/*
+	return new ParsedRequestUrl {
+			apiBase: string;
+			collectionName: string;
+			id: string;
+			query: Map<string, string[]>;
+			resourceUrl: string;
+		}
+	*/
 
 	parseRequestUrl(url: string, service): ParsedRequestUrl {
 		// console.log(url, service);
-		let parsed: ParsedRequestUrl = service.parseRequestUrl(url);
-		let wildcards: any[] = this.getWildcards(url);
+		const parsed: ParsedRequestUrl = service.parseRequestUrl(url);
+		const wildcards: any[] = this.getWildcards(url);
 		// console.log('wildcards', wildcards);
 		if (wildcards.length) {
 			// console.log('parsed', parsed, parsed.query);
 			if (parsed.collectionName === 'page') {
 				const query: Map<string, string[]> = parsed.query;
-				let slug: string;
+				// const slug: string;
 				query.forEach((value: string[], name: string) => {
 					if (name === 'slug') {
 						wildcards.forEach(w => {
@@ -35,7 +35,7 @@ export class MemoryService implements InMemoryDbService {
 								// console.log(w);
 								value[0] = w.slug;
 							}
-						})
+						});
 					}
 				});
 				// console.log(query);
@@ -46,8 +46,8 @@ export class MemoryService implements InMemoryDbService {
 	}
 
 	getWildcards(url: string) {
-		let pages: Page[] = Datas.page;
-		let wildcards: any[] = pages.filter((page: Page) => {
+		const pages: Page[] = Datas.page;
+		const wildcards: any[] = pages.filter((page: Page) => {
 			return page.slug && page.slug.indexOf('?') !== -1;
 		}).map((page: Page) => {
 			let slug: string = page.slug;

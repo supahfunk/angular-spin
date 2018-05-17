@@ -1,3 +1,18 @@
+<ng-container [ngSwitch]="control.schema">
+	<ng-container *ngSwitchCase="'checkbox'">
+		<b>checkbox</b><br>
+	</ng-container>
+	<ng-container *ngSwitchCase="'email'">
+		<b>email</b><br>
+	</ng-container>
+	<ng-container *ngSwitchCase="'number'">
+		<b>number</b><br>
+	</ng-container>
+	<ng-container *ngSwitchCase="'password'">
+		<b>password</b><br>
+	</ng-container>
+</ng-container>
+
 <div class="form-group" [formGroup]="form">
 	<div [ngSwitch]="control.schema">
 		<div *ngSwitchCase="'checkbox'" class="form-check">

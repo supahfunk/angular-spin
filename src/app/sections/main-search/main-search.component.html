@@ -1,15 +1,18 @@
-<div class="main-search">
+<form class="main-search" name="mainSearch" role="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()" #mainSearch="ngForm">
+	<!-- DESTINATION -->
 	<div class="main-search--col main-search--location" [ngClass]="{'active':active==searchLocation}">
 		<div (click)="active = searchLocation" #searchLocation>
 			<label for="main-search--location">Destinazione</label>
-			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel">
+			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" [value]="model.destination.name" (focus)="model.query = null; model.destination = null;" *ngIf="model.destination">
+			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="model.query" [hidden]="model.destination" #query>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-pin"></use>
 				</svg>
 			</span>
 		</div>
-		<div class="popup-hint popup-hint__last-search popup-hint__destination">
+		<!-- LAST DESTINATIONS -->
+		<div class="popup-hint popup-hint__last-search popup-hint__destination" #lastSearch *ngIf="!destinationDirty">
 			<div class="popup-hint--head">
 				<h3>Le tue ultime ricerche</h3>
 				<div class="popup-hint--close" (click)="active=null">
@@ -71,313 +74,42 @@
 				</ul>
 			</div>
 		</div>
-
-		<div class="popup-hint popup-hint__autocomplete popup-hint__destination" style="display: none;">
+		<!-- AUTOCOMPLETE DESTINATIONS -->
+		<div class="popup-hint popup-hint__autocomplete popup-hint__destination" #autocomplete *ngIf="destinationDirty && !model.destination">
 			<div class="popup-hint--body">
 				<ul class="popup-hint--list">
-					<li class="popup-hint--item">
+					<!-- DESTINATION ITEM -->
+					<li class="popup-hint--item" *ngFor="let destination of destinations" (click)="onSetDestination(destination)">
 						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
+							<svg [ngSwitch]="destination.type">
+								<use *ngSwitchCase="1" xlink:href="#ico-star"></use>
+								<use *ngSwitchCase="2" xlink:href="#ico-pin"></use>
+								<use *ngSwitchCase="3" xlink:href="#ico-pin"></use>
+								<use *ngSwitchCase="4" xlink:href="#ico-pin"></use>
+								<use *ngSwitchCase="5" xlink:href="#ico-struttura"></use>
 							</svg>
 						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
+						<h4 class="popup-hint--tit" [innerHTML]="destination.name | highlight : model.query">---</h4>
 						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-struttura"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">FA<strong>MI</strong>LY HOTEL ADAMELLO</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Passo Tonale (TN) - dal 06/12 al 31/03
-							</div>
-							<div class="popup-hint--type">
-								Hotel
-							</div>
-						</div>
-					</li>
-					<li class="popup-hint--item">
-						<span class="popup-hint--ico">
-							<svg>
-								<use xlink:href="#ico-pin"></use>
-							</svg>
-						</span>
-						<h4 class="popup-hint--tit">E<strong>mi</strong>lia Romagna</h4>
-						<div class="popup-hint--info">
-							<div class="popup-hint--location">
-								Italia
-							</div>
-							<div class="popup-hint--type">
-								Regione
-							</div>
+							<div class="popup-hint--location" [innerHTML]="destination.abstract | highlight : model.query">---</div>
+							<div class="popup-hint--type">{{ destination | destinationType }}</div>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	<!-- DATE -->
 	<div class="main-search--col main-search--date" [ngClass]="{'active':active==searchDate}">
 		<div class="main-search--trigger" (click)="active = searchDate" #searchDate>
 			<label for="main-search--date">Data di partenza</label>
-			<input disabled type="text" id="main-search--date" placeholder="Seleziona una data" value="{{startDate | date:'dd MMMM yyyy'}}">
+			<input disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="model.startDate | date:'dd MMMM yyyy'">
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-calendar"></use>
 				</svg>
 			</span>
 		</div>
-
 		<div class="popup-hint popup-hint__date">
 			<div class="popup-hint--head">
 				<h3>Seleziona la data di partenza</h3>
@@ -391,23 +123,22 @@
 				<div class="popup-hint--flexible-date">
 					<div class="checkbox">
 						<label>
-							<input checked type="checkbox" value="" />
+							<input checked type="checkbox" name="flexibleDates" [(ngModel)]="model.flexibleDates" />
 							<span>Date flessibili +/- 3 giorni?</span>
 						</label>
 					</div>
 				</div>
-
 				<div class="calendar popup-calendar">
-					<p-calendar [(ngModel)]="startDate" [inline]="true" [monthNavigator]="true" [yearNavigator]="true" [yearRange]="minYear + ':' + maxYear" [minDate]="minDate" [maxDate]="maxDate" [locale]="it" dateFormat="dd/mm/yy"></p-calendar>
+					<p-calendar name="startDate" [(ngModel)]="model.startDate" [inline]="true" [monthNavigator]="true" [yearNavigator]="true" [yearRange]="calendar.minYear + ':' + calendar.maxYear" [minDate]="calendar.minDate" [maxDate]="calendar.maxDate" [locale]="calendar.it" dateFormat="dd/mm/yy"></p-calendar>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<!-- DURATION -->
 	<div class="main-search--col main-search--duration" [ngClass]="{'active':active==searchDuration}">
 		<div (click)="active = searchDuration" #searchDuration>
 			<label for="main-search--duration">Durata viaggio</label>
-			<input disabled id="main-search--duration" type="text" class="main-search--duration" value="Qualsiasi durata">
+			<input disabled id="main-search--duration" type="text" class="main-search--duration" [value]="model.duration.name">
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-clock"></use>
@@ -425,51 +156,11 @@
 			</div>
 			<div class="popup-hint--body">
 				<ul class="popup-hint--list">
-					<li class="popup-hint--check">
+					<li class="popup-hint--check" *ngFor="let duration of durations">
 						<div class="radio">
 							<label>
-								<input name="main-search--duration" checked type="radio" value="" />
-								<span>Qualsiasi durata</span>
-							</label>
-						</div>
-					</li>
-					<li class="popup-hint--check">
-						<div class="radio">
-							<label>
-								<input name="main-search--duration"  type="radio" value="" />
-								<span>1-3 notti</span>
-							</label>
-						</div>
-					</li>
-					<li class="popup-hint--check">
-						<div class="radio">
-							<label>
-								<input name="main-search--duration"  type="radio" value="" />
-								<span>4-6 notti</span>
-							</label>
-						</div>
-					</li>
-					<li class="popup-hint--check">
-						<div class="radio">
-							<label>
-								<input name="main-search--duration"  type="radio" value="" />
-								<span>7 notti</span>
-							</label>
-						</div>
-					</li>
-					<li class="popup-hint--check">
-						<div class="radio">
-							<label>
-								<input name="main-search--duration"  type="radio" value="" />
-								<span>8-13 notti</span>
-							</label>
-						</div>
-					</li>
-					<li class="popup-hint--check">
-						<div class="radio">
-							<label>
-								<input name="main-search--duration"  type="radio" value="" />
-								<span>14 notti o più</span>
+								<input name="main-search--duration" type="radio" name="duration" [value]="duration" [(ngModel)]="model.duration"/>
+								<span>{{duration.name}}</span>
 							</label>
 						</div>
 					</li>
@@ -477,10 +168,11 @@
 			</div>
 		</div>
 	</div>
+	<!-- ADULTS -->
 	<div class="main-search--col main-search--adults" [ngClass]="{'active':active==searchAdults}">
 		<div class="main-search--trigger" (click)="active=searchAdults" #searchAdults>
 			<label for="main-search--adults">Adulti</label>
-			<input disabled id="main-search--adults" type="text" value="" [(ngModel)]="model.adults" #adults>
+			<input disabled id="main-search--adults" type="text" [value]="model.adults" #adults>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-adult"></use>
@@ -499,26 +191,16 @@
 			<div class="popup-hint--body">
 				<div class="spinner-input">
 					<strong for="">Adulti</strong>
-					<p-spinner size="10" readonly [(ngModel)]="model.adults" [min]="1" [max]="10"></p-spinner>
+					<p-spinner size="10" readonly name="adults" [(ngModel)]="model.adults" [min]="1" [max]="10"></p-spinner>
 				</div>
-
-				<!-- <ul class="popup-hint--list">
-					<li class="popup-hint--check" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
-						<div class="radio">
-							<label>
-								<input name="main-search--adults" type="radio" value="{{item}}" [checked]="item==adults.value" (click)="adults.value=item" />
-								<span>{{item}}</span>
-							</label>
-						</div>
-					</li>
-				</ul> -->
 			</div>
 		</div>
 	</div>
+	<!-- CHILDS -->
 	<div class="main-search--col main-search--childs" [ngClass]="{'active':active==searchChilds}">
 		<div class="main-search--trigger" (click)="active=searchChilds" #searchChilds>
 			<label for="main-search--childs">Bambini</label>
-			<input disabled id="main-search--childs" type="text" value="" [(ngModel)]="model.childs" #childs>
+			<input disabled id="main-search--childs" type="text" [value]="model.childs" #childs>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-child"></use>
@@ -537,14 +219,14 @@
 			<div class="popup-hint--body">
 				<div class="spinner-input">
 					<strong>Bambini</strong>
-					<p-spinner size="10" readonly [(ngModel)]="model.childs" [min]="0" [max]="4" (onChange)="onChildsChanged()"></p-spinner>
+					<p-spinner size="10" readonly name="childs" [(ngModel)]="model.childs" [min]="0" [max]="4" (onChange)="onChildsChanged()"></p-spinner>
 				</div>
 				<div class="child-ages">
 					<div class="child-age" *ngFor="let child of model.childrens; let index = $index">
 						<strong>Età bambino {{index}}</strong>
 						<div class="custom-select">
-							<select dir="rtl" [(ngModel)]="child.age">
-								<option *ngFor="let age of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]" value="{{age}}">{{age}}</option>
+							<select dir="rtl" name="age" [(ngModel)]="child.age">
+								<option *ngFor="let age of ages" [value]="age">{{age}}</option>
 							</select>
 						</div>
 					</div>
@@ -552,8 +234,8 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- SEARCH -->
 	<div class="main-search--col main-search--submit">
-		<button type="submit" class="btn">Cerca</button>
+		<button type="submit" class="btn">{{ 'app.search' | translate }}</button>
 	</div>
-</div>
+</form>

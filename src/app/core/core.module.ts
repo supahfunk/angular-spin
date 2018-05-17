@@ -7,6 +7,7 @@ import { AuthService } from './auth';
 import { CoreRouting } from './core.routing';
 import { DisposableComponent } from './disposable';
 import { ControlComponent, ControlService, FormService, MatchValidator } from './forms';
+import { HighlightPipe } from './highlight';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { OnceService } from './once';
@@ -14,6 +15,8 @@ import { PageComponent, PageHosterComponent, PageService, Pages } from './pages'
 import { FacebookService, GoogleService } from './plugins';
 import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
 import { CookieStorageService, LocalStorageService, SessionStorageService, StorageService } from './storage';
+import { TrustPipe } from './trust';
+
 // import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 // import { AuthService, AuthTokenInterceptor } from './auth';
 
@@ -29,12 +32,12 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		CoreRouting,
 	],
 	exports: [
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		AssetPipe, HighlightPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator, TrustPipe,
 		ControlComponent,
 	],
 	declarations: [
 		PageHosterComponent, PageComponent, DisposableComponent,
-		AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator,
+		AssetPipe, HighlightPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator, TrustPipe,
 		ControlComponent,
 	],
 	providers: [
@@ -47,6 +50,7 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		*/
 		AssetPipe,
 		AuthService,
+		HighlightPipe,
 		CookieStorageService,
 		LocalStorageService,
 		SessionStorageService,
@@ -61,6 +65,7 @@ import { CookieStorageService, LocalStorageService, SessionStorageService, Stora
 		SegmentPipe,
 		ControlService,
 		FormService,
+		TrustPipe,
 	],
 })
 

@@ -1,3 +1,5 @@
+export * from './destination.service';
+export * from './destination';
 export * from './promotion.service';
 export * from './promotion';
 export * from './category';
