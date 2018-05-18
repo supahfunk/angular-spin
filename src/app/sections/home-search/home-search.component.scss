@@ -15,7 +15,7 @@ Home Search
 	}
 
 	@include xs-down {
-		background-image: linear-gradient(to bottom, #0965ab, #2793e4) !important;
+		background-image: linear-gradient(to bottom, $tertiary-color, lighten($tertiary-color, 8%)) !important;
 		padding-bottom: 25px;
 		height: auto;
 		margin-bottom: 25px;
