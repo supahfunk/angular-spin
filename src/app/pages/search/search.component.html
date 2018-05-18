@@ -23,7 +23,7 @@
 				<span>Modifica </span> </div>
 		</div>
 		<!-- Order Popup -->
-		<div class="serp-filters--popup serp-order" [ngClass]="{'active':active==popupOrder}">
+		<div class="serp-filters--popup serp-order--popup" [ngClass]="{'active':active==popupOrder}">
 			<div class="head">
 				<div class="tit"> Ordina risultati </div>
 				<a class="close" (click)="active=null">
@@ -49,7 +49,7 @@
 		</div>
 		<!-- Order Popup -->
 		<!-- Filter Popup -->
-		<div class="serp-filters--popup serp-filter" [ngClass]="{'active':active==popupFilter}">
+		<div class="serp-filters--popup serp-filter--popup" [ngClass]="{'active':active==popupFilter}">
 			<div class="head">
 				<div class="tit"> Filtra risultati </div>
 				<a class="close" (click)="active=null">
@@ -59,75 +59,15 @@
 				</a>
 			</div>
 			<div class="content">
-				<p-accordion styleClass="popup-accordion">
-					<p-accordionTab header="Destinazione" [selected]="true">
-						<ul class="list">
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Abruzzo <em>10</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Friuli Venezia Giulia <em>8</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Lombardia <em>9</em> </span> </label> </div>
-							</li>
-						</ul>
-					</p-accordionTab>
-					<p-accordionTab header="Servizi">
-						<ul class="list">
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Centro benessere <em>10</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Novità <em>8</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Spiaggia  <em>9</em> </span> </label> </div>
-							</li>
-						</ul>
-					</p-accordionTab>
-					<p-accordionTab header="Trattamento">
-						<ul class="list">
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Pensione completa con bevande  <em>10</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Mezza pensione  <em>8</em> </span> </label> </div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>Soft All Inclusive  <em>9</em> </span> </label> </div>
-							</li>
-						</ul>
-					</p-accordionTab>
-					<p-accordionTab header="Categoria">
-						<ul class="list">
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>
-									<span class="stars"> <em>*</em> <em>*</em> <em>*</em> <em>*</em> <em class="superior">S</em> </span>
-									<em>10</em> </span> </label>
-								</div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>
-									<span class="stars"> <em>*</em> <em>*</em> <em>*</em> <em>*</em> </span>
-									<em>8</em> </span> </label>
-								</div>
-							</li>
-							<li class="list--item">
-								<div class="checkbox"> <label> <input name="order" type="checkbox"><span>
-									<span class="stars"> <em>*</em> <em>*</em> <em>*</em> </span>
-									<em>9</em> </span> </label>
-								</div>
-							</li>
-						</ul>
-					</p-accordionTab>
-				</p-accordion>
+				<div class="popup-accordion">
+					<section-filter></section-filter>
+				</div>
 			</div>
 			<div class="foot"> <a href="#" class="btn-reset">Resetta filtri </a> <a href="#" class="btn">Aggiorna </a> </div>
 		</div>
 		<!-- Filter Popup -->
 		<!-- Main Search Popup -->
-		<div class="serp-filters--popup serp-main-search" [ngClass]="{'active':active==popupMainSearch}">
+		<div class="serp-filters--popup serp-main-search--popup" [ngClass]="{'active':active==popupMainSearch}">
 			<div class="head">
 				<div class="tit"> Modifica ricerca </div>
 				<a class="close" (click)="active=null">
@@ -142,4 +82,21 @@
 	</div>
 </div>
 
-<json-formatter [json]="search.model"></json-formatter>
+<!-- <json-formatter [json]="search.model"></json-formatter> -->
+
+<div class="serp-content">
+	<div class="container">
+		<div class="serp-filter">
+			<div class="serp-filter--sticky">
+				<section-filter></section-filter>
+			</div>
+		</div>
+		<div class="serp-results">
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates deleniti molestias inventore placeat sint sapiente perspiciatis, nobis repellendus ipsa, velit ab. Maiores iste ipsum distinctio placeat odio. Distinctio animi illo quaerat repudiandae accusamus blanditiis modi voluptatem, ab architecto tempora! Dignissimos nam in eaque accusantium autem labore quibusdam ipsam at adipisci, ab enim earum perspiciatis reiciendis hic eum minus sint dolore maxime molestias dolorum? Commodi quia ex, accusantium quibusdam tempora nobis similique deleniti. Illum placeat, sed minima voluptate culpa optio. Culpa ipsa beatae voluptatibus nulla placeat officiis exercitationem! Dicta id amet accusamus. Esse dicta officia voluptates temporibus totam veniam excepturi qui.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates deleniti molestias inventore placeat sint sapiente perspiciatis, nobis repellendus ipsa, velit ab. Maiores iste ipsum distinctio placeat odio. Distinctio animi illo quaerat repudiandae accusamus blanditiis modi voluptatem, ab architecto tempora! Dignissimos nam in eaque accusantium autem labore quibusdam ipsam at adipisci, ab enim earum perspiciatis reiciendis hic eum minus sint dolore maxime molestias dolorum? Commodi quia ex, accusantium quibusdam tempora nobis similique deleniti. Illum placeat, sed minima voluptate culpa optio. Culpa ipsa beatae voluptatibus nulla placeat officiis exercitationem! Dicta id amet accusamus. Esse dicta officia voluptates temporibus totam veniam excepturi qui.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates deleniti molestias inventore placeat sint sapiente perspiciatis, nobis repellendus ipsa, velit ab. Maiores iste ipsum distinctio placeat odio. Distinctio animi illo quaerat repudiandae accusamus blanditiis modi voluptatem, ab architecto tempora! Dignissimos nam in eaque accusantium autem labore quibusdam ipsam at adipisci, ab enim earum perspiciatis reiciendis hic eum minus sint dolore maxime molestias dolorum? Commodi quia ex, accusantium quibusdam tempora nobis similique deleniti. Illum placeat, sed minima voluptate culpa optio. Culpa ipsa beatae voluptatibus nulla placeat officiis exercitationem! Dicta id amet accusamus. Esse dicta officia voluptates temporibus totam veniam excepturi qui.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates deleniti molestias inventore placeat sint sapiente perspiciatis, nobis repellendus ipsa, velit ab. Maiores iste ipsum distinctio placeat odio. Distinctio animi illo quaerat repudiandae accusamus blanditiis modi voluptatem, ab architecto tempora! Dignissimos nam in eaque accusantium autem labore quibusdam ipsam at adipisci, ab enim earum perspiciatis reiciendis hic eum minus sint dolore maxime molestias dolorum? Commodi quia ex, accusantium quibusdam tempora nobis similique deleniti. Illum placeat, sed minima voluptate culpa optio. Culpa ipsa beatae voluptatibus nulla placeat officiis exercitationem! Dicta id amet accusamus. Esse dicta officia voluptates temporibus totam veniam excepturi qui.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates deleniti molestias inventore placeat sint sapiente perspiciatis, nobis repellendus ipsa, velit ab. Maiores iste ipsum distinctio placeat odio. Distinctio animi illo quaerat repudiandae accusamus blanditiis modi voluptatem, ab architecto tempora! Dignissimos nam in eaque accusantium autem labore quibusdam ipsam at adipisci, ab enim earum perspiciatis reiciendis hic eum minus sint dolore maxime molestias dolorum? Commodi quia ex, accusantium quibusdam tempora nobis similique deleniti. Illum placeat, sed minima voluptate culpa optio. Culpa ipsa beatae voluptatibus nulla placeat officiis exercitationem! Dicta id amet accusamus. Esse dicta officia voluptates temporibus totam veniam excepturi qui.</p>
+		</div>
+	</div>
+</div>

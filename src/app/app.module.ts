@@ -24,7 +24,7 @@ import { ControlEditableComponent } from './forms';
 import { CategoryService, DestinationService, PromotionService, RegionService, SearchService, UserService } from './models';
 import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent } from './pages';
 import { DestinationTypePipe } from './pipes';
-import { CategoriesComponent, DestinationHintComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
+import { CategoriesComponent, DestinationHintComponent, FilterComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
 
 registerLocaleData(localeIt, 'it');
@@ -49,7 +49,7 @@ registerLocaleData(localeIt, 'it');
 	declarations: [
 		AppComponent,
 		HomeComponent, SearchComponent, SignComponent, SignForgottenComponent, SignInComponent, SignUpComponent, ProfileComponent, RegionDetailComponent, RegionsComponent,
-		HeaderComponent, FooterComponent, CategoriesComponent, SvgComponent, ValuePropositionComponent, PromotionsComponent, RegionSearchComponent, NotFoundComponent,
+		HeaderComponent, FooterComponent, FilterComponent, CategoriesComponent, SvgComponent, ValuePropositionComponent, PromotionsComponent, RegionSearchComponent, NotFoundComponent,
 		DestinationHintComponent,
 		ControlEditableComponent,
 		LoggerComponent, PageDirective, MainSearchComponent, HomeSearchComponent,

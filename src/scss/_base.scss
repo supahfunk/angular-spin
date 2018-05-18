@@ -78,6 +78,7 @@ Card Row
 		height: 12px;
 		text-indent: -9999px;
 		font-size: 0;
+		line-height: 1 !important;
 
 		&.superior {
 			font-size: 10px !important;
@@ -87,7 +88,6 @@ Card Row
 			mask-image: none;
 			background-color: transparent !important;
 			position: relative;
-			top: -1px;
 			left: 2px;
 		}
 	}
