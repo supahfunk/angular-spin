@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import 'rxjs/add/operator/debounceTime';
@@ -84,13 +84,20 @@ export class MainSearchComponent extends DisposableComponent implements AfterVie
 	constructor(
 		private router: Router,
 		private routeService: RouteService,
-		private destinationService: DestinationService
+		private destinationService: DestinationService,
+		private renderer: Renderer2,
+		private elementRef: ElementRef
 	) {
 		super();
+
 	}
+
+
 
 	@ViewChild('query') query;
 	query$;
+
+	@ViewChild('searchLocation') searchLocation;
 
 	ngAfterViewInit() {
 		this.query$ = fromEvent(this.query.nativeElement, 'keyup')
@@ -101,6 +108,8 @@ export class MainSearchComponent extends DisposableComponent implements AfterVie
 		this.query$
 			.takeUntil(this.unsubscribe)
 			.subscribe(x => this.onDestinationKeyUp(x));
+
+		this.renderer.listen(this.searchLocation.nativeElement, 'click', () => { console.log('cliccato'); });
 	}
 
 	// DESTINATIONS

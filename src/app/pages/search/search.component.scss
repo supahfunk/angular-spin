@@ -7,6 +7,8 @@ Serp Search
 .serp-search {
 	background: $tertiary-color;
 	margin-bottom: 40px;
+	position: relative;
+	z-index: 100;
 }
 
 
@@ -60,10 +62,6 @@ Serp Filters
 .serp-filters--popup {
 	display: none;
 
-	&.active {
-		display: block;
-	}
-
 	@include sm-down {
 		position: fixed;
 		z-index: 100;
@@ -74,6 +72,10 @@ Serp Filters
 		overflow-y: auto;
 		background: linear-gradient(to bottom, $secondary-color, $tertiary-color);
 
+		&.active {
+			display: block;
+		}
+
 		.head {
 			padding: 15px;
 			color: #fff;
@@ -81,9 +83,9 @@ Serp Filters
 		}
 
 		.close {
-			position: fixed;
+			position: absolute;
 			z-index: 100;
-			top: 20px;
+			top: 18px;
 			right: 15px;
 			cursor: pointer;
 			opacity: .5;

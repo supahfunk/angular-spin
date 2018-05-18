@@ -3,8 +3,13 @@
 	<div class="main-search--col main-search--location" [ngClass]="{'active':active==searchLocation}">
 		<div (click)="active = searchLocation" #searchLocation>
 			<label for="main-search--location">Destinazione</label>
-			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" [value]="model.destination.name" (focus)="model.query = null; model.destination = null;" *ngIf="model.destination">
-			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="model.query" [hidden]="model.destination" #query>
+			<input type="text" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" [value]="model.destination.name" (focus)="model.query = null; model.destination = null;" *ngIf="model.destination">
+			<input type="text" class="with-reset" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="model.query" [hidden]="model.destination" #query>
+			<span class="reset">
+				<svg>
+					<use xlink:href="#ico-reset"></use>
+				</svg>
+			</span>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-pin"></use>
@@ -104,7 +109,12 @@
 	<div class="main-search--col main-search--date" [ngClass]="{'active':active==searchDate}">
 		<div class="main-search--trigger" (click)="active = searchDate" #searchDate>
 			<label for="main-search--date">Data di partenza</label>
-			<input disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="model.startDate | date:'dd MMMM yyyy'">
+			<input class="with-reset" disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="model.startDate | date:'dd MMMM yyyy'">
+			<span class="reset">
+				<svg>
+					<use xlink:href="#ico-reset"></use>
+				</svg>
+			</span>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-calendar"></use>
@@ -137,9 +147,9 @@
 	</div>
 	<!-- DURATION -->
 	<div class="main-search--col main-search--duration" [ngClass]="{'active':active==searchDuration}">
-		<div (click)="active = searchDuration" #searchDuration class="main-search--trigger">
+		<div class="main-search--trigger" (click)="active = searchDuration" #searchDuration>
 			<label for="main-search--duration">Durata viaggio</label>
-			<input disabled id="main-search--duration" type="text" class="main-search--duration" [value]="model.duration.name">
+			<input disabled id="main-search--duration" type="text" class="main-search--duration-input" [value]="model.duration.name">
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-clock"></use>

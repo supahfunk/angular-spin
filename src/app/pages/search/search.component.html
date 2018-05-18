@@ -7,31 +7,33 @@
 				</svg>
 				<span>Mappa</span>
 			</div>
-			<div class="serp-filters--item">
+			<div class="serp-filters--item" (click)="active = popupMainSearch" #popupOrder>
 				<svg class="ico ico-order">
 					<use xlink:href="#ico-order"></use>
 				</svg>
 				<span>Ordina</span>
 			</div>
-			<div class="serp-filters--item">
+			<div class="serp-filters--item" (click)="active = popupMainSearch" #popupFilter>
 				<svg class="ico ico-filter">
 					<use xlink:href="#ico-filter"></use>
 				</svg>
 				<span>Filtra</span>
 			</div>
-			<div class="serp-filters--item">
+			<div class="serp-filters--item" (click)="active = popupMainSearch" #popupMainSearch>
 				<svg class="ico ico-search">
 					<use xlink:href="#ico-search"></use>
 				</svg>
 				<span>Modifica</span>
 			</div>
 		</div>
-		<div class="serp-filters--popup serp-main-search">
+
+		<!-- Main Search Popup -->
+		<div class="serp-filters--popup serp-main-search" [ngClass]="{'active':active==popupMainSearch}">
 			<div class="head">
 				<div class="tit">
 					Modifica ricerca
 				</div>
-				<a class="close">
+				<a class="close" (click)="active=null">
 					<svg class="ico">
 						<use xlink:href="#ico-close"></use>
 					</svg>
@@ -40,7 +42,7 @@
 
 			<main-search></main-search>
 		</div>
-
+		<!-- Main Search Popup -->
 
 	</div>
 </div>
