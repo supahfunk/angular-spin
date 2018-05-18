@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageComponent } from '../../core/pages';
 import { RouteService } from '../../core/routes';
@@ -12,25 +12,27 @@ import { SearchService } from '../../models';
 
 export class SearchComponent extends PageComponent implements OnInit {
 
+	active: ElementRef;
+
 	constructor(
 		route: ActivatedRoute,
 		public routeService: RouteService,
 		public search: SearchService
 	) {
 		super(route);
+		this.routeService.params
+			.takeUntil(this.unsubscribe)
+			.subscribe(model => {
+				console.log('SearchComponent.constructor', model);
+			});
 	}
 
 	ngOnInit() {
-		/*
 		this.params
 			.takeUntil(this.unsubscribe)
 			.subscribe(model => {
-				if (model) {
-					console.log('SearchComponent.model', model);
-					this.model = model;
-				}
+				console.log('SearchComponent.onInit', model);
 			});
-			*/
 	}
 
 }

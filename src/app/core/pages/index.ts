@@ -1,5 +1,6 @@
 export * from './page-hoster.component';
 export * from './page-resolver.service';
+export * from './page-resolver';
 export * from './page.component';
 export * from './page.directive';
 export * from './page.service';
