@@ -3,6 +3,7 @@ export * from './disposable';
 export * from './forms';
 export * from './guards';
 export * from './highlight';
+export * from './json-formatter';
 export * from './labels';
 export * from './logger';
 export * from './memory';

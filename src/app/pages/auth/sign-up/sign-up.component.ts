@@ -36,18 +36,18 @@ export class SignUpComponent extends PageComponent implements OnInit {
 	ngOnInit() {
 		this.params
 			.takeUntil(this.unsubscribe)
-			.subscribe(params => {
-				if (params) {
-					console.log('SignUpComponent.params', params);
-					if (params.facebook) {
-						this.facebook = params.facebook as FacebookUser;
+			.subscribe(model => {
+				if (model) {
+					console.log('SignUpComponent.params', model);
+					if (model.facebook) {
+						this.facebook = model.facebook as FacebookUser;
 						this.model.firstName = this.facebook.first_name;
 						this.model.lastName = this.facebook.last_name;
 						this.model.email = this.facebook.email;
 						this.model.emailConfirm = this.facebook.email;
 					}
-					if (params.google) {
-						this.google = params.google as GoogleUser;
+					if (model.google) {
+						this.google = model.google as GoogleUser;
 						this.model.firstName = this.google.firstName;
 						this.model.lastName = this.google.lastName;
 						this.model.email = this.google.email;
