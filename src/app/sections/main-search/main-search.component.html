@@ -3,8 +3,9 @@
 	<div class="main-search--col main-search--location" [ngClass]="{'active':active==searchLocation}">
 		<div (click)="active = searchLocation" #searchLocation>
 			<label for="main-search--location">Destinazione</label>
+			<input type="text" class="with-reset" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" [value]="search.model.destination.name" (focus)="search.onDestinationReset()" *ngIf="search.model.destination">
 			<input type="text" class="with-reset" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="search.model.query" [hidden]="search.model.destination" #query>
-			<span class="reset">
+			<span class="reset" (click)="search.onDestinationReset(); query.focus()" [hidden]="search.isDestinationEmpty()">
 				<svg>
 					<use xlink:href="#ico-reset"></use>
 				</svg>
@@ -37,7 +38,7 @@
 		<div class="main-search--trigger" (click)="active = searchDate" #searchDate>
 			<label for="main-search--date">Data di partenza</label>
 			<input class="with-reset" disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="search.model.startDate | date:'dd MMMM yyyy'">
-			<span class="reset">
+			<span class="reset" (click)="search.onStartDateReset(); query.focus()" [hidden]="search.isStartDateEmpty()">
 				<svg>
 					<use xlink:href="#ico-reset"></use>
 				</svg>

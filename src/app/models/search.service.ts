@@ -2,6 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 import { RouteService } from '../core/routes';
 import { LocalStorageService, StorageService } from '../core/storage';
 import { Destination } from './destination';
@@ -30,6 +31,19 @@ export class MainSearch {
 	adults: number = 2;
 	childs: number = 0;
 	childrens: any[] = [];
+
+	constructor(options?: MainSearch) {
+		if (options) {
+			this.query = options.query || null;
+			this.destination = options.destination as Destination;
+			this.startDate = options.startDate ? new Date(options.startDate) : null;
+			this.flexibleDates = !options.flexibleDates;
+			this.duration = options.duration ? durations.find(x => x.id === options.duration.id) : durations[0];
+			this.adults = options.adults || 2;
+			this.childs = options.childs || 0;
+			this.childrens = options.childrens || [];
+		}
+	}
 }
 
 export class CalendarOption {
@@ -89,6 +103,12 @@ export class SearchService {
 		}
 		const lastDestinations = this.storage.get('lastDestinations');
 		this.lastDestinations = lastDestinations || [];
+		this.routeService.params
+			.take(1)
+			.subscribe(model => {
+				console.log('SearchService.constructor', model);
+				this.model = new MainSearch(model as MainSearch);
+			});
 		/*
 		// TODO subscribe to routeService page params
 		const params = this.route.params.concatMap(x => {
@@ -138,6 +158,23 @@ export class SearchService {
 		const segments = this.routeService.toRoute(['/search']);
 		segments.push(this.routeService.toParams(this.model));
 		this.router.navigate(segments);
+	}
+
+	onDestinationReset() {
+		this.model.query = null;
+		this.model.destination = null;
+	}
+
+	isDestinationEmpty() {
+		return !this.model.query && !this.model.destination;
+	}
+
+	onStartDateReset() {
+		this.model.startDate = null;
+	}
+
+	isStartDateEmpty() {
+		return !this.model.startDate;
 	}
 
 }
