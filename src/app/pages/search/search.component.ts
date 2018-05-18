@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageComponent } from '../../core/pages';
 import { RouteService } from '../../core/routes';
+import { SearchService } from '../../models';
 
 @Component({
 	selector: 'page-search',
@@ -11,16 +12,16 @@ import { RouteService } from '../../core/routes';
 
 export class SearchComponent extends PageComponent implements OnInit {
 
-	model: any;
-
 	constructor(
 		route: ActivatedRoute,
-		public routeService: RouteService
+		public routeService: RouteService,
+		public search: SearchService
 	) {
 		super(route);
 	}
 
 	ngOnInit() {
+		/*
 		this.params
 			.takeUntil(this.unsubscribe)
 			.subscribe(model => {
@@ -29,6 +30,7 @@ export class SearchComponent extends PageComponent implements OnInit {
 					this.model = model;
 				}
 			});
+			*/
 	}
 
 }

@@ -13,13 +13,20 @@ export class JsonFormatterComponent implements OnChanges {
 
 	@Input() json: Array<any> | Object | any;
 
+	render: ElementRef;
+
 	constructor() { }
 
 	ngOnChanges() {
 		if (!isObject(this.json) && !isArray(this.json)) {
 			return;
 		}
+		if (this.render) {
+			this.input.nativeElement.removeChild(this.render.nativeElement);
+		}
 		const formatter = new JSONFormatter(this.json);
-		this.input.nativeElement.appendChild(formatter.render());
+		const render = formatter.render();
+		this.input.nativeElement.appendChild(render);
+		this.render = new ElementRef(render);
 	}
 }

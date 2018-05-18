@@ -89,6 +89,18 @@ export class SearchService {
 		}
 		const lastDestinations = this.storage.get('lastDestinations');
 		this.lastDestinations = lastDestinations || [];
+		/*
+		// TODO subscribe to routeService page params
+		const params = this.route.params.concatMap(x => {
+			return of(this.routeService.toData(x));
+		});
+		params.subscribe(model => {
+			if (model) {
+				console.log('SearchComponent.model', model);
+				this.model = model;
+			}
+		});
+		*/
 	}
 
 	onDestinationQuery(query: string) {
