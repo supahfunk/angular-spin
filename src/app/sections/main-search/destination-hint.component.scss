@@ -100,7 +100,7 @@ Popup Hint
 		z-index: 1;
 		color: $tit-color;
 		padding: 6px 15px 6px 32px;
-		border-bottom: 1px solid #e0e0e0;
+		border-bottom: 1px solid $border-color;
 		cursor: pointer;
 
 		&.active {
@@ -109,7 +109,7 @@ Popup Hint
 	}
 
 	&--check {
-		border-bottom: 1px solid #e0e0e0;
+		border-bottom: 1px solid $border-color;
 		cursor: pointer;
 
 		label {

@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AccordionModule } from 'primeng/accordion';
 import { CalendarModule } from 'primeng/calendar';
 import { GalleriaModule } from 'primeng/galleria';
 import { SpinnerModule } from 'primeng/spinner';
@@ -25,12 +26,13 @@ import { HomeComponent, ProfileComponent, RegionDetailComponent, RegionsComponen
 import { DestinationTypePipe } from './pipes';
 import { CategoriesComponent, DestinationHintComponent, FooterComponent, HeaderComponent, HomeSearchComponent, MainSearchComponent, NotFoundComponent, PromotionsComponent, RegionSearchComponent, SvgComponent, ValuePropositionComponent } from './sections';
 
+
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
 	imports: [
 		BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
-		CalendarModule, SpinnerModule, GalleriaModule, NoopAnimationsModule,
+		CalendarModule, SpinnerModule, GalleriaModule, AccordionModule, NoopAnimationsModule,
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 		// and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.

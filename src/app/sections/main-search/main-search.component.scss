@@ -11,6 +11,7 @@ Main Search
 	width: 100%;
 	position: relative;
 	z-index: 10;
+	user-select: none;
 
 	&--col {
 		flex: 0 0 auto;
@@ -372,7 +373,7 @@ Popup Hint
 		z-index: 1;
 		color: $tit-color;
 		padding: 6px 15px 6px 32px;
-		border-bottom: 1px solid #e0e0e0;
+		border-bottom: 1px solid $border-color;
 		cursor: pointer;
 
 		&:hover {
@@ -381,7 +382,7 @@ Popup Hint
 	}
 
 	&--check {
-		border-bottom: 1px solid #e0e0e0;
+		border-bottom: 1px solid $border-color;
 		cursor: pointer;
 
 		label {
@@ -508,7 +509,7 @@ Popup Hint Date
 
 .popup-hint--flexible-date {
 	padding: 15px 12px;
-	border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid $border-color;
 
 	label {
 		color: $text-color;
@@ -585,7 +586,7 @@ Child Ages
 --------------------------------------------------*/
 
 .child-ages {
-	border-top: 1px solid #e0e0e0;
+	border-top: 1px solid $border-color;
 
 	.child-age {
 		display: flex;
