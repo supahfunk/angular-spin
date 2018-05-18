@@ -50,7 +50,7 @@ Main Search
 	&--location {
 		flex-grow: 1;
 
-		@include md-down {
+		@include sm-down {
 			width: 100%;
 			margin: 0 0 10px 0;
 		}
@@ -68,6 +68,10 @@ Main Search
 		flex-shrink: 1;
 
 		@include md-down {
+			width: 190px;
+		}
+
+		@include sm-down {
 			width: calc(50% - 5px);
 			margin: 0 5px 10px 0;
 		}
@@ -77,6 +81,10 @@ Main Search
 		flex-shrink: 1;
 
 		@include md-down {
+			width: 160px;
+		}
+
+		@include sm-down {
 			width: calc(50% - 5px);
 			margin: 0 0 10px 5px;
 		}
@@ -90,6 +98,11 @@ Main Search
 		}
 
 		@include md-down {
+			width: 60px;
+			min-width: 0;
+		}
+
+		@include sm-down {
 			width: calc(25% - 10px);
 			margin: 0 5px 0 0;
 		}
@@ -108,6 +121,11 @@ Main Search
 		}
 
 		@include md-down {
+			width: 65px;
+			min-width: 0;
+		}
+
+		@include sm-down {
 			width: calc(25% - 5px);
 			margin: 0 5px 0 5px;
 		}
@@ -138,6 +156,14 @@ Main Search
 		}
 
 		@include md-down {
+
+			button {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+
+		@include sm-down {
 			width: calc(50% - 5px);
 			margin: 0 0 0 5px;
 		}
@@ -152,7 +178,6 @@ Main Search
 
 
 	input[type="text"],
-	input[type="search"],
 	select {
 		position: relative;
 		z-index: 10;
@@ -184,6 +209,15 @@ Main Search
 
 	}
 
+	input[type="text"].with-reset {
+		padding-right: 15px;
+
+		@include xxs-down {
+			padding-right: 23px;
+		}
+	}
+
+
 	.ico {
 		position: absolute;
 		left: 10px;
@@ -205,6 +239,34 @@ Main Search
 			fill: $primary-color;
 			width: 100%;
 			height: 100%;
+		}
+	}
+
+	.reset {
+		position: absolute;
+		z-index: 10;
+		right: 4px;
+		top: 28px;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: .5;
+
+		@include xs-down {
+			top: 23px;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+
+		svg {
+			fill: rgba(0, 0, 0, .7);
+			width: 10px;
+			height: 10px;
 		}
 	}
 }
@@ -229,7 +291,7 @@ Popup Hint
 		display: block;
 	}
 
-	@include md-down {
+	@include sm-down {
 		min-width: 100%;
 	}
 
@@ -357,6 +419,10 @@ Popup Hint
 		padding: 0;
 		line-height: 1.2;
 		padding: 2px 0;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding-right: 5px;
+		overflow: hidden;
 	}
 
 	&--ico {
@@ -459,7 +525,7 @@ Popup Hint Adults
 
 .popup-hint__adults {
 
-	@include md-down {
+	@include sm-down {
 		min-width: 220px;
 	}
 }
@@ -471,7 +537,7 @@ Popup Hint Childs
 
 .popup-hint__childs {
 
-	@include md-down {
+	@include sm-down {
 		min-width: 220px;
 	}
 

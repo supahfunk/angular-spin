@@ -17,9 +17,11 @@ Base
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
+	padding-left: 0;
+	padding-right: 0;
 
 	@include md-down {
-		max-width: 960px;
+		max-width: calc(100% - 5px);
 	}
 
 	@include sm-down {
@@ -63,77 +65,4 @@ Card Row
 		}
 	}
 
-}
-
-
-
-/*--------------------------------------------------
-Buttons
---------------------------------------------------*/
-
-.btn {
-	background-color: $primary-color;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	display: inline-block;
-	text-transform: uppercase;
-	font-weight: 600;
-	padding: 9px 15px;
-	cursor: pointer;
-	transition: background .2s ease-in-out;
-
-	&:hover {
-		background: darken($primary-color, 5%);
-		color: #fff;
-		text-decoration: none;
-	}
-
-	&:focus,
-	&:active {
-		background: darken($primary-color, 8%);
-	}
-
-	&__ghost {
-		background: transparent;
-		border: 1px solid $tit-color;
-		color: $tit-color;
-
-		&:hover {
-			background: transparent;
-			color: $tit-color;
-		}
-
-		&:focus,
-		&:active {
-			background: transparent;
-		}
-	}
-}
-
-.btn__secondary {
-	background-color: $secondary-color;
-
-	&:hover {
-		background: darken($secondary-color, 5%);
-	}
-
-	&:focus,
-	&:active {
-		background: darken($secondary-color, 8%);
-	}
-}
-
-
-.btn__tertiary {
-	background-color: $tertiary-color;
-
-	&:hover {
-		background: darken($tertiary-color, 5%);
-	}
-
-	&:focus,
-	&:active {
-		background: darken($tertiary-color, 8%);
-	}
 }

@@ -3,8 +3,12 @@
 	<div class="main-search--col main-search--location" [ngClass]="{'active':active==searchLocation}">
 		<div (click)="active = searchLocation" #searchLocation>
 			<label for="main-search--location">Destinazione</label>
-			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" [value]="search.model.destination.name" (focus)="search.model.query = null; search.model.destination = null; destinationDirty = null;" *ngIf="search.model.destination">
-			<input type="search" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="search.model.query" [hidden]="search.model.destination" #query>
+			<input type="text" class="with-reset" id="main-search--location" placeholder="Cerca località, regione, tipologia o nome hotel" name="query" [(ngModel)]="search.model.query" [hidden]="search.model.destination" #query>
+			<span class="reset">
+				<svg>
+					<use xlink:href="#ico-reset"></use>
+				</svg>
+			</span>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-pin"></use>
@@ -17,7 +21,7 @@
 				<h3>Le tue ultime ricerche</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -32,7 +36,12 @@
 	<div class="main-search--col main-search--date" [ngClass]="{'active':active==searchDate}">
 		<div class="main-search--trigger" (click)="active = searchDate" #searchDate>
 			<label for="main-search--date">Data di partenza</label>
-			<input disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="search.model.startDate | date:'dd MMMM yyyy'">
+			<input class="with-reset" disabled type="text" id="main-search--date" placeholder="Seleziona una data" [value]="search.model.startDate | date:'dd MMMM yyyy'">
+			<span class="reset">
+				<svg>
+					<use xlink:href="#ico-reset"></use>
+				</svg>
+			</span>
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-calendar"></use>
@@ -44,7 +53,7 @@
 				<h3>Seleziona la data di partenza</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -65,9 +74,9 @@
 	</div>
 	<!-- DURATION -->
 	<div class="main-search--col main-search--duration" [ngClass]="{'active':active==searchDuration}">
-		<div (click)="active = searchDuration" #searchDuration>
+		<div class="main-search--trigger" (click)="active = searchDuration" #searchDuration>
 			<label for="main-search--duration">Durata viaggio</label>
-			<input disabled id="main-search--duration" type="text" class="main-search--duration" [value]="search.model.duration.name">
+			<input disabled id="main-search--duration" type="text" class="main-search--duration-input" [value]="search.model.duration.name">
 			<span class="ico">
 				<svg>
 					<use xlink:href="#ico-clock"></use>
@@ -79,7 +88,7 @@
 				<h3>Seleziona la durata del tuo viaggio</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -113,7 +122,7 @@
 				<h3>Numero di adulti</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
@@ -141,7 +150,7 @@
 				<h3>Numero di bambini</h3>
 				<div class="popup-hint--close" (click)="active=null">
 					<svg>
-						<use xlink:href="#ico-circle-close"></use>
+						<use xlink:href="#ico-close"></use>
 					</svg>
 				</div>
 			</div>
