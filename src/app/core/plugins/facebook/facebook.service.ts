@@ -58,7 +58,7 @@ export class FacebookService {
 
 	constructor(
 		@Inject(PLATFORM_ID) private platformId: string,
-		private localStorageService: LocalStorageService,
+		private storageService: LocalStorageService,
 		private onceService: OnceService,
 		private routeService: RouteService,
 	) {
@@ -70,7 +70,7 @@ export class FacebookService {
 			throw new Error('FacebookService.error missing config object in environment.plugins.facebook');
 		}
 		this.options = Object.assign(new FacebookConfig(), environment['plugins']['facebook'] as FacebookConfig);
-		this.storage = this.localStorageService.tryGet();
+		this.storage = this.storageService.tryGet();
 		this.authResponse = this.storage.get('facebook');
 		// console.log('FacebookService.authResponse', this.authResponse);
 	}

@@ -8,6 +8,7 @@ import { CoreRouting } from './core.routing';
 import { DisposableComponent } from './disposable';
 import { ControlComponent, ControlService, FormService, MatchValidator } from './forms';
 import { HighlightPipe } from './highlight';
+import { JsonFormatterComponent } from './json-formatter';
 import { CustomMissingTranslationHandler, LabelService } from './labels';
 import { Logger } from './logger';
 import { OnceService } from './once';
@@ -33,10 +34,10 @@ import { TrustPipe } from './trust';
 	],
 	exports: [
 		AssetPipe, HighlightPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator, TrustPipe,
-		ControlComponent,
+		ControlComponent, JsonFormatterComponent,
 	],
 	declarations: [
-		PageHosterComponent, PageComponent, DisposableComponent,
+		PageHosterComponent, PageComponent, DisposableComponent, JsonFormatterComponent,
 		AssetPipe, HighlightPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator, TrustPipe,
 		ControlComponent,
 	],

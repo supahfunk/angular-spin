@@ -57,7 +57,7 @@ export class GoogleService {
 
 	constructor(
 		@Inject(PLATFORM_ID) private platformId: string,
-		private localStorageService: LocalStorageService,
+		private storageService: LocalStorageService,
 		private onceService: OnceService,
 		private routeService: RouteService,
 	) {
@@ -69,7 +69,7 @@ export class GoogleService {
 			throw new Error('GoogleService.error missing config object in environment.plugins.google');
 		}
 		this.options = Object.assign(new GoogleConfig(), environment['plugins']['google'] as GoogleConfig);
-		this.storage = this.localStorageService.tryGet();
+		this.storage = this.storageService.tryGet();
 		this.authResponse = this.storage.get('google');
 		// console.log('GoogleService.authResponse', this.authResponse);
 	}
