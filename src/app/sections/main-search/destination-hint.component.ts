@@ -1,7 +1,7 @@
 // posts.component.ts
 
-import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+// import { fromEvent } from 'rxjs';
 import { DisposableComponent } from '../../core/disposable/disposable.component';
 import { Destination } from '../../models/destination';
 
@@ -30,6 +30,13 @@ export class DestinationHintComponent extends DisposableComponent implements OnI
 
 	@ViewChild('scrollable') scrollable;
 	scrollable$;
+
+	constructor(
+		private renderer: Renderer2,
+		private elementRef: ElementRef
+	) {
+		super();
+	}
 
 	ngOnInit() {
 		// console.log('DestinationHintComponent.onInit');
@@ -63,7 +70,8 @@ export class DestinationHintComponent extends DisposableComponent implements OnI
 		// const scrollHeight = this.scrollable.nativeElement.scrollHeight;
 		if (active * this.height > height + scrollTop ||
 			active * this.height < scrollTop) {
-			this.scrollable.nativeElement.scrollTop = active * this.height;
+			// this.scrollable.nativeElement.scrollTop = active * this.height;
+			this.renderer.setProperty(this.scrollable.nativeElement, 'scrollTop', active * this.height);
 		}
 		// console.log(active * this.height, scrollTop);
 		// console.log(this.maxVisibleItems, this.destinations.length);
@@ -98,6 +106,10 @@ export class DestinationHintComponent extends DisposableComponent implements OnI
 	}
 
 	addListeners() {
+		this.renderer.listen(this.scrollable.nativeElement, 'scroll', () => {
+			this.setVisibleItems(this.active);
+		});
+		/*
 		// scrollable scroll listener
 		this.scrollable$ = fromEvent(this.scrollable.nativeElement, 'scroll')
 			.debounceTime(250)
@@ -110,6 +122,7 @@ export class DestinationHintComponent extends DisposableComponent implements OnI
 				// console.log('DestinationHintComponent.scroll', e);
 				this.setVisibleItems(this.active);
 			});
+			*/
 	}
 
 }

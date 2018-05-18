@@ -17,6 +17,7 @@ import { FacebookService, GoogleService } from './plugins';
 import { AssetPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe } from './routes';
 import { CookieStorageService, LocalStorageService, SessionStorageService, StorageService } from './storage';
 import { TrustPipe } from './trust';
+import { ClickOutsideDirective } from './ui';
 
 // import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 // import { AuthService, AuthTokenInterceptor } from './auth';
@@ -39,7 +40,7 @@ import { TrustPipe } from './trust';
 	declarations: [
 		PageHosterComponent, PageComponent, DisposableComponent, JsonFormatterComponent,
 		AssetPipe, HighlightPipe, PublicPipe, RoutePipe, SegmentPipe, SlugPipe, MatchValidator, TrustPipe,
-		ControlComponent,
+		ControlComponent, ClickOutsideDirective
 	],
 	providers: [
 		/*
